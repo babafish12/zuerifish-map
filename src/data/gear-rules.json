@@ -1,11 +1,10 @@
 {
   "freeFishing": [
-    { "label": "Standort", "value": "Nur vom trockenen Ufer aus." },
-    { "label": "Anzahl", "value": "1 Angelrute oder Schnur, 1 einziger Köder." },
-    { "label": "Haken", "value": "Einfachhaken ohne Widerhaken." },
-    { "label": "Erlaubt", "value": "Natürliche Köder, Lebensmittel, künstliche Fliegen mit Fliegenrute." },
-    { "label": "Nicht erlaubt", "value": "Keine Köderfische. Fliegen höchstens Hakengrösse 8." },
-    { "label": "Trotzdem gültig", "value": "Mindestmasse, Schonzeiten und Tagesfanglimiten gelten immer." }
+    { "label": "Standort", "value": "Ohne Patent nur vom trockenen Ufer aus." },
+    { "label": "Gerät", "value": "1 Angelrute oder Schnur mit genau 1 Köder." },
+    { "label": "Köder & Haken", "value": "Natürliche Köder, Lebensmittel und künstliche Fliegen mit Fliegenrute; nur Einfachhaken ohne Widerhaken." },
+    { "label": "Nicht erlaubt", "value": "Keine Köderfische; Fliegen höchstens Hakengrösse 8." },
+    { "label": "Weiter gültig", "value": "Mindestmasse, Schonzeiten, Tagesfanglimiten und Tierschutzregeln gelten auch ohne Patent." }
   ],
   "byLake": [
     {
@@ -14,6 +13,39 @@
       "shorePatent": "2 Ruten/Schnüre",
       "stationaryBoat": "3 Ruten/Schnüre",
       "trolling": "10 Köder",
+      "modeDetails": {
+        "withoutPatent": [
+          { "label": "Standort", "value": "Ohne Patent nur vom trockenen Ufer aus." },
+          { "label": "Gerät", "value": "1 Angelrute oder Schnur mit genau 1 Köder." },
+          { "label": "Köder & Haken", "value": "Natürliche Köder, Lebensmittel und künstliche Fliegen mit Fliegenrute; nur Einfachhaken ohne Widerhaken." },
+          { "label": "Nicht erlaubt", "value": "Keine Köderfische; Fliegen höchstens Hakengrösse 8." },
+          { "label": "Zeit & Regeln", "value": "Sommerzeit 04.00-23.00 Uhr, übrige Zeit 05.00-22.00 Uhr. Mindestmasse, Schonzeiten und Tageslimiten gelten." }
+        ],
+        "shorePatent": [
+          { "label": "Standort", "value": "Uferfischerei mit gültigem Patent; Kantonsgrenzen, Schongebiete und eFJ prüfen." },
+          { "label": "Ruten", "value": "2 Ruten oder Schnüre pro Patentinhaber/in; keine zusätzliche Freiangel." },
+          { "label": "Geräte & Haken", "value": "Bis 5 Köder pro Schnur/Zügel, max. 3 Haken pro Köder. Mehrfachhaken ohne Widerhaken; Einfachhaken mit Widerhaken nur mit Sachkundenachweis." },
+          { "label": "Köderfische", "value": "Lebende Köderfische verboten. Köderfische nur aus Zürichsee/Obersee, nicht aus den Mindestmass-Arten, und nur für Eigenbedarf." },
+          { "label": "Fanggeräte", "value": "Köderfischreuse oder Köderfischflasche nur mit Patent; Senknetz verboten." },
+          { "label": "Weiter gültig", "value": "Mindestmasse, Schonzeiten, Tageslimiten, Fangstatistik und Fischereizeiten beachten." }
+        ],
+        "stationaryBoat": [
+          { "label": "Standort", "value": "Vom stehenden Boot aus; passende Bootsberechtigung oder Tagespatent See prüfen." },
+          { "label": "Ruten", "value": "3 Ruten oder Schnüre pro Patentinhaber/in." },
+          { "label": "Geräte & Haken", "value": "Bis 5 Köder pro Schnur/Zügel, max. 3 Haken pro Köder. Mehrfachhaken ohne Widerhaken; Einfachhaken mit Widerhaken nur mit Sachkundenachweis." },
+          { "label": "Köderfische", "value": "Lebende Köderfische verboten. Köderfische nur aus Zürichsee/Obersee, nicht aus den Mindestmass-Arten, und nur für Eigenbedarf." },
+          { "label": "Fanggeräte", "value": "Köderfischreuse oder Köderfischflasche nur mit Patent; Senknetz verboten." },
+          { "label": "Weiter gültig", "value": "Mindestmasse, Schonzeiten, Tageslimiten, Fangstatistik und Fischereizeiten beachten." }
+        ],
+        "trolling": [
+          { "label": "Standort", "value": "Schleppangelfischerei vom Boot; Schlüchli, Tiefseeschleike, Downrigger und ähnliche Geräte nach Anhang III prüfen." },
+          { "label": "Köder", "value": "10 Köder pro Patentinhaber/in." },
+          { "label": "Ausleger", "value": "Seitliche Ausleger höchstens 40 m vom Boot; Einsatz nur von Sonnenaufgang bis Sonnenuntergang." },
+          { "label": "Stadt Zürich", "value": "Unterhalb der Linie Zürichhorn-Wollishofen sind seitliche Ausleger nur vom 1.11. bis 31.3. erlaubt." },
+          { "label": "Geräte & Haken", "value": "Bis 5 Köder pro Schnur/Zügel, max. 3 Haken pro Köder. Mehrfachhaken ohne Widerhaken; Einfachhaken mit Widerhaken nur mit Sachkundenachweis." },
+          { "label": "Köderfische", "value": "Lebende Köderfische verboten. Köderfische nur aus Zürichsee/Obersee, nicht aus den Mindestmass-Arten, und nur für Eigenbedarf." }
+        ]
+      },
       "time": "Sommer 04-23 Uhr / übrige Zeit 05-22 Uhr",
       "note": "Zeitliche Beschränkung laut Zürcher Merkblatt beachten."
     },
@@ -23,6 +55,39 @@
       "shorePatent": "max. 2 Ruten/Handschnüre",
       "stationaryBoat": "max. 3 Ruten/Handschnüre",
       "trolling": "max. 6 Köder pro Person",
+      "modeDetails": {
+        "withoutPatent": [
+          { "label": "Standort", "value": "Ohne Patent nur vom trockenen Ufer aus." },
+          { "label": "Gerät", "value": "1 Angelrute oder Schnur mit genau 1 Köder." },
+          { "label": "Köder & Haken", "value": "Natürliche Köder, Lebensmittel und künstliche Fliegen mit Fliegenrute; nur Einfachhaken ohne Widerhaken." },
+          { "label": "Nicht erlaubt", "value": "Keine Köderfische; Fliegen höchstens Hakengrösse 8." },
+          { "label": "Weiter gültig", "value": "Mindestmasse, Schonzeiten, Tagesfanglimiten und Tierschutzregeln gelten auch ohne Patent." }
+        ],
+        "shorePatent": [
+          { "label": "Standort", "value": "Uferfischerei nur vom trockenen Ufer; ein gehakter Fisch darf im Wasser stehend gelandet werden." },
+          { "label": "Ruten", "value": "Max. 2 Ruten oder Handschnüre pro Person; keine zusätzliche Freiangel." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Grundregel ohne Widerhaken. Einzelhaken mit Widerhaken nur mit Sachkundenachweis oder als begleiteter Gast." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ],
+        "stationaryBoat": [
+          { "label": "Standort", "value": "Vom stehenden Boot aus; sobald das Boot mit Ruder oder Motor bewegt wird, gilt es als Schleppangelfischerei." },
+          { "label": "Ruten", "value": "Max. 3 Ruten oder Handschnüre pro Person." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Grundregel ohne Widerhaken. Einzelhaken mit Widerhaken nur mit Sachkundenachweis oder als begleiteter Gast." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ],
+        "trolling": [
+          { "label": "Standort", "value": "Schleppangelfischerei vom Boot; ein mit Ruder oder Motor bewegtes Boot zählt als Schleppangeln." },
+          { "label": "Köder", "value": "Max. 6 geschleppte Köder pro Person im Greifen-, Pfäffiker- und Türlersee." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Montagen mit mehr als 1 Köder pro Schnur/Zügel nur mit Einfachhaken; Grundregel ohne Widerhaken." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ]
+      },
       "time": "keine Zeitbeschränkung laut Merkblatt",
       "note": "Lokale Tafeln und Schutzgebiete bleiben massgebend."
     },
@@ -32,6 +97,39 @@
       "shorePatent": "max. 2 Ruten/Handschnüre",
       "stationaryBoat": "max. 3 Ruten/Handschnüre",
       "trolling": "max. 6 Köder pro Person",
+      "modeDetails": {
+        "withoutPatent": [
+          { "label": "Standort", "value": "Ohne Patent nur vom trockenen Ufer aus." },
+          { "label": "Gerät", "value": "1 Angelrute oder Schnur mit genau 1 Köder." },
+          { "label": "Köder & Haken", "value": "Natürliche Köder, Lebensmittel und künstliche Fliegen mit Fliegenrute; nur Einfachhaken ohne Widerhaken." },
+          { "label": "Nicht erlaubt", "value": "Keine Köderfische; Fliegen höchstens Hakengrösse 8." },
+          { "label": "Weiter gültig", "value": "Mindestmasse, Schonzeiten, Tagesfanglimiten und Tierschutzregeln gelten auch ohne Patent." }
+        ],
+        "shorePatent": [
+          { "label": "Standort", "value": "Uferfischerei nur vom trockenen Ufer; ein gehakter Fisch darf im Wasser stehend gelandet werden." },
+          { "label": "Ruten", "value": "Max. 2 Ruten oder Handschnüre pro Person; keine zusätzliche Freiangel." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Grundregel ohne Widerhaken. Einzelhaken mit Widerhaken nur mit Sachkundenachweis oder als begleiteter Gast." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ],
+        "stationaryBoat": [
+          { "label": "Standort", "value": "Vom stehenden Boot aus; sobald das Boot mit Ruder oder Motor bewegt wird, gilt es als Schleppangelfischerei." },
+          { "label": "Ruten", "value": "Max. 3 Ruten oder Handschnüre pro Person." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Grundregel ohne Widerhaken. Einzelhaken mit Widerhaken nur mit Sachkundenachweis oder als begleiteter Gast." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ],
+        "trolling": [
+          { "label": "Standort", "value": "Schleppangelfischerei vom Boot; ein mit Ruder oder Motor bewegtes Boot zählt als Schleppangeln." },
+          { "label": "Köder", "value": "Max. 6 geschleppte Köder pro Person im Greifen-, Pfäffiker- und Türlersee." },
+          { "label": "Geräte", "value": "Bis 5 Köder pro Schnur/Zügel; max. 3 Einzel-, Zwillings- oder Drillingshaken pro Köder." },
+          { "label": "Haken", "value": "Montagen mit mehr als 1 Köder pro Schnur/Zügel nur mit Einfachhaken; Grundregel ohne Widerhaken." },
+          { "label": "Köderfische", "value": "Nur tote Köderfische aus demselben Gewässer; Fang für Eigenbedarf mit Aquarienkescher, Köderfischflasche oder Reuse." },
+          { "label": "Kontrolle", "value": "Köderfischflasche und Reuse täglich kontrollieren und mit Kontaktdaten versehen." }
+        ]
+      },
       "time": "keine Zeitbeschränkung laut Merkblatt",
       "note": "Schutzgebiete am Ufer vor Ort prüfen."
     }

@@ -1,6 +1,6 @@
 import { AlertTriangle } from "lucide-react";
 import { getSpecies } from "../lib/data";
-import { formatDailyLimit, formatMinSize, statusHint, statusLabel } from "../lib/formatRules";
+import { formatDailyLimit, formatMinSize, statusLabel } from "../lib/formatRules";
 import { getFishStatus } from "../lib/seasonStatus";
 import type { FishRule } from "../types";
 
@@ -43,10 +43,7 @@ export function FishCard({ rule }: FishCardProps) {
             <dd>{formatDailyLimit(rule.dailyLimit)}</dd>
           </div>
         </dl>
-        <p className="status-note">
-          {statusHint(status)}. {rule.hint}
-          {rule.localRestrictionWarning ? ` ${rule.localRestrictionWarning}` : ""}
-        </p>
+        {rule.localRestrictionWarning ? <p className="status-note">{rule.localRestrictionWarning}</p> : null}
       </div>
     </article>
   );

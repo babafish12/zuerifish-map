@@ -17,7 +17,7 @@ export function formatMinSize(minSize: MinSize): string {
     return "kein Mindestmass";
   }
 
-  return `Mindestmass ${minSize} cm`;
+  return `${minSize} cm`;
 }
 
 export function statusLabel(status: FishStatus): string {
@@ -36,13 +36,12 @@ export function statusLabel(status: FishStatus): string {
 export function statusHint(status: FishStatus): string {
   switch (status) {
     case "allowed":
-      return "Regeln trotzdem prüfen";
+      return "Heute offen";
     case "closed":
       return "nicht entnehmen";
     case "protected":
       return "nicht entnehmen";
     case "unclear":
-      return "offizielle Quelle prüfen";
+      return "Einschränkung möglich";
   }
 }
-

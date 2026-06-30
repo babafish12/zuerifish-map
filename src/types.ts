@@ -34,14 +34,45 @@ export interface Species {
     src: string;
     alt: string;
     sourceId: string;
-    sourceUrl: string;
-    license: string;
-    author: string;
-    attributionRequired: boolean;
-    generatedWith: string;
-    prompt: string;
-    usageStatus: string;
+    sourceUrl?: string;
+    license?: string;
+    author?: string;
+    attributionRequired?: boolean;
+    generatedWith?: string;
+    prompt?: string;
+    usageStatus?: string;
   };
+}
+
+export interface FishProfile {
+  id: string;
+  name: string;
+  scientificName: string;
+  category: string;
+  image: {
+    src: string;
+    alt: string;
+    sourceId: string;
+  };
+  occurrence: Record<LakeId, string>;
+  note: string;
+}
+
+export type FishProfileCategoryGroup =
+  | "Salmoniden"
+  | "Raubfische"
+  | "Friedfische"
+  | "Kleinfische"
+  | "Geschützte Arten"
+  | "Landesfremde Arten";
+
+export interface FishProfileDetail {
+  categoryGroup: FishProfileCategoryGroup;
+  portrait: string;
+  identification: string[];
+  habitats: string[];
+  catchingTips: string[];
+  eatingNote: string;
 }
 
 export interface FishRule {
@@ -61,12 +92,15 @@ export interface FreeFishingRule {
   value: string;
 }
 
+export type GearMode = "withoutPatent" | "shorePatent" | "stationaryBoat" | "trolling";
+
 export interface GearRulesByLake {
   lakeId: LakeId;
   withoutPatent: string;
   shorePatent: string;
   stationaryBoat: string;
   trolling: string;
+  modeDetails: Record<GearMode, FreeFishingRule[]>;
   time: string;
   note: string;
 }
@@ -91,6 +125,38 @@ export interface Source {
   status?: string;
 }
 
+type GeoPosition = [number, number];
+
+export type FishingRestrictionGeometry =
+  | {
+      type: "Polygon";
+      coordinates: GeoPosition[][];
+    }
+  | {
+      type: "MultiPolygon";
+      coordinates: GeoPosition[][][];
+    };
+
+export interface FishingRestrictionFeature {
+  type: "Feature";
+  properties: {
+    id: string;
+    lakeId: LakeId;
+    name: string;
+    zone: string;
+    period: string;
+    rule: string;
+    sourceIds: string[];
+  };
+  geometry: FishingRestrictionGeometry;
+}
+
+export interface FishingRestrictionFeatureCollection {
+  type: "FeatureCollection";
+  name: string;
+  features: FishingRestrictionFeature[];
+}
+
 export interface LakeFeature {
   type: "Feature";
   properties: {
@@ -99,7 +165,7 @@ export interface LakeFeature {
   };
   geometry: {
     type: "Polygon";
-    coordinates: number[][][];
+    coordinates: GeoPosition[][];
   };
 }
 

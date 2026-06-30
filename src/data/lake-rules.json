@@ -114,7 +114,7 @@
     "dailyLimit": 2,
     "minSizeCm": 40,
     "closedSeason": { "start": "10-01", "end": "12-25", "label": "01.10.-25.12." },
-    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "localRestrictionWarning": "Schutzgebiete am Ufer beachten.",
     "hint": "Gleich geregelt für Greifen- und Pfäffikersee.",
     "sourceIds": ["zh-fanglimiten-2026", "prd"]
   },
@@ -124,8 +124,8 @@
     "dailyLimit": 10,
     "minSizeCm": 25,
     "closedSeason": { "start": "11-20", "end": "12-31", "label": "20.11.-31.12." },
-    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
-    "hint": "Felchenfang geregelt; lokale Uferhinweise beachten.",
+    "localRestrictionWarning": "Schutzgebiete am Ufer beachten.",
+    "hint": "Felchenfang geregelt.",
     "sourceIds": ["zh-fanglimiten-2026", "prd"]
   },
   {
@@ -134,7 +134,7 @@
     "dailyLimit": 5,
     "minSizeCm": 45,
     "closedSeason": { "start": "03-01", "end": "04-30", "label": "01.03.-30.04." },
-    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "localRestrictionWarning": "Schutzgebiete am Ufer beachten.",
     "hint": "Gleiche Kernregel wie Greifensee.",
     "sourceIds": ["zh-fanglimiten-2026", "prd"]
   },
@@ -144,7 +144,7 @@
     "dailyLimit": "none",
     "minSizeCm": 40,
     "closedSeason": { "start": "04-01", "end": "05-31", "label": "01.04.-31.05." },
-    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "localRestrictionWarning": "Schutzgebiete am Ufer beachten.",
     "hint": "Reguliert in Greifen- und Pfäffikersee.",
     "sourceIds": ["zh-fanglimiten-2026", "prd"]
   },
@@ -154,8 +154,8 @@
     "dailyLimit": 50,
     "minSizeCm": "none",
     "closedSeason": null,
-    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
-    "hint": "Keine Schonzeit und kein Mindestmass; Schutzgebiete am Ufer lokal prüfen.",
+    "localRestrictionWarning": "Schutzgebiete am Ufer beachten.",
+    "hint": "Keine Schonzeit und kein Mindestmass.",
     "sourceIds": ["zh-fanglimiten-2026", "prd"]
   }
 ]

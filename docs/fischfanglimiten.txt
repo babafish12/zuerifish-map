@@ -1,0 +1,79 @@
+Ich habe nochmals gegen die **offiziellen Zürcher Vorschriften 2026** geprüft. Deine PDF habe ich nur als **Arten-/Vorkommensliste** verwendet; sie sagt selber, dass am Schluss die offiziellen Vorschriften/eFJ-App/Fischereiaufsicht massgebend bleiben.  Der Kanton Zürich hat die Vorschriften per **1.1.2026** angepasst und verweist auf den offiziellen Auszug für die Angelfischerei. ([Kanton Zürich][1])
+
+**Legende:**
+**M** = Mindestmass, **SZ** = Schonzeit, **L** = Tagesfangzahllimite pro Person und Tag, **0** = nicht entnehmen / geschützt, **keine** = keine artspezifische Angabe in der Zürcher 3-Seen-Tabelle.
+
+## Offizielle Regeln für die 3 Zürcher Seen
+
+| Fisch / Gruppe                                                |                       Zürichsee |                                Greifensee |                              Pfäffikersee |
+| ------------------------------------------------------------- | ------------------------------: | ----------------------------------------: | ----------------------------------------: |
+| **Bach-/Seeforelle**                                          |  M 40 cm, SZ 01.10.–25.12., L 4 |            M 40 cm, SZ 01.10.–25.12., L 2 |            M 40 cm, SZ 01.10.–25.12., L 2 |
+| **Felchenartige / Felchen**                                   | M 25 cm, SZ 20.11.–31.12., L 10 |           M 25 cm, SZ 20.11.–31.12., L 10 |           M 25 cm, SZ 20.11.–31.12., L 10 |
+| **Seesaibling / Rötel**                                       |  M 25 cm, SZ 01.10.–25.12., L 5 | kommt laut Merkblatt nur im Zürichsee vor | kommt laut Merkblatt nur im Zürichsee vor |
+| **Hecht**                                                     |          M keine, SZ keine, L 5 |            M 45 cm, SZ 01.03.–30.04., L 5 |            M 45 cm, SZ 01.03.–30.04., L 5 |
+| **Zander**                                                    |      M keine, SZ keine, L keine |        M 40 cm, SZ 01.04.–31.05., L keine |        M 40 cm, SZ 01.04.–31.05., L keine |
+| **Egli / Flussbarsch**                                        |         M keine, SZ keine, L 50 |                   M keine, SZ keine, L 50 |                   M keine, SZ keine, L 50 |
+| **Äsche**                                                     |                    0, geschützt |                              0, geschützt |                              0, geschützt |
+| **Aal, Nase, Bitterling, Bachneunauge usw. mit Schutzstatus** |         0, ganzjährig geschützt |                   0, ganzjährig geschützt |                   0, ganzjährig geschützt |
+
+Diese Werte stehen im kantonalen Merkblatt zu **Fanglimiten, Fangmindestmassen und Schonzeiten**; dort sind Zürichsee und Greifen-/Pfäffikersee direkt gegenübergestellt. ([Kanton Zürich][2]) Im 29-seitigen offiziellen Auszug sind Greifensee/Pfäffikersee zusätzlich bei den Tageslimiten und Mindestmassen/Schonzeiten bestätigt. ([Kanton Zürich][3]) Für den Zürichsee bestätigt der Auszug die Schonzeiten/Mindestmasse für Forellen, Seesaibling, Äsche und Felchenartige sowie die Zürichsee-Tageslimiten. ([Kanton Zürich][3])
+
+Wichtig: **Äsche nicht entnehmen.** Der Kanton Zürich hat ein befristetes Äschenfangverbot für alle Zürcher Gewässer bis Ende September 2029 verfügt; ab 1.10.2026 bis 30.9.2029 ist der Fang ausdrücklich verboten. ([Kanton Zürich][4])
+
+## Auf alle Fische aus deinem Dokument übertragen
+
+| Fisch aus deiner Liste      |                    Zürichsee |                   Greifensee |                 Pfäffikersee | Einordnung                                                                          |
+| --------------------------- | ---------------------------: | ---------------------------: | ---------------------------: | ----------------------------------------------------------------------------------- |
+| **Bachforelle**             |               Forellen-Regel |               Forellen-Regel |               Forellen-Regel | M 40, SZ 01.10.–25.12.; Limit je nach See                                           |
+| **Seeforelle**              |               Forellen-Regel |               Forellen-Regel |               Forellen-Regel | M 40, SZ 01.10.–25.12.; Limit je nach See                                           |
+| **Regenbogenforelle**       | keine separate 3-Seen-Angabe | keine separate 3-Seen-Angabe | keine separate 3-Seen-Angabe | nicht als eigene Art in den 3-Seen-Regeln geführt                                   |
+| **Seesaiblinge / Rötel**    |            Seesaibling-Regel |             nicht vorgesehen |             nicht vorgesehen | laut Merkblatt nur Zürichsee                                                        |
+| **Bachsaibling**            |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | landesfremd / nicht aktuell bestätigt                                               |
+| **Kanadischer Seesaibling** |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | landesfremd / nicht bestätigt                                                       |
+| **Äsche**                   |                  0 geschützt |                  0 geschützt |                  0 geschützt | nicht entnehmen                                                                     |
+| **Felchen**                 |                Felchen-Regel |                Felchen-Regel |                Felchen-Regel | M 25, SZ 20.11.–31.12., L 10                                                        |
+| **Karpfen**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Brachsmen / Brasse**      |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Alet / Döbel**            |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Rapfen**                  |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | in deiner Liste nicht bestätigt                                                     |
+| **Barbe**                   | keine separate 3-Seen-Angabe | keine separate 3-Seen-Angabe | keine separate 3-Seen-Angabe | Barbe 30 cm gilt in anderen Zürcher Revierkategorien, nicht als 3-Seen-Spezialregel |
+| **Schleie**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Nase**                    |                  0 geschützt |                  0 geschützt |                  0 geschützt | ganzjährig geschützt                                                                |
+| **Rotfeder**                |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Rotauge**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Hecht**                   |        Hecht-Regel Zürichsee |       Hecht-Regel Greifensee |     Hecht-Regel Pfäffikersee | Zürichsee ohne M/SZ; Greifen/Pfäffiker M 45, SZ 01.03.–30.04.                       |
+| **Egli**                    |                   Egli-Regel |                   Egli-Regel |                   Egli-Regel | M keine, SZ keine, L 50                                                             |
+| **Forellenbarsch**          |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | landesfremd / nicht bestätigt                                                       |
+| **Zander**                  |       Zander-Regel Zürichsee |      Zander-Regel Greifensee |    Zander-Regel Pfäffikersee | Zürichsee ohne M/SZ; Greifen/Pfäffiker M 40, SZ 01.04.–31.05.                       |
+| **Wels**                    |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Trüsche**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Aal**                     |                  0 geschützt |                  0 geschützt |                  0 geschützt | ganzjährig geschützt                                                                |
+| **Katzenwels**              |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | landesfremd / nicht bestätigt                                                       |
+| **Bachschmerle**            |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | Kleinfisch, keine Zielfisch-Regel gefunden                                          |
+| **Elritze**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | Kleinfisch, keine Zielfisch-Regel gefunden                                          |
+| **Groppe**                  |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | Kleinfisch, keine Zielfisch-Regel gefunden                                          |
+| **Gründling**               |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Hasel**                   |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Kaulbarsch**              |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Laube**                   |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | keine artspezifische 3-Seen-Regel gefunden                                          |
+| **Schneider**               |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | gefährdete Kleinfischart; eFJ/Fischereiaufsicht prüfen                              |
+| **Sonnenbarsch**            |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | landesfremd; nicht in andere Gewässer verschleppen                                  |
+| **Stichling**               |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | Kleinfisch, keine Zielfisch-Regel gefunden                                          |
+| **Strömer**                 |        keine separate Angabe |        keine separate Angabe |        keine separate Angabe | gefährdete Kleinfischart; eFJ/Fischereiaufsicht prüfen                              |
+
+## Zählt Bundesrecht, wenn der Kanton nichts angibt?
+
+**Ja, aber nicht als simple “Ersatz-Tabelle für jeden Fisch”.** Das Bundesrecht gibt einen Rahmen vor: Der Bund regelt Mindestdauer von Schonzeiten und Fangmindestmasse; die Kantone konkretisieren das für ihre Gewässer. Die Kantone können Schonzeiten verlängern oder zusätzliche Arten schützen, und sie können unter bestimmten Voraussetzungen für einzelne Gewässer auch Ausnahmen bzw. Aufhebungen vorsehen. Genau darum zählt für dich am Wasser zuerst die **konkrete Zürcher Gewässertabelle / eFJ-App**. ([Fedlex][5])
+
+Wenn beim Kanton ausdrücklich **„keines“ / „keine“** steht, ist das keine Lücke. Beispiel Zürichsee: Hecht und Zander haben dort offiziell kein Mindestmass und keine Schonzeit in der Zürcher 2026-Tabelle. Da legt man nicht einfach zusätzlich Bundeswerte darüber. ([Kanton Zürich][2])
+
+Wenn eine Art gar nicht in der Zürcher 3-Seen-Tabelle steht, gilt: Es gibt für diese drei Seen **keine artspezifische kantonale Mindestgrösse, Schonzeit oder Tageslimite**, ausser die Art ist bundes- oder kantonal geschützt. Besonders wichtig: Fische mit sehr hohem Schutzstatus wie **Aal, Nase, Bitterling, Bachneunauge usw.** sind im Kanton Zürich in allen Gewässern ganzjährig geschont; bei Fang sofort sorgfältig zurücksetzen. ([Kanton Zürich][3])
+
+Untermassige Fische oder Fische in der Schonzeit müssen sofort sorgfältig mit nassen Händen zurückgesetzt werden; Fische, die nicht zurückgesetzt werden, müssen unmittelbar fachgerecht getötet werden, und Hältern lebender Fische ist nicht erlaubt. ([Kanton Zürich][3])
+
+[1]: https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html "Fischerei | Kanton Zürich"
+[2]: https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/merkblatt_fanglimiten_schonzeiten_2026.pdf "Merkblatt Fanglimiten, Fangmindestmasse und Schonzeiten"
+[3]: https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/verf%C3%BCgungen/fischereivorschriften_auszug_fuer_die_angelfischerei_202603.pdf "Fischereivorschriften gültig ab 1.1.2026 ( Auszug für die Angelfischerei)"
+[4]: https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/verf%C3%BCgungen/verfuegung_aeschenfangverbot_2026-2029.pdf "Befristetes Äschenfangverbot 2026-2029"
+[5]: https://www.fedlex.admin.ch/eli/cc/1991/2259_2259_2259/de?utm_source=chatgpt.com "Bundesgesetz vom 21. Juni 1991 über die Fischerei (BGF)"
+

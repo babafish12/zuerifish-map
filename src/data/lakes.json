@@ -29,8 +29,8 @@
     "id": "pfaeffikersee",
     "name": "Pfäffikersee",
     "canton": "Zürich",
-    "summary": "Ufernahe Schutzgebiete lokal prüfen; Kernregeln wie Greifensee.",
-    "badges": ["Freiangelrecht", "Patentgewässer", "Schutzgebiete prüfen"],
+    "summary": "Ufernahe Schutzgebiete beachten; Kernregeln wie Greifensee.",
+    "badges": ["Freiangelrecht", "Patentgewässer", "Schutzgebiete"],
     "image": {
       "src": "/src/assets/lakes/pfaeffikersee.svg",
       "alt": "Schematische Header-Illustration des Pfäffikersees",

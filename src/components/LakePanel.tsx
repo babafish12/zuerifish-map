@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
-import { ExternalLink, X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { FishCard } from "./FishCard";
 import { GearRules } from "./GearRules";
 import { SourceList } from "./SourceList";
-import { getGearRulesForLake, getRulesForLake, getSources } from "../lib/data";
-import { getFishStatus } from "../lib/seasonStatus";
-import { statusLabel } from "../lib/formatRules";
-import type { Lake } from "../types";
+import { fishProfiles, getGearRulesForLake, getRulesForLake, getSources } from "../lib/data";
+import type { FishProfile, FishRule, GearMode, Lake, LakeId } from "../types";
 
 interface LakePanelProps {
   lake: Lake;
@@ -15,29 +13,34 @@ interface LakePanelProps {
 }
 
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const OFFICIAL_SOURCE_IDS = [
+  "zh-fischerei-page",
+  "zh-angelfischerei-auszug-2026",
+  "zh-fanglimiten-2026",
+  "zh-freiangel",
+  "zh-aeschenfangverbot-2026"
+];
+const RULE_PROFILE_IDS_BY_SPECIES_ID: Record<string, string[]> = {
+  aesche: ["aesche"],
+  egli: ["egli"],
+  felchenartige: ["felchen"],
+  forelle: ["bachforelle", "seeforelle"],
+  hecht: ["hecht"],
+  seesaibling: ["seesaiblinge"],
+  zander: ["zander"]
+};
 
 export function LakePanel({ lake, onClose }: LakePanelProps) {
-  const [mode, setMode] = useState<"withoutPatent" | "shorePatent" | "stationaryBoat" | "trolling">("withoutPatent");
+  const [mode, setMode] = useState<GearMode>("withoutPatent");
+  const [showMoreFish, setShowMoreFish] = useState(false);
   const panelRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const fishRules = getRulesForLake(lake.id);
-  const gearRules = getGearRulesForLake(lake.id);
-
-  const sourceIds = useMemo(() => {
-    return Array.from(new Set([...lake.sourceIds, ...fishRules.flatMap((rule) => rule.sourceIds), "fish-illustrations", "map-sketch"]));
-  }, [fishRules, lake.sourceIds]);
-
-  const summary = useMemo(() => {
-    return fishRules.reduce(
-      (counts, rule) => {
-        counts[getFishStatus(rule)] += 1;
-        return counts;
-      },
-      { allowed: 0, closed: 0, protected: 0, unclear: 0 }
-    );
-  }, [fishRules]);
+  const fishRules = useMemo(() => getRulesForLake(lake.id), [lake.id]);
+  const gearRules = useMemo(() => getGearRulesForLake(lake.id), [lake.id]);
+  const additionalFishProfiles = useMemo(() => getAdditionalFishProfilesForLake(lake.id, fishRules), [fishRules, lake.id]);
 
   useEffect(() => {
+    setShowMoreFish(false);
     closeButtonRef.current?.focus();
   }, [lake.id]);
 
@@ -106,20 +109,10 @@ export function LakePanel({ lake, onClose }: LakePanelProps) {
         ))}
       </div>
 
-      <section className="panel-section today-status" aria-labelledby="today-status-title">
-        <h3 id="today-status-title">Heute-Status</h3>
-        <div className="status-grid">
-          <StatusCount label={statusLabel("allowed")} value={summary.allowed} tone="allowed" />
-          <StatusCount label={statusLabel("closed")} value={summary.closed} tone="closed" />
-          <StatusCount label={statusLabel("protected")} value={summary.protected} tone="protected" />
-          <StatusCount label={statusLabel("unclear")} value={summary.unclear} tone="unclear" />
-        </div>
-      </section>
-
       <section className="panel-section" aria-labelledby="fish-title">
         <div className="section-heading">
           <h3 id="fish-title">Fischarten</h3>
-          <span>{fishRules.length} Karten aus Datenmodell</span>
+          <span>{fishRules.length} wichtige Regeln</span>
         </div>
         <div className="fish-list">
           {fishRules.map((rule) => (
@@ -128,30 +121,60 @@ export function LakePanel({ lake, onClose }: LakePanelProps) {
         </div>
       </section>
 
+      {additionalFishProfiles.length > 0 ? (
+        <section className="panel-section lake-more-fish" aria-labelledby="lake-more-fish-title">
+          <button
+            type="button"
+            className="lake-more-fish-toggle"
+            aria-expanded={showMoreFish}
+            aria-controls="lake-more-fish-list"
+            onClick={() => setShowMoreFish((current) => !current)}
+          >
+            <span>
+              <strong id="lake-more-fish-title">Weitere Fische in diesem See</strong>
+              <small>{additionalFishProfiles.length} Arten aus den Steckbriefen</small>
+            </span>
+            <ChevronDown size={18} aria-hidden="true" />
+          </button>
+
+          {showMoreFish ? (
+            <div className="lake-more-fish-list" id="lake-more-fish-list">
+              {additionalFishProfiles.map((profile) => (
+                <article key={profile.id} className="lake-more-fish-item">
+                  <img src={profile.image.src} alt="" loading="lazy" />
+                  <div>
+                    <strong>{profile.name}</strong>
+                    <span>{profile.category}</span>
+                    <small>{profile.occurrence[lake.id]}</small>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : null}
+        </section>
+      ) : null}
+
       <GearRules gearRules={gearRules} selectedMode={mode} onModeChange={setMode} />
 
-      <section className="panel-section disclaimer" aria-labelledby="legal-title">
-        <h3 id="legal-title">Rechtlicher Hinweis</h3>
-        <p>
-          Diese App ist eine Orientierungshilfe. Massgebend sind die offiziellen Vorschriften, das gültige Patent, die eFJ-App, lokale Tafeln,
-          Schutzgebiete, temporäre Verbote und Anweisungen der Fischereiaufsicht.
-        </p>
-        <a href="https://www.zh.ch/de/umwelt-tiere/tiere/fischerei-jagd/fischerei.html" target="_blank" rel="noreferrer">
-          Offizielle Fischerei-Seite Kanton Zürich
-          <ExternalLink size={15} aria-hidden="true" />
-        </a>
-      </section>
-
-      <SourceList sources={getSources(sourceIds)} />
+      <SourceList sources={getSources(OFFICIAL_SOURCE_IDS)} />
     </aside>
   );
 }
 
-function StatusCount({ label, value, tone }: { label: string; value: number; tone: "allowed" | "closed" | "protected" | "unclear" }) {
-  return (
-    <div className={`status-count ${tone}`}>
-      <strong>{value}</strong>
-      <span>{label}</span>
-    </div>
-  );
+function getAdditionalFishProfilesForLake(lakeId: LakeId, fishRules: FishRule[]): FishProfile[] {
+  const importantProfileIds = new Set(fishRules.flatMap((rule) => RULE_PROFILE_IDS_BY_SPECIES_ID[rule.speciesId] ?? [rule.speciesId]));
+
+  return fishProfiles
+    .filter((profile) => !importantProfileIds.has(profile.id))
+    .filter((profile) => isConfirmedLakeOccurrence(profile.occurrence[lakeId]));
+}
+
+function isConfirmedLakeOccurrence(value: string): boolean {
+  const normalized = value.toLowerCase();
+
+  if (normalized.includes("nicht bestätigt") || normalized.includes("historisch") || normalized.includes("nicht separat")) {
+    return false;
+  }
+
+  return normalized.includes("ja") || normalized.includes("selten") || normalized.includes("geschützt");
 }

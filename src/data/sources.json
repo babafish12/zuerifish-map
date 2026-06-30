@@ -1,5 +1,23 @@
 [
   {
+    "id": "zh-fischerei-page",
+    "type": "rules",
+    "title": "Fischerei Kanton Zürich",
+    "publisher": "Kanton Zürich",
+    "date": "abgerufen 30.06.2026",
+    "url": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html",
+    "usedFor": "Zentrale offizielle Seite für Fischerei, Patente, Vorschriften und aktuelle Hinweise"
+  },
+  {
+    "id": "zh-angelfischerei-auszug-2026",
+    "type": "rules",
+    "title": "Fischereivorschriften: Auszug für die Angelfischerei",
+    "publisher": "Kanton Zürich, Baudirektion, Amt für Landschaft und Natur",
+    "date": "gültig ab 01.01.2026",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/verf%C3%BCgungen/fischereivorschriften_auszug_fuer_die_angelfischerei_202603.pdf",
+    "usedFor": "Ausführliche Vorschriften zu Patenten, Geräten, Schonung, Entnahme und Gewässerregeln"
+  },
+  {
     "id": "zh-fanglimiten-2026",
     "type": "rules",
     "title": "Merkblatt Fanglimiten, Fangmindestmasse und Schonzeiten",
@@ -20,6 +38,46 @@
     "status": "Offizielle Quelle; vor Launch erneut prüfen."
   },
   {
+    "id": "zh-pfaeffikersee-flyer",
+    "type": "rules",
+    "title": "Naturschutzgebiet Pfäffikersee",
+    "publisher": "Kanton Zürich, Fachstelle Naturschutz",
+    "date": "abgerufen 01.07.2026",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/naturschutz/naturschutzgebiete/flyer/flyer_pfaeffikersee.pdf",
+    "usedFor": "Regel und Zeiträume der Pfäffikersee-Seeschutzzonen, in denen Fischen verboten ist"
+  },
+  {
+    "id": "zh-gis-schutzzonen",
+    "type": "map",
+    "title": "GIS-ZH Schutzzone (525.50)",
+    "publisher": "Geoinformation Kanton Zürich",
+    "date": "abgerufen 01.07.2026",
+    "url": "https://maps.zh.ch/wfs/OGDZHWFS?request=GetMetadata&layer=ogd-0525_giszhpub_fns_schutzzone_f",
+    "usedFor": "Geometrien der Pfäffikersee-Seeschutzzonen V A, V B und V C",
+    "status": "WFS-Daten in src/data/fishing-restriction-zones.geojson statisch ausgelesen."
+  },
+  {
+    "id": "osm-waterway-mouths",
+    "type": "map",
+    "title": "OpenStreetMap-Wasserläufe am Zürichsee/Obersee",
+    "publisher": "OpenStreetMap contributors",
+    "date": "abgerufen 01.07.2026",
+    "url": "https://www.openstreetmap.org/copyright",
+    "usedFor": "Lage der Bachmündungen für die 100-m-Fischereiverbotsradien am Zürichsee/Obersee",
+    "license": "Open Database License (ODbL)",
+    "attributionRequired": true,
+    "attributionText": "© OpenStreetMap contributors"
+  },
+  {
+    "id": "zh-aeschenfangverbot-2026",
+    "type": "rules",
+    "title": "Befristetes Äschenfangverbot 2026-2029",
+    "publisher": "Kanton Zürich, Baudirektion, Amt für Landschaft und Natur",
+    "date": "01.10.2026-30.09.2029",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/verf%C3%BCgungen/verfuegung_aeschenfangverbot_2026-2029.pdf",
+    "usedFor": "Schutzstatus und Entnahmeverbot der Äsche in Zürcher Gewässern"
+  },
+  {
     "id": "fish-illustrations",
     "type": "image",
     "title": "Lokale SVG-Fischillustrationen",
@@ -30,6 +88,18 @@
     "author": "Codex-generierte Vektorillustrationen",
     "attributionRequired": false,
     "status": "MVP-Illustrationen; vor öffentlichem Launch visuell und rechtlich prüfen."
+  },
+  {
+    "id": "fish-profile-pdf-images",
+    "type": "image",
+    "title": "Fischbilder aus Steckbrief-PDF",
+    "publisher": "Projektunterlage Fisch-Steckbriefe Zürich",
+    "date": "30.06.2026",
+    "usedFor": "Fischbilder und Steckbriefdaten aus docs/Fisch_Steckbriefe_Zuerich_ZIP_Bilder_Vorkommen.pdf",
+    "license": "Bildrechte im PDF nicht ausgewiesen; vor öffentlichem Launch prüfen",
+    "author": "Quelle nicht im PDF ausgewiesen",
+    "attributionRequired": false,
+    "status": "Aus lokaler Projektunterlage extrahiert; Rechte vor Veröffentlichung klären."
   },
   {
     "id": "map-sketch",

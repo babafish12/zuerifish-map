@@ -1,0 +1,614 @@
+[
+  {
+    "id": "bachforelle",
+    "name": "Bachforelle",
+    "scientificName": "Salmo trutta fario",
+    "category": "Forellenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/bachforelle.webp",
+      "alt": "Fischbild Bachforelle aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "selten / eher Zuflüsse",
+      "greifensee": "selten / Forellenfänge",
+      "pfaeffikersee": "selten / Mündungen"
+    },
+    "note": "Forellenfänge sind in allen drei Seen erfasst. Die Fangstatistik trennt Bach- und Seeforelle nicht immer klar; im See ist meist die Seeforellenform relevanter."
+  },
+  {
+    "id": "seeforelle",
+    "name": "Seeforelle",
+    "scientificName": "Salmo trutta lacustris",
+    "category": "Forellenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/seeforelle.webp",
+      "alt": "Fischbild Seeforelle aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja / selten",
+      "pfaeffikersee": "ja / selten"
+    },
+    "note": "Als Forelle in den Fangstatistiken der drei Seen erfasst; im Zürichsee eine wichtige Patentart, in Greifen- und Pfäffikersee deutlich seltener."
+  },
+  {
+    "id": "regenbogenforelle",
+    "name": "Regenbogenforelle",
+    "scientificName": "Oncorhynchus mykiss",
+    "category": "Landesfremde Salmonide",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/regenbogenforelle.webp",
+      "alt": "Fischbild Regenbogenforelle aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Im Kanton Zürich bekannt, aber in den ausgewerteten See-Fangtabellen der drei grossen Seen nicht als eigene Art bestätigt."
+  },
+  {
+    "id": "seesaiblinge",
+    "name": "Seesaiblinge",
+    "scientificName": "Salvelinus alpinus",
+    "category": "Kaltwasserart",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/seesaiblinge.webp",
+      "alt": "Fischbild Seesaiblinge aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Der Seesaibling kommt im Kanton Zürich natürlicherweise nur im Zürichsee vor."
+  },
+  {
+    "id": "bachsaibling",
+    "name": "Bachsaibling",
+    "scientificName": "Salvelinus fontinalis",
+    "category": "Landesfremde Salmonide",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/bachsaibling.webp",
+      "alt": "Fischbild Bachsaibling aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "historisch / nicht aktuell"
+    },
+    "note": "Für die drei Seen kein aktueller, separater Nachweis in den konsultierten See-Tabellen; für den Pfäffikersee werden historische Reste erwähnt."
+  },
+  {
+    "id": "kanadischer-seesaibling",
+    "name": "Kanadischer Seesaibling",
+    "scientificName": "Salvelinus namaycush",
+    "category": "Landesfremde Salmonide",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/kanadischer-seesaibling.webp",
+      "alt": "Fischbild Kanadischer Seesaibling aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Kein aktueller Nachweis für Zürichsee, Greifensee oder Pfäffikersee in den verwendeten Quellen."
+  },
+  {
+    "id": "aesche",
+    "name": "Äsche",
+    "scientificName": "Thymallus thymallus",
+    "category": "Flussfisch / geschützt",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/aesche.webp",
+      "alt": "Fischbild Äsche aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "geschützt / nicht entnehmen",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Die Äsche ist vor allem eine Art klarer Fliessgewässer. Im Zürichsee-Reglement ist sie ganzjährig geschützt aufgeführt."
+  },
+  {
+    "id": "felchen",
+    "name": "Felchen",
+    "scientificName": "Coregonus spp.",
+    "category": "Wichtige See-Art",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/felchen.webp",
+      "alt": "Fischbild Felchen aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Felchen sind in allen drei Seen eine zentrale See-Art und in den Fangstatistiken deutlich erfasst."
+  },
+  {
+    "id": "karpfen",
+    "name": "Karpfen",
+    "scientificName": "Cyprinus carpio",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/karpfen.webp",
+      "alt": "Fischbild Karpfen aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Karpfen sind in den Fangstatistiken von Zürichsee, Greifensee und Pfäffikersee erfasst."
+  },
+  {
+    "id": "brachsmen",
+    "name": "Brachsmen",
+    "scientificName": "Abramis brama",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/brachsmen.webp",
+      "alt": "Fischbild Brachsmen aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Auch Brasse genannt. In allen drei Seen nach Fangstatistik vorhanden."
+  },
+  {
+    "id": "alet",
+    "name": "Alet",
+    "scientificName": "Squalius cephalus",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/alet.webp",
+      "alt": "Fischbild Alet aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Alet/Döbel ist in den Fangstatistiken aller drei Seen aufgeführt, meist nicht als Hauptzielfisch."
+  },
+  {
+    "id": "rapfen",
+    "name": "Rapfen",
+    "scientificName": "Leuciscus aspius / Aspius aspius",
+    "category": "Raubender Karpfenfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/rapfen.webp",
+      "alt": "Fischbild Rapfen aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für die drei Seen wurde in den konsultierten Quellen kein aktueller, separater Nachweis gefunden."
+  },
+  {
+    "id": "barbe",
+    "name": "Barbe",
+    "scientificName": "Barbus barbus",
+    "category": "Fliessgewässerart",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/barbe.webp",
+      "alt": "Fischbild Barbe aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "ja / selten",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Barben sind eher Fliessgewässerfische. In Zürichsee und Greifensee gibt es kleine Fangstatistikwerte; für den Pfäffikersee kein aktueller separater Nachweis."
+  },
+  {
+    "id": "schleie",
+    "name": "Schleie",
+    "scientificName": "Tinca tinca",
+    "category": "Kraut- und Uferzonen",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/schleie.webp",
+      "alt": "Fischbild Schleie aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Schleien sind in den Fangstatistiken aller drei Seen aufgeführt und passen zu pflanzenreichen, ruhigen Uferbereichen."
+  },
+  {
+    "id": "nase",
+    "name": "Nase",
+    "scientificName": "Chondrostoma nasus",
+    "category": "Geschützte Flussart",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/nase.webp",
+      "alt": "Fischbild Nase aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt / geschützt",
+      "greifensee": "nicht bestätigt / geschützt",
+      "pfaeffikersee": "historisch / geschützt"
+    },
+    "note": "Die Nase ist in Zürich als bedrohte Art geschützt. Für die Seen liegt kein aktueller See-Nachweis vor; beim Pfäffikersee wird sie historisch erwähnt."
+  },
+  {
+    "id": "rotfeder",
+    "name": "Rotfeder",
+    "scientificName": "Scardinius erythrophthalmus",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/rotfeder.webp",
+      "alt": "Fischbild Rotfeder aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Rotfedern sind in allen drei Seen in den Fangstatistiken aufgeführt."
+  },
+  {
+    "id": "rotauge",
+    "name": "Rotauge",
+    "scientificName": "Rutilus rutilus",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/rotauge.webp",
+      "alt": "Fischbild Rotauge aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Rotaugen sind in allen drei Seen sehr typische Weissfische und in den Fangstatistiken erfasst."
+  },
+  {
+    "id": "hecht",
+    "name": "Hecht",
+    "scientificName": "Esox lucius",
+    "category": "Raubfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/hecht.webp",
+      "alt": "Fischbild Hecht aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Hechte kommen in allen drei Seen vor. Für Greifensee und Pfäffikersee gelten eigene Schonzeit und Mindestmass-Regeln."
+  },
+  {
+    "id": "egli",
+    "name": "Egli",
+    "scientificName": "Perca fluviatilis",
+    "category": "Beliebter Zielfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/egli.webp",
+      "alt": "Fischbild Egli aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Egli/Flussbarsch ist in allen drei Seen stark vertreten und eine wichtige Angelfisch-Art."
+  },
+  {
+    "id": "forellenbarsch",
+    "name": "Forellenbarsch",
+    "scientificName": "Micropterus salmoides",
+    "category": "Landesfremde Art",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/forellenbarsch.webp",
+      "alt": "Fischbild Forellenbarsch aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Im Kanton Zürich als landesfremde Art bekannt, aber in den drei See-Fangstatistiken nicht separat bestätigt."
+  },
+  {
+    "id": "zander",
+    "name": "Zander",
+    "scientificName": "Sander lucioperca",
+    "category": "Raubfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/zander.webp",
+      "alt": "Fischbild Zander aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Der Zander kommt laut Bewirtschaftungskonzept in Zürichsee, Greifensee und Pfäffikersee vor und ist auch in den Fangstatistiken erfasst."
+  },
+  {
+    "id": "wels",
+    "name": "Wels",
+    "scientificName": "Silurus glanis",
+    "category": "Grosser Raubfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/wels.webp",
+      "alt": "Fischbild Wels aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja / selten"
+    },
+    "note": "Der Wels kommt mittlerweile in den drei grossen Seen vor; im Pfäffikersee sind die Fangzahlen klein."
+  },
+  {
+    "id": "truesche",
+    "name": "Trüsche",
+    "scientificName": "Lota lota",
+    "category": "Grundnaher Räuber",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/truesche.webp",
+      "alt": "Fischbild Trüsche aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "nicht separat bestätigt",
+      "pfaeffikersee": "nicht separat bestätigt"
+    },
+    "note": "Für den Zürichsee klar in der Fangstatistik. Für Greifen- und Pfäffikersee wurde in den ausgewerteten Tabellen kein separater aktueller Nachweis gefunden."
+  },
+  {
+    "id": "aal",
+    "name": "Aal",
+    "scientificName": "Anguilla anguilla",
+    "category": "Geschützte Art",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/aal.webp",
+      "alt": "Fischbild Aal aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / geschützt",
+      "greifensee": "ja / geschützt",
+      "pfaeffikersee": "ja / geschützt"
+    },
+    "note": "Aal-Nachweise erscheinen in den Fangstatistiken, aber der Aal ist als bedrohte Art ganzjährig geschützt. Nicht entnehmen; aktuelle Vorschriften beachten."
+  },
+  {
+    "id": "katzenwels",
+    "name": "Katzenwels",
+    "scientificName": "Ameiurus nebulosus",
+    "category": "Landesfremde Art",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/katzenwels.webp",
+      "alt": "Fischbild Katzenwels aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "In den konsultierten Quellen kein aktueller Nachweis für die drei Zürcher Seen."
+  },
+  {
+    "id": "bachschmerle",
+    "name": "Bachschmerle",
+    "scientificName": "Barbatula barbatula",
+    "category": "Kleinfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/bachschmerle.webp",
+      "alt": "Fischbild Bachschmerle aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für den Zürichsee als Kleinfisch/Projet-Lac-Nachweis plausibel; in den Fangstatistiken der drei Seen nicht als Angelfang-Hauptart geführt."
+  },
+  {
+    "id": "elritze",
+    "name": "Elritze",
+    "scientificName": "Phoxinus phoxinus",
+    "category": "Kleinfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/elritze.webp",
+      "alt": "Fischbild Elritze aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Kleine Art, eher Ufer- und Zuflussbereiche. Für den Zürichsee als seltene Art belegt; für die anderen beiden Seen nicht separat bestätigt."
+  },
+  {
+    "id": "groppe",
+    "name": "Groppe",
+    "scientificName": "Cottus gobio",
+    "category": "Bodenfisch / Kleinfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/groppe.webp",
+      "alt": "Fischbild Groppe aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für den Zürichsee als kleine Bodenfischart belegt; in den Angelfang-Statistiken meist nicht separat relevant."
+  },
+  {
+    "id": "gruendling",
+    "name": "Gründling",
+    "scientificName": "Gobio gobio",
+    "category": "Kleiner Karpfenfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/gruendling.webp",
+      "alt": "Fischbild Gründling aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "möglich / nicht separat",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Der Kanton nennt die grossen Stillgewässer allgemein als artenreich; der Pfäffikersee-Verein nennt Gründling ausdrücklich für den heutigen Bestand."
+  },
+  {
+    "id": "hasel",
+    "name": "Hasel",
+    "scientificName": "Leuciscus leuciscus",
+    "category": "Karpfenartige",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/hasel.webp",
+      "alt": "Fischbild Hasel aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für den Zürichsee als seltenere Kleinfisch-/Weissfischart belegt; in Greifen- und Pfäffikersee nicht separat nachgewiesen."
+  },
+  {
+    "id": "kaulbarsch",
+    "name": "Kaulbarsch",
+    "scientificName": "Gymnocephalus cernua",
+    "category": "Barschartiger Fisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/kaulbarsch.webp",
+      "alt": "Fischbild Kaulbarsch aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "ja / eingesetzt"
+    },
+    "note": "Im Zürichsee in der Fangstatistik erfasst. Für den Pfäffikersee wird Kaulbarsch als eingesetzte Art genannt."
+  },
+  {
+    "id": "laube",
+    "name": "Laube",
+    "scientificName": "Alburnus alburnus",
+    "category": "Kleiner Schwarmfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/laube.webp",
+      "alt": "Fischbild Laube aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "nicht separat bestätigt",
+      "pfaeffikersee": "ja / selten"
+    },
+    "note": "In Zürichsee und Pfäffikersee in der Fangstatistik aufgeführt; für den Greifensee nicht separat bestätigt."
+  },
+  {
+    "id": "schneider",
+    "name": "Schneider",
+    "scientificName": "Alburnoides bipunctatus",
+    "category": "Kleinfisch / Fliessgewässer",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/schneider.webp",
+      "alt": "Fischbild Schneider aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für die drei Seen kein aktueller Nachweis in den verwendeten See-Quellen gefunden; eher Fliessgewässerart."
+  },
+  {
+    "id": "sonnenbarsch",
+    "name": "Sonnenbarsch",
+    "scientificName": "Lepomis gibbosus",
+    "category": "Landesfremde Art",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/sonnenbarsch.webp",
+      "alt": "Fischbild Sonnenbarsch aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja",
+      "greifensee": "ja",
+      "pfaeffikersee": "ja"
+    },
+    "note": "Sonnenbarsch ist landesfremd, aber in allen drei Seen durch Fangstatistiken bzw. Pfäffikersee-Quelle belegt."
+  },
+  {
+    "id": "stichling",
+    "name": "Stichling",
+    "scientificName": "Gasterosteus aculeatus",
+    "category": "Kleinfisch",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/stichling.webp",
+      "alt": "Fischbild Stichling aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "ja / selten",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Für den Zürichsee als kleine Art belegt; für Greifensee und Pfäffikersee in den ausgewerteten Quellen nicht separat bestätigt."
+  },
+  {
+    "id": "stroemer",
+    "name": "Strömer",
+    "scientificName": "Telestes souffia",
+    "category": "Kleinfisch / Fliessgewässer",
+    "image": {
+      "src": "/assets/fish/cutouts-webp/stroemer.webp",
+      "alt": "Fischbild Strömer aus dem Steckbrief-Dokument",
+      "sourceId": "fish-profile-pdf-images"
+    },
+    "occurrence": {
+      "zuerichsee": "nicht bestätigt",
+      "greifensee": "nicht bestätigt",
+      "pfaeffikersee": "nicht bestätigt"
+    },
+    "note": "Keine aktuellen See-Nachweise in den konsultierten Quellen; Art ist eher an Fliessgewässer gebunden."
+  }
+]

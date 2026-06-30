@@ -1,14 +1,11 @@
 import { Anchor, Sailboat, Waves } from "lucide-react";
-import baseGearRules from "../data/gear-rules.json";
-import type { GearRulesByLake } from "../types";
+import type { GearMode, GearRulesByLake } from "../types";
 
 interface GearRulesProps {
   gearRules: GearRulesByLake;
   selectedMode: GearMode;
   onModeChange: (mode: GearMode) => void;
 }
-
-type GearMode = "withoutPatent" | "shorePatent" | "stationaryBoat" | "trolling";
 
 const modeLabels: Record<GearMode, string> = {
   withoutPatent: "Ohne Patent",
@@ -18,6 +15,8 @@ const modeLabels: Record<GearMode, string> = {
 };
 
 export function GearRules({ gearRules, selectedMode, onModeChange }: GearRulesProps) {
+  const detailRules = gearRules.modeDetails[selectedMode];
+
   return (
     <section className="panel-section" aria-labelledby="gear-title">
       <div className="section-heading">
@@ -44,8 +43,8 @@ export function GearRules({ gearRules, selectedMode, onModeChange }: GearRulesPr
         </div>
       </div>
 
-      <dl className="free-rules">
-        {baseGearRules.freeFishing.map((rule) => (
+      <dl className="free-rules" aria-label={`${modeLabels[selectedMode]} Detailregeln`}>
+        {detailRules.map((rule) => (
           <div key={rule.label}>
             <dt>{rule.label}</dt>
             <dd>{rule.value}</dd>
@@ -60,4 +59,3 @@ export function GearRules({ gearRules, selectedMode, onModeChange }: GearRulesPr
     </section>
   );
 }
-
