@@ -1,0 +1,161 @@
+[
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "forelle",
+    "dailyLimit": 4,
+    "minSizeCm": 40,
+    "closedSeason": { "start": "10-01", "end": "12-25", "label": "01.10.-25.12." },
+    "hint": "Forellen-Schonzeit gemäss Zürichsee-Ausführungsbestimmungen.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "felchenartige",
+    "dailyLimit": 10,
+    "minSizeCm": 25,
+    "closedSeason": { "start": "11-20", "end": "12-31", "label": "20.11.-31.12." },
+    "hint": "Felchen, Albeli und Hägling zusammengefasst.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "seesaibling",
+    "dailyLimit": 5,
+    "minSizeCm": 25,
+    "closedSeason": { "start": "10-01", "end": "12-25", "label": "01.10.-25.12." },
+    "hint": "Kommt in der Datengrundlage nur beim Zürichsee vor.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "aesche",
+    "dailyLimit": "protected",
+    "minSizeCm": 32,
+    "closedSeason": null,
+    "protectedAllYear": true,
+    "hint": "Ganzjährig geschützt: nicht entnehmen.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "hecht",
+    "dailyLimit": 5,
+    "minSizeCm": "none",
+    "closedSeason": null,
+    "hint": "Im Zürichsee ohne Mindestmass und ohne Schonzeit laut Merkblatt.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "zander",
+    "dailyLimit": "none",
+    "minSizeCm": "none",
+    "closedSeason": null,
+    "hint": "Im Zürichsee ohne Tagesfanglimite und ohne Mindestmass laut Merkblatt.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "speciesId": "egli",
+    "dailyLimit": 50,
+    "minSizeCm": "none",
+    "closedSeason": null,
+    "hint": "Beliebter Zielfisch; keine Schonzeit und kein Mindestmass.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "greifensee",
+    "speciesId": "forelle",
+    "dailyLimit": 2,
+    "minSizeCm": 40,
+    "closedSeason": { "start": "10-01", "end": "12-25", "label": "01.10.-25.12." },
+    "hint": "Gleich geregelt für Greifen- und Pfäffikersee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "greifensee",
+    "speciesId": "felchenartige",
+    "dailyLimit": 10,
+    "minSizeCm": 25,
+    "closedSeason": { "start": "11-20", "end": "12-31", "label": "20.11.-31.12." },
+    "hint": "Felchenfang geregelt.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "greifensee",
+    "speciesId": "hecht",
+    "dailyLimit": 5,
+    "minSizeCm": 45,
+    "closedSeason": { "start": "03-01", "end": "04-30", "label": "01.03.-30.04." },
+    "hint": "Wichtigster Unterschied zum Zürichsee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "greifensee",
+    "speciesId": "zander",
+    "dailyLimit": "none",
+    "minSizeCm": 40,
+    "closedSeason": { "start": "04-01", "end": "05-31", "label": "01.04.-31.05." },
+    "hint": "Reguliert in Greifen- und Pfäffikersee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "greifensee",
+    "speciesId": "egli",
+    "dailyLimit": 50,
+    "minSizeCm": "none",
+    "closedSeason": null,
+    "hint": "Keine Schonzeit und kein Mindestmass.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "speciesId": "forelle",
+    "dailyLimit": 2,
+    "minSizeCm": 40,
+    "closedSeason": { "start": "10-01", "end": "12-25", "label": "01.10.-25.12." },
+    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "hint": "Gleich geregelt für Greifen- und Pfäffikersee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "speciesId": "felchenartige",
+    "dailyLimit": 10,
+    "minSizeCm": 25,
+    "closedSeason": { "start": "11-20", "end": "12-31", "label": "20.11.-31.12." },
+    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "hint": "Felchenfang geregelt; lokale Uferhinweise beachten.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "speciesId": "hecht",
+    "dailyLimit": 5,
+    "minSizeCm": 45,
+    "closedSeason": { "start": "03-01", "end": "04-30", "label": "01.03.-30.04." },
+    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "hint": "Gleiche Kernregel wie Greifensee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "speciesId": "zander",
+    "dailyLimit": "none",
+    "minSizeCm": 40,
+    "closedSeason": { "start": "04-01", "end": "05-31", "label": "01.04.-31.05." },
+    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "hint": "Reguliert in Greifen- und Pfäffikersee.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "speciesId": "egli",
+    "dailyLimit": 50,
+    "minSizeCm": "none",
+    "closedSeason": null,
+    "localRestrictionWarning": "Schutzgebiete und lokale Tafeln am Ufer vor Ort prüfen.",
+    "hint": "Keine Schonzeit und kein Mindestmass; Schutzgebiete am Ufer lokal prüfen.",
+    "sourceIds": ["zh-fanglimiten-2026", "prd"]
+  }
+]

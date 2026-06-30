@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Seesaibling</title>
+  <desc id="desc">Gezeichneter Seesaibling mit hellen Punkten</desc>
+  <defs>
+    <linearGradient id="charbody" x1="22" x2="270" y1="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#af9c6d"/>
+      <stop offset=".55" stop-color="#596e46"/>
+      <stop offset="1" stop-color="#947c52"/>
+    </linearGradient>
+  </defs>
+  <path fill="#846341" d="M250 76l51-29-13 29 13 29z"/>
+  <path fill="url(#charbody)" stroke="#2e382b" stroke-width="4" d="M22 77c45-42 162-51 231-6 9 6 9 12 0 18-70 45-185 36-231-12z"/>
+  <path fill="#6d7d4d" stroke="#2e382b" stroke-width="3" d="M117 38l38-22 12 35zM145 107l42 23-15-34z"/>
+  <circle cx="61" cy="70" r="6" fill="#111827"/>
+  <path fill="#dc7c45" d="M67 97c44 24 112 23 166-5-48 39-134 41-166 5z"/>
+  <g fill="#f4e6b5" opacity=".9">
+    <circle cx="101" cy="63" r="3.5"/>
+    <circle cx="130" cy="56" r="3"/>
+    <circle cx="160" cy="65" r="3.5"/>
+    <circle cx="190" cy="60" r="3"/>
+    <circle cx="217" cy="75" r="3.5"/>
+    <circle cx="120" cy="87" r="3"/>
+    <circle cx="154" cy="91" r="3.5"/>
+    <circle cx="188" cy="88" r="3"/>
+  </g>
+</svg>

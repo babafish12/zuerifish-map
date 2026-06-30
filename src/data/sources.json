@@ -1,0 +1,56 @@
+[
+  {
+    "id": "zh-fanglimiten-2026",
+    "type": "rules",
+    "title": "Merkblatt Fanglimiten, Fangmindestmasse und Schonzeiten",
+    "publisher": "Kanton Zürich, Baudirektion, Amt für Landschaft und Natur, Fischerei- und Jagdverwaltung",
+    "date": "Januar 2026",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/merkblatt_fanglimiten_schonzeiten_2026.pdf",
+    "usedFor": "Tagesfangzahllimiten, Fangmindestmasse, Schonzeiten und Zeitbeschränkungen für Zürichsee, Greifensee und Pfäffikersee",
+    "status": "Offizielle Quelle per 2026; vor Launch erneut prüfen."
+  },
+  {
+    "id": "zh-freiangel",
+    "type": "rules",
+    "title": "Merkblatt Freiangelfischerei im Kanton Zürich",
+    "publisher": "Kanton Zürich, Amt für Landschaft und Natur",
+    "date": "abgerufen 30.06.2026",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/tiere/fischerei-und-jagd/fischerei/wie_werde_ich_angelfischerin_wo_darf_ich_fischen/merkblatt_freiangelfischerei.pdf",
+    "usedFor": "Freiangelfischerei, erlaubte Geräte, Köder und Zeitbeschränkung",
+    "status": "Offizielle Quelle; vor Launch erneut prüfen."
+  },
+  {
+    "id": "fish-illustrations",
+    "type": "image",
+    "title": "Lokale SVG-Fischillustrationen",
+    "publisher": "Projekt ZüriFish Map",
+    "date": "2026-06-30",
+    "usedFor": "Fischkarten-Illustrationen",
+    "license": "Projektintern erstellt; keine Fremdbilder, kein Hotlinking",
+    "author": "Codex-generierte Vektorillustrationen",
+    "attributionRequired": false,
+    "status": "MVP-Illustrationen; vor öffentlichem Launch visuell und rechtlich prüfen."
+  },
+  {
+    "id": "map-sketch",
+    "type": "map",
+    "title": "swisstopo Schweizer Basiskarte und OpenStreetMap See-Geometrien",
+    "publisher": "Bundesamt für Landestopografie swisstopo / OpenStreetMap contributors",
+    "date": "2026-06-30",
+    "url": "https://www.geo.admin.ch/",
+    "usedFor": "Schweizer Internet-Basiskarte; detaillierte OSM-Wasserflächen als Klick- und Markierungsbereiche",
+    "license": "Basiskarte: swisstopo/geo.admin.ch Nutzungsbedingungen; See-Geometrien: OpenStreetMap-Daten ODbL",
+    "attributionRequired": true,
+    "attributionText": "© swisstopo; See-Geometrien © OpenStreetMap contributors",
+    "status": "Basiskarte wird extern geladen; See-Markierungen stammen aus OSM-Wasserflächen und ersetzen die frühere Skizze."
+  },
+  {
+    "id": "prd",
+    "type": "internal",
+    "title": "PRD ZüriFish Map Web-App",
+    "publisher": "Projektunterlage",
+    "date": "30.06.2026",
+    "usedFor": "Produktumfang, UX, Akzeptanzkriterien und Datenmodell",
+    "status": "Interne Anforderung, keine rechtsverbindliche Regelquelle."
+  }
+]

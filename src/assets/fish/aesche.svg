@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Äsche</title>
+  <desc id="desc">Gezeichnete Äsche mit hoher Rückenflosse</desc>
+  <defs>
+    <linearGradient id="grayling" x1="22" x2="270" y1="78" y2="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d8dad2"/>
+      <stop offset=".6" stop-color="#7b8784"/>
+      <stop offset="1" stop-color="#d6d9d1"/>
+    </linearGradient>
+  </defs>
+  <path fill="#737c86" d="M250 78l49-28-12 29 12 27z"/>
+  <path fill="url(#grayling)" stroke="#303a3a" stroke-width="4" d="M21 79c47-33 155-45 232-8 11 5 11 12 0 18-78 38-185 25-232-10z"/>
+  <path fill="#5f6c85" stroke="#303a3a" stroke-width="3" d="M94 50c25-31 67-37 111-10-37 0-72 8-111 10z"/>
+  <path fill="#8d5462" opacity=".72" d="M106 47c31-16 60-17 89-6-27 3-56 6-89 6z"/>
+  <path fill="#737c86" stroke="#303a3a" stroke-width="3" d="M141 107l43 22-13-32z"/>
+  <circle cx="59" cy="72" r="6" fill="#111827"/>
+  <path fill="none" stroke="#303a3a" stroke-linecap="round" stroke-width="3" d="M43 84c16 8 32 8 45 0"/>
+  <path fill="none" stroke="#f1e5bb" stroke-width="3" d="M106 68c37 8 75 8 112 0M104 87c39 3 80 2 119-3"/>
+</svg>

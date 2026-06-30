@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-labelledby="title desc">
+  <title id="title">Greifensee</title>
+  <desc id="desc">Schematische Header-Illustration des Greifensees</desc>
+  <rect width="640" height="220" fill="#eef8f9"/>
+  <path d="M0 152c100-60 219-81 320-58 121 28 185 10 320-48v174H0z" fill="#d9eadf"/>
+  <path d="M246 31l77 24 58 63-16 67-77 20-79-50-22-75z" fill="#5bc0eb" stroke="#0b5367" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M55 174c128-84 263-93 386-64 57 13 102 5 150-29" fill="none" stroke="#cdbf9b" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <circle cx="401" cy="112" r="72" fill="#cfe3d3" opacity=".62"/>
+</svg>

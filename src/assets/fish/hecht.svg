@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Hecht</title>
+  <desc id="desc">Gezeichneter Hecht mit langem Körper</desc>
+  <defs>
+    <linearGradient id="pike" x1="18" x2="278" y1="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fb46a"/>
+      <stop offset=".55" stop-color="#486232"/>
+      <stop offset="1" stop-color="#8fa45d"/>
+    </linearGradient>
+  </defs>
+  <path fill="#607236" d="M262 76l45-35-9 35 9 35z"/>
+  <path fill="url(#pike)" stroke="#2b3723" stroke-width="4" d="M17 78c34-39 178-45 245-12 12 6 12 14 0 20-68 34-211 28-245-8z"/>
+  <path fill="#607236" stroke="#2b3723" stroke-width="3" d="M196 44l36-22 8 37zM198 105l42 24-16-35z"/>
+  <circle cx="55" cy="70" r="6" fill="#111827"/>
+  <path fill="none" stroke="#2b3723" stroke-linecap="round" stroke-width="3" d="M35 84c18 8 36 7 52-2"/>
+  <g fill="#d7e5a5" opacity=".8">
+    <ellipse cx="103" cy="61" rx="10" ry="4"/>
+    <ellipse cx="135" cy="55" rx="11" ry="4"/>
+    <ellipse cx="168" cy="63" rx="10" ry="4"/>
+    <ellipse cx="211" cy="72" rx="11" ry="4"/>
+    <ellipse cx="116" cy="90" rx="10" ry="4"/>
+    <ellipse cx="153" cy="94" rx="12" ry="4"/>
+    <ellipse cx="194" cy="90" rx="10" ry="4"/>
+  </g>
+</svg>

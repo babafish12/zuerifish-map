@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Forelle</title>
+  <desc id="desc">Gezeichnete Forelle in Seitenansicht</desc>
+  <defs>
+    <linearGradient id="body" x1="34" x2="270" y1="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d7e2d5"/>
+      <stop offset=".55" stop-color="#8f9f86"/>
+      <stop offset="1" stop-color="#cfd8c4"/>
+    </linearGradient>
+  </defs>
+  <path fill="#6f7f6d" d="M248 76l53-32-12 32 12 32z"/>
+  <path fill="url(#body)" stroke="#334139" stroke-width="4" d="M23 77c45-46 155-55 229-5 8 5 8 12 0 18-74 51-184 39-229-13z"/>
+  <path fill="#6f7f6d" stroke="#334139" stroke-width="3" d="M112 34l38-23 14 37zM139 112l48 22-18-34z"/>
+  <circle cx="59" cy="69" r="6" fill="#111827"/>
+  <path fill="none" stroke="#334139" stroke-linecap="round" stroke-width="3" d="M43 83c16 9 32 9 45 0"/>
+  <g fill="#7b3f3f" opacity=".78">
+    <circle cx="104" cy="67" r="4"/>
+    <circle cx="134" cy="59" r="4"/>
+    <circle cx="163" cy="67" r="3.5"/>
+    <circle cx="197" cy="72" r="4"/>
+    <circle cx="122" cy="88" r="3.5"/>
+    <circle cx="154" cy="94" r="4"/>
+    <circle cx="188" cy="92" r="3.5"/>
+  </g>
+  <path fill="#d3664d" d="M72 98c42 18 105 18 153-4-44 32-123 34-153 4z" opacity=".75"/>
+</svg>

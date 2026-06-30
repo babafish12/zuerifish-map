@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Egli</title>
+  <desc id="desc">Gezeichneter Egli mit dunklen Bändern</desc>
+  <defs>
+    <linearGradient id="perch" x1="23" x2="270" y1="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c9c891"/>
+      <stop offset=".55" stop-color="#7b8049"/>
+      <stop offset="1" stop-color="#d5c36f"/>
+    </linearGradient>
+  </defs>
+  <path fill="#c06f2c" d="M251 76l50-28-13 29 13 28z"/>
+  <path fill="url(#perch)" stroke="#333923" stroke-width="4" d="M23 78c45-36 156-48 228-9 11 6 11 13 0 19-73 40-183 31-228-10z"/>
+  <path fill="#6f753f" stroke="#333923" stroke-width="3" d="M108 42l38-24 13 37zM145 108l44 24-16-35z"/>
+  <circle cx="60" cy="70" r="6" fill="#111827"/>
+  <g fill="#2f3520" opacity=".84">
+    <path d="M94 52l18 63-16 1-15-58z"/>
+    <path d="M132 49l17 68-16 1-14-65z"/>
+    <path d="M170 53l15 61-15 2-13-58z"/>
+    <path d="M207 61l12 48-14 2-10-46z"/>
+  </g>
+  <path fill="#d96d32" d="M70 100c42 20 109 18 156-5-43 33-125 35-156 5z"/>
+</svg>

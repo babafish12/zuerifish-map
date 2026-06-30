@@ -1,0 +1,120 @@
+[
+  {
+    "id": "forelle",
+    "name": "Forelle / Seeforelle",
+    "scientificName": "Salmo trutta",
+    "image": {
+      "src": "/src/assets/fish/forelle.svg",
+      "alt": "Gezeichnete Forelle in Seitenansicht",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/forelle.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für eine Forelle in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "felchenartige",
+    "name": "Felchenartige",
+    "image": {
+      "src": "/src/assets/fish/felchen.svg",
+      "alt": "Gezeichneter Felchen in Seitenansicht",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/felchen.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für einen Felchen in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "seesaibling",
+    "name": "Seesaibling / Rötel",
+    "scientificName": "Salvelinus alpinus",
+    "image": {
+      "src": "/src/assets/fish/seesaibling.svg",
+      "alt": "Gezeichneter Seesaibling mit hellen Punkten",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/seesaibling.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für einen Seesaibling mit hellen Punkten in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "aesche",
+    "name": "Äsche",
+    "scientificName": "Thymallus thymallus",
+    "image": {
+      "src": "/src/assets/fish/aesche.svg",
+      "alt": "Gezeichnete Äsche mit hoher Rückenflosse",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/aesche.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für eine Äsche mit hoher Rückenflosse in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "hecht",
+    "name": "Hecht",
+    "scientificName": "Esox lucius",
+    "image": {
+      "src": "/src/assets/fish/hecht.svg",
+      "alt": "Gezeichneter Hecht mit langem Körper",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/hecht.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für einen Hecht mit langem Körper in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "zander",
+    "name": "Zander",
+    "scientificName": "Sander lucioperca",
+    "image": {
+      "src": "/src/assets/fish/zander.svg",
+      "alt": "Gezeichneter Zander mit Streifen",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/zander.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für einen Zander mit Streifen in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  },
+  {
+    "id": "egli",
+    "name": "Egli",
+    "scientificName": "Perca fluviatilis",
+    "image": {
+      "src": "/src/assets/fish/egli.svg",
+      "alt": "Gezeichneter Egli mit dunklen Bändern",
+      "sourceId": "fish-illustrations",
+      "sourceUrl": "src/assets/fish/egli.svg",
+      "license": "Projektintern erstellt; keine Fremdbilder",
+      "author": "Codex-generierte Vektorillustration",
+      "attributionRequired": false,
+      "generatedWith": "Code-native SVG",
+      "prompt": "Erstelle eine einfache lokale SVG-Fischillustration für einen Egli mit dunklen Bändern in Seitenansicht, passend zu ZüriFish Map.",
+      "usageStatus": "MVP-Asset; vor öffentlichem Launch visuell und rechtlich prüfen."
+    }
+  }
+]

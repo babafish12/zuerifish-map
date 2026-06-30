@@ -1,0 +1,63 @@
+import { Anchor, Sailboat, Waves } from "lucide-react";
+import baseGearRules from "../data/gear-rules.json";
+import type { GearRulesByLake } from "../types";
+
+interface GearRulesProps {
+  gearRules: GearRulesByLake;
+  selectedMode: GearMode;
+  onModeChange: (mode: GearMode) => void;
+}
+
+type GearMode = "withoutPatent" | "shorePatent" | "stationaryBoat" | "trolling";
+
+const modeLabels: Record<GearMode, string> = {
+  withoutPatent: "Ohne Patent",
+  shorePatent: "Patent Ufer",
+  stationaryBoat: "Stehendes Boot",
+  trolling: "Schleppangeln"
+};
+
+export function GearRules({ gearRules, selectedMode, onModeChange }: GearRulesProps) {
+  return (
+    <section className="panel-section" aria-labelledby="gear-title">
+      <div className="section-heading">
+        <h3 id="gear-title">Freiangelrecht und Patent</h3>
+        <span>Kontextfilter im Panel</span>
+      </div>
+
+      <div className="mode-control" role="tablist" aria-label="Patent- und Gerätemodus">
+        {(Object.keys(modeLabels) as GearMode[]).map((mode) => (
+          <button key={mode} type="button" role="tab" aria-selected={selectedMode === mode} onClick={() => onModeChange(mode)}>
+            {modeLabels[mode]}
+          </button>
+        ))}
+      </div>
+
+      <div className="mode-result">
+        <div className="mode-icon" aria-hidden="true">
+          {selectedMode === "trolling" ? <Waves size={24} /> : selectedMode === "stationaryBoat" ? <Sailboat size={24} /> : <Anchor size={24} />}
+        </div>
+        <div>
+          <strong>{modeLabels[selectedMode]}</strong>
+          <p>{gearRules[selectedMode]}</p>
+          <small>{selectedMode === "withoutPatent" ? "Freiangelregeln unten beachten." : gearRules.note}</small>
+        </div>
+      </div>
+
+      <dl className="free-rules">
+        {baseGearRules.freeFishing.map((rule) => (
+          <div key={rule.label}>
+            <dt>{rule.label}</dt>
+            <dd>{rule.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div className="time-limit">
+        <span>Zeit</span>
+        <strong>{gearRules.time}</strong>
+      </div>
+    </section>
+  );
+}
+

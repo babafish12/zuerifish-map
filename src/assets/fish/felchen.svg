@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Felchen</title>
+  <desc id="desc">Gezeichneter Felchen in Seitenansicht</desc>
+  <defs>
+    <linearGradient id="silver" x1="25" x2="270" y1="72" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7fafc"/>
+      <stop offset=".5" stop-color="#c6d2d8"/>
+      <stop offset="1" stop-color="#edf2f4"/>
+    </linearGradient>
+  </defs>
+  <path fill="#b6c4cc" d="M248 75l54-27-15 29 15 28z"/>
+  <path fill="url(#silver)" stroke="#31424a" stroke-width="4" d="M20 76c42-33 158-48 233-9 12 6 12 13 0 20-75 39-191 25-233-11z"/>
+  <path fill="#b6c4cc" stroke="#31424a" stroke-width="3" d="M129 43l37-18 7 31zM137 105l44 20-13-31z"/>
+  <circle cx="61" cy="70" r="6" fill="#111827"/>
+  <path fill="none" stroke="#31424a" stroke-linecap="round" stroke-width="3" d="M43 82c16 8 32 8 46 0M91 55c48 14 96 15 143 1M91 91c48-6 97-8 146-1"/>
+</svg>

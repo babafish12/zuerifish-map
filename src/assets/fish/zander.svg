@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" role="img" aria-labelledby="title desc">
+  <title id="title">Zander</title>
+  <desc id="desc">Gezeichneter Zander mit Streifen</desc>
+  <defs>
+    <linearGradient id="zanderbody" x1="23" x2="270" y1="76" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d2d9ca"/>
+      <stop offset=".55" stop-color="#7f886c"/>
+      <stop offset="1" stop-color="#d9dccd"/>
+    </linearGradient>
+  </defs>
+  <path fill="#6f7a60" d="M249 76l52-30-14 30 14 30z"/>
+  <path fill="url(#zanderbody)" stroke="#313a30" stroke-width="4" d="M22 77c47-38 156-48 230-8 10 6 10 13 0 19-75 41-183 31-230-11z"/>
+  <path fill="#5f6c53" stroke="#313a30" stroke-width="3" d="M114 42l34-25 12 38zM156 42l35-22 9 37zM145 108l40 21-14-32z"/>
+  <circle cx="60" cy="70" r="6" fill="#111827"/>
+  <g fill="#384032" opacity=".72">
+    <path d="M99 52l20 64-17 1-16-60z"/>
+    <path d="M139 48l18 69-17 1-15-65z"/>
+    <path d="M180 52l16 59-16 2-14-57z"/>
+    <path d="M218 63l10 42-14 2-10-40z"/>
+  </g>
+  <path fill="#d28a39" d="M71 99c43 17 106 17 155-5-45 29-125 31-155 5z" opacity=".72"/>
+</svg>

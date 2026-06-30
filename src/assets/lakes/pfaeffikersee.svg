@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-labelledby="title desc">
+  <title id="title">Pfäffikersee</title>
+  <desc id="desc">Schematische Header-Illustration des Pfäffikersees</desc>
+  <rect width="640" height="220" fill="#eef8f9"/>
+  <path d="M0 84c92-29 158-17 233 34 77 53 168 53 248 10 66-35 112-32 159-10v102H0z" fill="#d9eadf"/>
+  <path d="M276 31l94 19 64 53-20 69-102 25-86-60 19-83z" fill="#5bc0eb" stroke="#0b5367" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M75 57c77 64 159 93 246 99 93 7 172-19 249-89" fill="none" stroke="#cdbf9b" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <circle cx="333" cy="111" r="86" fill="#cfe3d3" opacity=".58"/>
+</svg>

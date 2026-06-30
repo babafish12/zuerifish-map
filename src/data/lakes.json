@@ -1,0 +1,41 @@
+[
+  {
+    "id": "zuerichsee",
+    "name": "Zürichsee",
+    "canton": "Zürich",
+    "summary": "Langer Stadt- und Voralpensee mit eigenen Zürichsee-Regeln für Hecht, Zander und Seesaibling/Rötel.",
+    "badges": ["Freiangelrecht", "Zürichsee-Regeln", "Zeitlimite"],
+    "image": {
+      "src": "/src/assets/lakes/zuerichsee.svg",
+      "alt": "Schematische Header-Illustration des Zürichsees",
+      "sourceId": "map-sketch"
+    },
+    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+  },
+  {
+    "id": "greifensee",
+    "name": "Greifensee",
+    "canton": "Zürich",
+    "summary": "Kompakter See östlich von Zürich; Hecht und Zander haben Mindestmass und Schonzeit.",
+    "badges": ["Freiangelrecht", "Patentgewässer", "keine Zeitlimite laut Merkblatt"],
+    "image": {
+      "src": "/src/assets/lakes/greifensee.svg",
+      "alt": "Schematische Header-Illustration des Greifensees",
+      "sourceId": "map-sketch"
+    },
+    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+  },
+  {
+    "id": "pfaeffikersee",
+    "name": "Pfäffikersee",
+    "canton": "Zürich",
+    "summary": "Ufernahe Schutzgebiete lokal prüfen; Kernregeln wie Greifensee.",
+    "badges": ["Freiangelrecht", "Patentgewässer", "Schutzgebiete prüfen"],
+    "image": {
+      "src": "/src/assets/lakes/pfaeffikersee.svg",
+      "alt": "Schematische Header-Illustration des Pfäffikersees",
+      "sourceId": "map-sketch"
+    },
+    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+  }
+]

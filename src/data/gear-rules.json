@@ -1,0 +1,39 @@
+{
+  "freeFishing": [
+    { "label": "Standort", "value": "Nur vom trockenen Ufer aus." },
+    { "label": "Anzahl", "value": "1 Angelrute oder Schnur, 1 einziger Köder." },
+    { "label": "Haken", "value": "Einfachhaken ohne Widerhaken." },
+    { "label": "Erlaubt", "value": "Natürliche Köder, Lebensmittel, künstliche Fliegen mit Fliegenrute." },
+    { "label": "Nicht erlaubt", "value": "Keine Köderfische. Fliegen höchstens Hakengrösse 8." },
+    { "label": "Trotzdem gültig", "value": "Mindestmasse, Schonzeiten und Tagesfanglimiten gelten immer." }
+  ],
+  "byLake": [
+    {
+      "lakeId": "zuerichsee",
+      "withoutPatent": "Freiangelrecht",
+      "shorePatent": "2 Ruten/Schnüre",
+      "stationaryBoat": "3 Ruten/Schnüre",
+      "trolling": "10 Köder",
+      "time": "Sommer 04-23 Uhr / übrige Zeit 05-22 Uhr",
+      "note": "Zeitliche Beschränkung laut Zürcher Merkblatt beachten."
+    },
+    {
+      "lakeId": "greifensee",
+      "withoutPatent": "Freiangelrecht",
+      "shorePatent": "max. 2 Ruten/Handschnüre",
+      "stationaryBoat": "max. 3 Ruten/Handschnüre",
+      "trolling": "max. 6 Köder pro Person",
+      "time": "keine Zeitbeschränkung laut Merkblatt",
+      "note": "Lokale Tafeln und Schutzgebiete bleiben massgebend."
+    },
+    {
+      "lakeId": "pfaeffikersee",
+      "withoutPatent": "Freiangelrecht",
+      "shorePatent": "max. 2 Ruten/Handschnüre",
+      "stationaryBoat": "max. 3 Ruten/Handschnüre",
+      "trolling": "max. 6 Köder pro Person",
+      "time": "keine Zeitbeschränkung laut Merkblatt",
+      "note": "Schutzgebiete am Ufer vor Ort prüfen."
+    }
+  ]
+}
