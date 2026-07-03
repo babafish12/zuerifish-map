@@ -125,7 +125,7 @@ export interface Source {
   status?: string;
 }
 
-type GeoPosition = [number, number];
+export type GeoPosition = [number, number];
 
 export type FishingRestrictionGeometry =
   | {
@@ -172,4 +172,42 @@ export interface LakeFeature {
 export interface LakeFeatureCollection {
   type: "FeatureCollection";
   features: LakeFeature[];
+}
+
+export type OfflineMapCategory = "forest" | "land" | "path" | "place" | "rail" | "road" | "station" | "water" | "waterway" | "wetland";
+
+export interface OfflineMapFeature {
+  type: "Feature";
+  properties: {
+    id: string;
+    category: OfflineMapCategory;
+    kind: string;
+    name?: string;
+    minZoom: number;
+    layer: "area" | "label" | "line";
+    source: "OpenStreetMap";
+  };
+  geometry:
+    | {
+        type: "Point";
+        coordinates: GeoPosition;
+      }
+    | {
+        type: "LineString";
+        coordinates: GeoPosition[];
+      }
+    | {
+        type: "Polygon";
+        coordinates: GeoPosition[][];
+      };
+}
+
+export interface OfflineMapFeatureCollection {
+  type: "FeatureCollection";
+  name: string;
+  source: string;
+  license: string;
+  bbox: [number, number, number, number];
+  generatedAt: string;
+  features: OfflineMapFeature[];
 }

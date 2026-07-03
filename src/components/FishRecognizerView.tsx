@@ -1,290 +1,587 @@
-import { useEffect, useRef, useState } from "react";
-import type { ChangeEvent } from "react";
-import { Camera, Fish, ImageUp, LoaderCircle, ScanSearch, Server, X } from "lucide-react";
-import { FishRecognitionError, recognizeFishImage, validateFishImageFile } from "../lib/fishRecognition";
-import type { FishRecognitionObject, FishRecognitionResult } from "../lib/fishRecognition";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BadgeCheck, Globe2, Search, ShieldCheck, X } from "lucide-react";
+import { getFishProfileDetails } from "../data/fish-profile-details";
+import { fishProfiles } from "../lib/data";
+import type { FishProfile, FishProfileDetail, LakeId } from "../types";
 
-type RecognitionStatus = "idle" | "ready" | "running" | "done" | "error";
+const ONLINE_FISH_RECOGNIZER_URL = "https://www.fisch-finder.de/";
+const EMBEDDED_RECOGNIZER_RESULT_MESSAGE_TYPE = "zuerifish:fischfinder-result";
+const FISH_RECOGNIZER_TEST_DOCUMENT = `<!doctype html><html lang="de"><head><title>FischFinder Test</title></head><body><main>FischFinder eingebettet</main></body></html>`;
+
+const PRIMARY_REFERENCE_IDS = [
+  "egli",
+  "hecht",
+  "bachforelle",
+  "seeforelle",
+  "felchen",
+  "zander",
+  "aesche",
+  "karpfen",
+  "rotauge",
+  "rotfeder",
+  "schleie",
+  "truesche"
+];
+
+const FISH_MATCH_ALIASES: Record<string, string[]> = {
+  aesche: ["äsche", "grayling", "european grayling"],
+  alet: ["doebel", "döbel", "chub", "squalius cephalus"],
+  bachforelle: ["brown trout", "salmo trutta fario"],
+  bachsaibling: ["brook trout", "brook char"],
+  barbe: ["barbel"],
+  brachsmen: ["brasse", "brachse", "bream", "common bream"],
+  egli: ["flussbarsch", "barsch", "european perch", "perch"],
+  felchen: ["renke", "coregonus", "whitefish"],
+  hecht: ["pike", "northern pike"],
+  karpfen: ["common carp", "carp"],
+  rotauge: ["plötze", "ploetze", "roach", "rutilus rutilus"],
+  rotfeder: ["rudd", "scardinius erythrophthalmus"],
+  schleie: ["tench"],
+  seeforelle: ["lake trout", "salmo trutta lacustris"],
+  seesaiblinge: ["seesaibling", "arctic char", "salvelinus alpinus"],
+  wels: ["waller", "silurus glanis", "catfish"],
+  zander: ["sander", "pike-perch", "pike perch"]
+};
+
+const LAKE_OCCURRENCE_LABELS: Array<{ id: LakeId; label: string }> = [
+  { id: "zuerichsee", label: "Zürichsee" },
+  { id: "greifensee", label: "Greifensee" },
+  { id: "pfaeffikersee", label: "Pfäffikersee" }
+];
 
 export function FishRecognizerView() {
-  const cameraInputRef = useRef<HTMLInputElement>(null);
-  const uploadInputRef = useRef<HTMLInputElement>(null);
-  const recognitionRequestIdRef = useRef(0);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [inputError, setInputError] = useState<string | null>(null);
-  const [status, setStatus] = useState<RecognitionStatus>("idle");
-  const [recognitionResult, setRecognitionResult] = useState<FishRecognitionResult | null>(null);
+  const [selectedReferenceId, setSelectedReferenceId] = useState("");
+  const [referenceQuery, setReferenceQuery] = useState("");
+  const [openReferenceProfileId, setOpenReferenceProfileId] = useState<string | null>(null);
+  const referenceProfiles = useMemo(() => orderReferenceProfiles(fishProfiles), []);
+  const visibleReferenceProfiles = useMemo(() => matchReferenceProfiles(referenceProfiles, referenceQuery), [referenceProfiles, referenceQuery]);
+  const selectedReferenceProfile = referenceProfiles.find((profile) => profile.id === selectedReferenceId) ?? null;
+  const selectedReferenceDetails = selectedReferenceProfile ? getFishProfileDetails(selectedReferenceProfile) : null;
+  const openReferenceProfile = referenceProfiles.find((profile) => profile.id === openReferenceProfileId) ?? null;
+  const openReferenceDetails = openReferenceProfile ? getFishProfileDetails(openReferenceProfile) : null;
 
-  useEffect(() => {
-    return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
+  const selectReferenceProfile = useCallback((profileId: string) => {
+    setSelectedReferenceId(profileId);
+    setOpenReferenceProfileId(profileId);
+  }, []);
+
+  const handleRecognizerResult = useCallback(
+    (resultText: string) => {
+      setReferenceQuery(resultText);
+      const matchedProfile = matchReferenceProfiles(referenceProfiles, resultText)[0];
+
+      if (matchedProfile) {
+        selectReferenceProfile(matchedProfile.id);
       }
-    };
-  }, [previewUrl]);
-
-  function chooseImage(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.currentTarget.files?.[0] ?? null;
-
-    if (!file) {
-      return;
-    }
-
-    const validationError = validateFishImageFile(file);
-
-    if (validationError) {
-      recognitionRequestIdRef.current += 1;
-      event.currentTarget.value = "";
-      setInputError(validationError);
-      setSelectedFile(null);
-      setRecognitionResult(null);
-      setStatus("error");
-      clearPreviewUrl();
-      return;
-    }
-
-    recognitionRequestIdRef.current += 1;
-    setSelectedFile(file);
-    setInputError(null);
-    setRecognitionResult(null);
-    setStatus("ready");
-
-    setPreviewUrl((currentUrl) => {
-      if (currentUrl) {
-        URL.revokeObjectURL(currentUrl);
-      }
-
-      return typeof URL.createObjectURL === "function" ? URL.createObjectURL(file) : null;
-    });
-  }
-
-  function clearImage() {
-    recognitionRequestIdRef.current += 1;
-    clearPreviewUrl();
-    setSelectedFile(null);
-    setInputError(null);
-    setRecognitionResult(null);
-    setStatus("idle");
-
-    if (cameraInputRef.current) {
-      cameraInputRef.current.value = "";
-    }
-
-    if (uploadInputRef.current) {
-      uploadInputRef.current.value = "";
-    }
-  }
-
-  async function recognizeSelectedImage() {
-    if (!selectedFile) {
-      setInputError("Bitte zuerst ein Fischfoto auswählen.");
-      setStatus("error");
-      return;
-    }
-
-    setInputError(null);
-    setRecognitionResult(null);
-    setStatus("running");
-    const requestId = recognitionRequestIdRef.current + 1;
-    recognitionRequestIdRef.current = requestId;
-
-    try {
-      const result = await recognizeFishImage(selectedFile);
-      if (recognitionRequestIdRef.current !== requestId) {
-        return;
-      }
-
-      setRecognitionResult(result);
-      setStatus("done");
-    } catch (error) {
-      if (recognitionRequestIdRef.current !== requestId) {
-        return;
-      }
-
-      const message =
-        error instanceof FishRecognitionError || error instanceof Error ? error.message : "Die Online-Erkennung ist fehlgeschlagen.";
-      setInputError(message);
-      setStatus("error");
-    }
-  }
-
-  const isRecognizing = status === "running";
-  const selectedFileSize = selectedFile ? formatFileSize(selectedFile.size) : null;
-
-  function clearPreviewUrl() {
-    setPreviewUrl((currentUrl) => {
-      if (currentUrl) {
-        URL.revokeObjectURL(currentUrl);
-      }
-
-      return null;
-    });
-  }
+    },
+    [referenceProfiles, selectReferenceProfile]
+  );
 
   return (
-    <main className="app-page recognizer-page" aria-labelledby="fish-recognizer-title">
-      <header className="page-heading recognizer-heading">
+    <main className="app-page fish-recognizer-view" aria-labelledby="fish-recognizer-page-title">
+      <header className="page-heading">
         <div>
-          <h2 id="fish-recognizer-title">Fischerkenner</h2>
-          <p>Kamera oder Foto auswählen und online bestimmen lassen.</p>
+          <h2 id="fish-recognizer-page-title">Fischerkenner</h2>
+          <p>FischFinder mit direktem Abgleich gegen die ZüriFish-Steckbriefe.</p>
         </div>
-        <span className="recognizer-model-pill">Online-API, kein Modell-Download</span>
+        <strong>Online-Erkenner</strong>
       </header>
 
-      <section className="recognizer-shell" aria-label="Online-Fischerkennung">
-        <div className="recognizer-toolbar">
-          <div className="recognizer-provider">
-            <span aria-hidden="true">
-              <Server size={20} />
-            </span>
-            <div>
-              <strong>Fishial API Wrapper</strong>
-              <small>Server-Proxy /api/fish-recognition</small>
-            </div>
-          </div>
+      <FishOnlineRecognizer
+        visibleProfiles={visibleReferenceProfiles}
+        selectedProfile={selectedReferenceProfile}
+        selectedDetails={selectedReferenceDetails}
+        selectedReferenceId={selectedReferenceId}
+        onSelectedReferenceIdChange={selectReferenceProfile}
+        referenceQuery={referenceQuery}
+        onReferenceQueryChange={setReferenceQuery}
+        onRecognizerResult={handleRecognizerResult}
+      />
 
-          <div className="recognizer-modes" aria-label="Eingabearten wählen">
-            <button type="button" onClick={() => cameraInputRef.current?.click()}>
-              <Camera size={16} aria-hidden="true" />
-              <span>Kamera</span>
-            </button>
-            <button type="button" onClick={() => uploadInputRef.current?.click()}>
-              <ImageUp size={16} aria-hidden="true" />
-              <span>Foto</span>
-            </button>
-          </div>
-        </div>
-
-        <input
-          ref={cameraInputRef}
-          className="recognizer-file-input"
-          type="file"
-          accept="image/*"
-          capture="environment"
-          aria-label="Fischfoto mit Kamera aufnehmen"
-          onChange={chooseImage}
-        />
-        <input
-          ref={uploadInputRef}
-          className="recognizer-file-input"
-          type="file"
-          accept="image/*"
-          aria-label="Fischfoto für Vorschau auswählen"
-          onChange={chooseImage}
-        />
-
-        <div className="recognizer-workspace">
-          <div className="recognizer-preview" aria-live="polite">
-            {previewUrl ? <img src={previewUrl} alt={selectedFile ? `Vorschau ${selectedFile.name}` : "Fischfoto Vorschau"} /> : null}
-            {!previewUrl ? (
-              <div className="recognizer-empty">
-                <ImageUp size={42} aria-hidden="true" />
-                <strong>Bild bereitstellen</strong>
-                <span>Kamera starten oder Foto auswählen.</span>
-              </div>
-            ) : null}
-          </div>
-
-          <div className="recognizer-action-panel">
-            <h3>Online-Erkennung</h3>
-            <p>Das Foto wird an den lokalen Server-Wrapper gesendet. API-Credentials bleiben serverseitig in der Umgebung.</p>
-            {selectedFile ? (
-              <div className="recognizer-selected-file">
-                <span>
-                  {selectedFile.name}
-                  {selectedFileSize ? ` · ${selectedFileSize}` : ""}
-                </span>
-                <button type="button" aria-label="Ausgewähltes Bild entfernen" onClick={clearImage}>
-                  <X size={16} aria-hidden="true" />
-                </button>
-              </div>
-            ) : null}
-            {inputError ? <p className="recognizer-error">{inputError}</p> : null}
-            <button
-              className="recognizer-primary-button"
-              type="button"
-              disabled={!selectedFile || isRecognizing}
-              aria-busy={isRecognizing}
-              onClick={recognizeSelectedImage}
-            >
-              {isRecognizing ? <LoaderCircle size={17} aria-hidden="true" /> : <ScanSearch size={17} aria-hidden="true" />}
-              <span>{isRecognizing ? "Erkenne online" : "Online erkennen"}</span>
-            </button>
-
-            {recognitionResult ? <RecognitionResults result={recognitionResult} /> : null}
-          </div>
-        </div>
-      </section>
-
-      <p className="recognizer-disclaimer">
-        Ergebnis nur als Bestimmungshilfe verwenden; Fangregeln und Schonzeiten bleiben die massgebliche Kontrolle in der App.
-      </p>
+      {openReferenceProfile && openReferenceDetails ? (
+        <FishProfileDialog profile={openReferenceProfile} details={openReferenceDetails} onClose={() => setOpenReferenceProfileId(null)} />
+      ) : null}
     </main>
   );
 }
 
-function RecognitionResults({ result }: { result: FishRecognitionResult }) {
-  if (result.objects.length === 0) {
-    return (
-      <div className="recognizer-empty-result" role="status">
-        <Fish size={18} aria-hidden="true" />
-        <span>Kein Fisch sicher erkannt. Probiere ein helleres, näher aufgenommenes Foto.</span>
-      </div>
-    );
-  }
+function FishOnlineRecognizer({
+  visibleProfiles,
+  selectedProfile,
+  selectedDetails,
+  selectedReferenceId,
+  onSelectedReferenceIdChange,
+  referenceQuery,
+  onReferenceQueryChange,
+  onRecognizerResult
+}: {
+  visibleProfiles: FishProfile[];
+  selectedProfile: FishProfile | null;
+  selectedDetails: FishProfileDetail | null;
+  selectedReferenceId: string;
+  onSelectedReferenceIdChange: (profileId: string) => void;
+  referenceQuery: string;
+  onReferenceQueryChange: (query: string) => void;
+  onRecognizerResult: (resultText: string) => void;
+}) {
+  const recognizerFrameRef = useRef<HTMLIFrameElement | null>(null);
+  const [recognizerDocument, setRecognizerDocument] = useState(() => buildRecognizerStatusDocument("FischFinder wird eingebettet geladen."));
+  const [recognizerState, setRecognizerState] = useState<"loading" | "ready" | "fallback">("loading");
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    if (import.meta.env.MODE === "test") {
+      setRecognizerDocument(prepareEmbeddedRecognizerDocument(FISH_RECOGNIZER_TEST_DOCUMENT));
+      setRecognizerState("ready");
+      return () => {
+        isCurrent = false;
+      };
+    }
+
+    fetch(ONLINE_FISH_RECOGNIZER_URL, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`FischFinder responded with ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((html) => {
+        if (isCurrent) {
+          setRecognizerDocument(prepareEmbeddedRecognizerDocument(html));
+          setRecognizerState("ready");
+        }
+      })
+      .catch(() => {
+        if (isCurrent) {
+          setRecognizerDocument(buildRecognizerStatusDocument("FischFinder konnte nicht eingebettet geladen werden."));
+          setRecognizerState("fallback");
+        }
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleRecognizerMessage(event: MessageEvent) {
+      if (event.source && event.source !== recognizerFrameRef.current?.contentWindow && event.source !== window) {
+        return;
+      }
+
+      if (!isEmbeddedRecognizerResultMessage(event.data)) {
+        return;
+      }
+
+      onRecognizerResult(event.data.resultText);
+    }
+
+    window.addEventListener("message", handleRecognizerMessage);
+    return () => window.removeEventListener("message", handleRecognizerMessage);
+  }, [onRecognizerResult]);
 
   return (
-    <div className="recognizer-results" aria-label="Erkennungsergebnisse">
-      <p className="recognizer-result-summary">
-        {result.objects.length === 1 ? "1 erkannter Fisch" : `${result.objects.length} erkannte Fische`}
-      </p>
-      {result.objects.map((object, index) => (
-        <RecognizedFishObject key={`${index}-${object.bbox?.join("-") ?? "fish"}`} object={object} index={index} />
-      ))}
+    <section className="recognizer-page" aria-labelledby="fish-recognizer-tool-title">
+      <div className="recognizer-heading">
+        <div>
+          <p className="recognizer-kicker">Online-Erkenner</p>
+          <h3 id="fish-recognizer-tool-title">Fisch per Foto bestimmen</h3>
+          <p>Deutschsprachiger FischFinder direkt in ZüriFish, ohne API-Key und ohne lokale KI.</p>
+        </div>
+        <div className="recognizer-model-pill" aria-label="Erkenner-Eigenschaften">
+          <span>
+            <Globe2 size={15} aria-hidden="true" />
+            Online
+          </span>
+          <span>
+            <BadgeCheck size={15} aria-hidden="true" />
+            Deutsch
+          </span>
+          <span>
+            <ShieldCheck size={15} aria-hidden="true" />
+            Keine API-Konfig
+          </span>
+        </div>
+      </div>
+
+      <div className="recognizer-shell">
+        <div className="recognizer-embed">
+          <div className="recognizer-toolbar">
+            <div className="recognizer-provider">
+              <strong>FischFinder eingebettet</strong>
+              <span>Automatische Bestimmung mit ZüriFish-Steckbrief-Popup</span>
+            </div>
+            <span className="recognizer-frame-status">
+              {recognizerState === "ready" ? "Auto-Zuweisung aktiv" : recognizerState === "fallback" ? "Fallback aktiv" : "Lädt"}
+            </span>
+          </div>
+
+          <div className="recognizer-embed-wrap">
+            <iframe
+              ref={recognizerFrameRef}
+              className="recognizer-online-frame"
+              title="FischFinder Online-Erkenner"
+              srcDoc={recognizerDocument}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              sandbox="allow-forms allow-scripts"
+              allow="camera; fullscreen"
+            />
+          </div>
+        </div>
+
+        <aside className="recognizer-reference" aria-labelledby="fish-reference-title">
+          <div className="recognizer-reference-heading">
+            <p className="recognizer-kicker">ZüriFish-Abgleich</p>
+            <h4 id="fish-reference-title">Fischart in der App</h4>
+          </div>
+
+          <label className="recognizer-match-label" htmlFor="fish-reference-search">
+            FischFinder-Ergebnis oder Artname
+          </label>
+          <div className="recognizer-search">
+            <Search size={16} aria-hidden="true" />
+            <input
+              id="fish-reference-search"
+              type="search"
+              value={referenceQuery}
+              placeholder="z.B. Fischart: Flussbarsch"
+              onChange={(event) => onReferenceQueryChange(event.currentTarget.value)}
+            />
+          </div>
+
+          {referenceQuery.trim() && visibleProfiles.length > 0 ? (
+            <button
+              type="button"
+              className="recognizer-best-match"
+              onClick={() => onSelectedReferenceIdChange(visibleProfiles[0].id)}
+            >
+              <span>Bester ZüriFish-Treffer</span>
+              <strong>{visibleProfiles[0].name}</strong>
+              <small>Steckbrief-Popup öffnen</small>
+            </button>
+          ) : null}
+
+          <div className="recognizer-reference-results" aria-label="Fischarten direkt in der App">
+            {visibleProfiles.map((profile) => (
+              <button
+                key={profile.id}
+                type="button"
+                className={profile.id === selectedReferenceId ? "recognizer-reference-option active" : "recognizer-reference-option"}
+                aria-pressed={profile.id === selectedReferenceId}
+                aria-label={`${profile.name} ${profile.scientificName} Steckbrief-Popup öffnen`}
+                onClick={() => onSelectedReferenceIdChange(profile.id)}
+              >
+                <strong>{profile.name}</strong>
+                <span>{profile.scientificName}</span>
+              </button>
+            ))}
+          </div>
+
+          {selectedProfile && selectedDetails ? (
+            <article className="recognizer-reference-card">
+              <div className="recognizer-reference-image">
+                <img src={selectedProfile.image.src} alt={selectedProfile.image.alt} loading="lazy" />
+              </div>
+              <div className="recognizer-reference-copy">
+                <div className="recognizer-reference-title">
+                  <div>
+                    <h5>{selectedProfile.name}</h5>
+                    <p>{selectedProfile.scientificName}</p>
+                  </div>
+                  <span>{selectedDetails.categoryGroup}</span>
+                </div>
+                <p>{selectedDetails.portrait}</p>
+                <dl className="recognizer-reference-lakes" aria-label={`${selectedProfile.name} Vorkommen`}>
+                  {LAKE_OCCURRENCE_LABELS.map((lake) => (
+                    <div key={lake.id}>
+                      <dt>{lake.label}</dt>
+                      <dd>{selectedProfile.occurrence[lake.id]}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="recognizer-reference-note">{selectedProfile.note}</p>
+                <div className="recognizer-reference-facts">
+                  <ProfileFact title="Erkennen" values={selectedDetails.identification.slice(0, 3)} />
+                  <ProfileFact title="Wo suchen" values={selectedDetails.habitats.slice(0, 3)} />
+                </div>
+              </div>
+            </article>
+          ) : (
+            <p className="recognizer-disclaimer">
+              Nach der FischFinder-Erkennung öffnet ZüriFish den passenden App-Steckbrief automatisch. Das Feld bleibt als
+              manueller Fallback für Ergebnistext oder Artnamen.
+            </p>
+          )}
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function prepareEmbeddedRecognizerDocument(html: string) {
+  const withHeadInjects = html.replace(
+    /<head([^>]*)>/i,
+    `<head$1>${FISH_RECOGNIZER_BASE_TAG}${FISH_RECOGNIZER_EMBED_STYLE}${FISH_RECOGNIZER_STORAGE_SHIM}`
+  );
+
+  const withResultHook = withHeadInjects.replace(/<script\s+src=["']app\.js["']><\/script>/i, (scriptTag) => {
+    return `${scriptTag}${buildRecognizerResultHookScript()}`;
+  });
+
+  if (withResultHook === withHeadInjects) {
+    return withHeadInjects.replace(/<\/body>/i, `${buildRecognizerResultHookScript()}</body>`);
+  }
+
+  return withResultHook;
+}
+
+const FISH_RECOGNIZER_BASE_TAG = `<base href="${ONLINE_FISH_RECOGNIZER_URL}" target="_self">`;
+const FISH_RECOGNIZER_EMBED_STYLE = `<style>
+  html, body { min-height: 100%; }
+  body { margin: 0 !important; }
+  .container { width: min(100%, 980px) !important; max-width: 980px !important; padding: 12px !important; }
+  .header, .section, .profile-page { border-radius: 8px !important; }
+  .header { margin-bottom: 14px !important; }
+  .section { margin-bottom: 14px !important; }
+  .footer { padding-bottom: 24px !important; }
+</style>`;
+const FISH_RECOGNIZER_STORAGE_SHIM = `<script>
+  (function () {
+    var store = {};
+    try {
+      var testKey = "__zuerifish_storage_test__";
+      window.localStorage.setItem(testKey, "1");
+      window.localStorage.removeItem(testKey);
+    } catch (error) {
+      Object.defineProperty(window, "localStorage", {
+        configurable: true,
+        value: {
+          getItem: function (key) { return Object.prototype.hasOwnProperty.call(store, key) ? store[key] : null; },
+          setItem: function (key, value) { store[key] = String(value); },
+          removeItem: function (key) { delete store[key]; },
+          clear: function () { store = {}; }
+        }
+      });
+    }
+  })();
+</script>`;
+
+function buildRecognizerResultHookScript() {
+  const targetOrigin = getParentMessageTargetOrigin();
+
+  return `<script>
+  (function () {
+    var messageType = ${JSON.stringify(EMBEDDED_RECOGNIZER_RESULT_MESSAGE_TYPE)};
+    var targetOrigin = ${JSON.stringify(targetOrigin)};
+
+    function publishResult(resultText) {
+      try {
+        window.parent.postMessage({ type: messageType, resultText: String(resultText || "") }, targetOrigin);
+      } catch (error) {
+        // ZüriFish listens opportunistically; recognition itself must still work if forwarding fails.
+      }
+    }
+
+    function patchRecognizer() {
+      try {
+        if (typeof FischFinder === "undefined" || !FischFinder.prototype || FischFinder.prototype.__zuerifishPatched) {
+          return false;
+        }
+
+        var originalDisplayResults = FischFinder.prototype.displayResults;
+        FischFinder.prototype.displayResults = function (resultText) {
+          var returnValue = originalDisplayResults.apply(this, arguments);
+          publishResult(resultText);
+          return returnValue;
+        };
+        FischFinder.prototype.__zuerifishPatched = true;
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    if (!patchRecognizer()) {
+      document.addEventListener("DOMContentLoaded", patchRecognizer);
+      window.setTimeout(patchRecognizer, 0);
+    }
+  })();
+</script>`;
+}
+
+function getParentMessageTargetOrigin() {
+  if (typeof window === "undefined" || window.location.origin === "null") {
+    return "*";
+  }
+
+  return window.location.origin;
+}
+
+function buildRecognizerStatusDocument(message: string) {
+  return `<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        margin: 0;
+        color: #24434c;
+        background: #f7fbfa;
+        font: 700 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>${message}</p>
+  </body>
+</html>`;
+}
+
+function isEmbeddedRecognizerResultMessage(value: unknown): value is { type: string; resultText: string } {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const payload = value as Record<string, unknown>;
+  return payload.type === EMBEDDED_RECOGNIZER_RESULT_MESSAGE_TYPE && typeof payload.resultText === "string";
+}
+
+function FishProfileDialog({ profile, details, onClose }: { profile: FishProfile; details: FishProfileDetail; onClose: () => void }) {
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="recognizer-dialog-layer" role="presentation" onMouseDown={onClose}>
+      <article
+        className="recognizer-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="recognizer-dialog-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <button type="button" className="recognizer-dialog-close" aria-label="Steckbrief-Popup schliessen" onClick={onClose}>
+          <X size={18} aria-hidden="true" />
+        </button>
+
+        <div className="recognizer-dialog-hero">
+          <div className="recognizer-dialog-image">
+            <img src={profile.image.src} alt={profile.image.alt} loading="lazy" />
+          </div>
+          <div className="recognizer-dialog-copy">
+            <p className="recognizer-kicker">ZüriFish-Steckbrief</p>
+            <h3 id="recognizer-dialog-title">{profile.name} Steckbrief</h3>
+            <p className="recognizer-dialog-scientific">{profile.scientificName}</p>
+            <span>{details.categoryGroup}</span>
+            <p>{details.portrait}</p>
+          </div>
+        </div>
+
+        <dl className="recognizer-reference-lakes" aria-label={`${profile.name} Vorkommen im Steckbrief-Popup`}>
+          {LAKE_OCCURRENCE_LABELS.map((lake) => (
+            <div key={lake.id}>
+              <dt>{lake.label}</dt>
+              <dd>{profile.occurrence[lake.id]}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="recognizer-reference-note">{profile.note}</p>
+        <div className="recognizer-reference-facts">
+          <ProfileFact title="Erkennen" values={details.identification} />
+          <ProfileFact title="Wo suchen" values={details.habitats} />
+          <ProfileFact title="Fangen" values={details.catchingTips} />
+          <ProfileFact title="Küche" values={[details.eatingNote]} />
+        </div>
+      </article>
     </div>
   );
 }
 
-function RecognizedFishObject({ object, index }: { object: FishRecognitionObject; index: number }) {
-  const candidates = object.species.slice(0, 3);
-  const bestCandidate = candidates[0];
+function orderReferenceProfiles(profiles: FishProfile[]) {
+  const primaryOrder = new Map(PRIMARY_REFERENCE_IDS.map((id, index) => [id, index]));
 
-  return (
-    <article className="recognizer-result">
-      <div className="recognizer-result-header">
-        <div>
-          <strong>{bestCandidate?.commonName ?? `Fisch ${index + 1}`}</strong>
-          <span>{bestCandidate?.scientificName ?? "Keine Art-Kandidaten zurückgegeben"}</span>
-        </div>
-        {bestCandidate?.imageUrl ? <img src={bestCandidate.imageUrl} alt="" loading="lazy" referrerPolicy="no-referrer" /> : null}
-      </div>
+  return [...profiles].sort((firstProfile, secondProfile) => {
+    const firstIndex = primaryOrder.get(firstProfile.id) ?? Number.POSITIVE_INFINITY;
+    const secondIndex = primaryOrder.get(secondProfile.id) ?? Number.POSITIVE_INFINITY;
 
-      {candidates.length > 0 ? (
-        <div className="recognizer-candidates">
-          {candidates.map((candidate) => {
-            const percent = Math.round(candidate.certainty * 100);
+    if (firstIndex !== secondIndex) {
+      return firstIndex - secondIndex;
+    }
 
-            return (
-              <div key={candidate.id} className="recognizer-confidence" aria-label={`${candidate.commonName} ${percent} Prozent`}>
-                <span>{percent}%</span>
-                <div>
-                  <i style={{ width: `${Math.min(percent, 100)}%` }} />
-                </div>
-                <small>{candidate.commonName}</small>
-              </div>
-            );
-          })}
-        </div>
-      ) : null}
-    </article>
-  );
+    return firstProfile.name.localeCompare(secondProfile.name, "de-CH");
+  });
 }
 
-function formatFileSize(size: number): string {
-  if (size < 1024 * 1024) {
-    return `${Math.max(1, Math.round(size / 1024))} KB`;
+function matchReferenceProfiles(profiles: FishProfile[], query: string) {
+  const normalizedQuery = normalizeFishSearch(query);
+
+  if (!normalizedQuery) {
+    return profiles;
   }
 
-  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+  return profiles
+    .map((profile) => ({ profile, score: getReferenceMatchScore(profile, normalizedQuery) }))
+    .filter((match) => match.score > 0)
+    .sort((firstMatch, secondMatch) => secondMatch.score - firstMatch.score || firstMatch.profile.name.localeCompare(secondMatch.profile.name, "de-CH"))
+    .map((match) => match.profile);
+}
+
+function getReferenceMatchScore(profile: FishProfile, normalizedQuery: string) {
+  const terms = getFishSearchTerms(profile);
+  const haystack = normalizeFishSearch(`${profile.name} ${profile.scientificName} ${profile.category} ${terms.join(" ")}`);
+
+  if (haystack.includes(normalizedQuery)) {
+    return normalizedQuery.length >= 4 ? 6 : 3;
+  }
+
+  return terms.reduce((score, term) => {
+    const normalizedTerm = normalizeFishSearch(term);
+
+    if (!normalizedTerm) {
+      return score;
+    }
+
+    if (normalizedQuery.includes(normalizedTerm)) {
+      return Math.max(score, normalizedTerm === normalizeFishSearch(profile.name) ? 10 : 8);
+    }
+
+    return score;
+  }, 0);
+}
+
+function getFishSearchTerms(profile: FishProfile) {
+  return [profile.name, profile.scientificName, profile.category, ...(FISH_MATCH_ALIASES[profile.id] ?? [])];
+}
+
+function normalizeFishSearch(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .trim();
+}
+
+function ProfileFact({ title, values }: { title: string; values: string[] }) {
+  return (
+    <section className="profile-fact" aria-label={title}>
+      <h4>{title}</h4>
+      <ul>
+        {values.map((value) => (
+          <li key={value}>{value}</li>
+        ))}
+      </ul>
+    </section>
+  );
 }

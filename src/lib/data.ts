@@ -4,6 +4,7 @@ import fishProfilesData from "../data/fish-profiles.json";
 import lakeRulesData from "../data/lake-rules.json";
 import gearRulesData from "../data/gear-rules.json";
 import fishingRestrictionZonesRaw from "../data/fishing-restriction-zones.geojson?raw";
+import offlineMapRaw from "../data/offline-map.geojson?raw";
 import sourcesData from "../data/sources.json";
 import polygonsRaw from "../data/lake-polygons.geojson?raw";
 import greifenseeImage from "../assets/lakes/greifensee.svg?url";
@@ -17,6 +18,7 @@ import type {
   Lake,
   LakeFeatureCollection,
   LakeId,
+  OfflineMapFeatureCollection,
   Source,
   Species
 } from "../types";
@@ -85,6 +87,7 @@ export const gearRules = gearRulesData as GearRules;
 export const sources = sourcesData as Source[];
 export const lakePolygons = JSON.parse(polygonsRaw) as LakeFeatureCollection;
 export const fishingRestrictionZones = JSON.parse(fishingRestrictionZonesRaw) as FishingRestrictionFeatureCollection;
+export const offlineMap = JSON.parse(offlineMapRaw) as OfflineMapFeatureCollection;
 
 export function getLake(id: LakeId): Lake {
   const lake = lakes.find((entry) => entry.id === id);

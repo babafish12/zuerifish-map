@@ -38,6 +38,24 @@
     "status": "Offizielle Quelle; vor Launch erneut prüfen."
   },
   {
+    "id": "zh-greifensee-flyer",
+    "type": "rules",
+    "title": "Natur- und Landschaftsschutzgebiet Greifensee",
+    "publisher": "Kanton Zürich, Baudirektion, Amt für Landschaft und Natur",
+    "date": "Januar 2024, abgerufen 01.07.2026",
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/umwelt-tiere/naturschutz/naturschutzgebiete/flyer/flyer_greifensee.pdf",
+    "usedFor": "Greifensee-Schutzgebiet, See- und Uferschutz sowie Abstands- und Befahrungsregeln"
+  },
+  {
+    "id": "greifensee-stiftung-fischen",
+    "type": "rules",
+    "title": "Fischen am Greifensee",
+    "publisher": "Greifensee-Stiftung",
+    "date": "abgerufen 01.07.2026",
+    "url": "https://greifensee-stiftung.ch/fischen-auf-am-see",
+    "usedFor": "Praxis-Hinweise zu Fischen im Greifensee-Schutzgebiet, Wegen/Stegen und Seeschutzzonen"
+  },
+  {
     "id": "zh-pfaeffikersee-flyer",
     "type": "rules",
     "title": "Naturschutzgebiet Pfäffikersee",
@@ -67,6 +85,19 @@
     "license": "Open Database License (ODbL)",
     "attributionRequired": true,
     "attributionText": "© OpenStreetMap contributors"
+  },
+  {
+    "id": "osm-offline-basemap",
+    "type": "map",
+    "title": "Lokale OpenStreetMap-Vektorgrundkarte",
+    "publisher": "OpenStreetMap contributors",
+    "date": "abgerufen 01.07.2026",
+    "url": "https://www.openstreetmap.org/copyright",
+    "usedFor": "Offline-Grundkarte mit Strassen, Bahnlinien, Gewässern, Grünflächen, Orten und Stationen im Ausschnitt Zürichsee, Greifensee und Pfäffikersee",
+    "license": "Open Database License (ODbL)",
+    "attributionRequired": true,
+    "attributionText": "© OpenStreetMap contributors",
+    "status": "Gefilterter statischer Export in src/data/offline-map.geojson; erzeugbar mit scripts/fetch-offline-map-data.mjs."
   },
   {
     "id": "zh-aeschenfangverbot-2026",

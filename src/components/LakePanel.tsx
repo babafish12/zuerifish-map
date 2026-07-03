@@ -4,7 +4,8 @@ import { ChevronDown, X } from "lucide-react";
 import { FishCard } from "./FishCard";
 import { GearRules } from "./GearRules";
 import { SourceList } from "./SourceList";
-import { fishProfiles, getGearRulesForLake, getRulesForLake, getSources } from "../lib/data";
+import { fishingRestrictionZones, fishProfiles, getGearRulesForLake, getRulesForLake, getSources } from "../lib/data";
+import { isConfirmedLakeOccurrence } from "../lib/lakeInsights";
 import type { FishProfile, FishRule, GearMode, Lake, LakeId } from "../types";
 
 interface LakePanelProps {
@@ -156,7 +157,7 @@ export function LakePanel({ lake, onClose }: LakePanelProps) {
 
       <GearRules gearRules={gearRules} selectedMode={mode} onModeChange={setMode} />
 
-      <SourceList sources={getSources(OFFICIAL_SOURCE_IDS)} />
+      <SourceList sources={getLakePanelSources(lake, fishRules)} />
     </aside>
   );
 }
@@ -169,12 +170,11 @@ function getAdditionalFishProfilesForLake(lakeId: LakeId, fishRules: FishRule[])
     .filter((profile) => isConfirmedLakeOccurrence(profile.occurrence[lakeId]));
 }
 
-function isConfirmedLakeOccurrence(value: string): boolean {
-  const normalized = value.toLowerCase();
+function getLakePanelSources(lake: Lake, fishRules: FishRule[]) {
+  const restrictionSourceIds = fishingRestrictionZones.features
+    .filter((feature) => feature.properties.lakeId === lake.id)
+    .flatMap((feature) => feature.properties.sourceIds);
+  const ids = Array.from(new Set([...OFFICIAL_SOURCE_IDS, ...lake.sourceIds, ...fishRules.flatMap((rule) => rule.sourceIds), ...restrictionSourceIds]));
 
-  if (normalized.includes("nicht bestätigt") || normalized.includes("historisch") || normalized.includes("nicht separat")) {
-    return false;
-  }
-
-  return normalized.includes("ja") || normalized.includes("selten") || normalized.includes("geschützt");
+  return getSources(ids).filter((source) => source.type === "rules" || source.type === "map");
 }

@@ -1,9 +1,20 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "../src/App";
 
+const originalGeolocation = navigator.geolocation;
+
+function setMockGeolocation(geolocation: Pick<Geolocation, "getCurrentPosition"> | undefined) {
+  Object.defineProperty(navigator, "geolocation", {
+    configurable: true,
+    value: geolocation
+  });
+}
+
 afterEach(() => {
+  window.localStorage.clear();
+  setMockGeolocation(originalGeolocation);
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
@@ -15,19 +26,94 @@ describe("ZüriFish Map", () => {
     expect(screen.getByRole("button", { name: "Karte" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("button", { name: "Fische" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Fischerkenner" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Settings" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Regeln" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Settings/i })).not.toBeInTheDocument();
     expect(screen.getByLabelText("Interaktive Fischerei-Karte")).toBeInTheDocument();
+    expect(screen.getByLabelText("Seen und Kernzahlen")).toHaveTextContent("Zürichsee");
+    expect(screen.getByLabelText("Seen und Kernzahlen")).toHaveTextContent("7 Regeln");
   });
 
-  it("renders a label-light green base map with OSM lake markings", () => {
+  it("renders an offline default base map with switchable map styles", async () => {
+    const user = userEvent.setup();
     render(<App />);
 
     expect(
-      screen.getByLabelText(
-        "Interaktive grüne Satellitenbasiskarte mit markiertem Zürichsee, Greifensee, Pfäffikersee und roten Fischereiverbotszonen an Bachmündungen und Seeschutzzonen"
-      )
+      screen.getByLabelText(/Interaktive Fischerei-Karte mit wechselbaren Basiskarten/i)
     ).toBeInTheDocument();
-    expect(screen.getByText("Rot: Fischereiverbotszonen an Zürichsee-Bachmündungen und Pfäffikersee-Seeschutzzonen")).toBeInTheDocument();
+
+    const mapSwitcher = screen.getByLabelText("Kartentyp auswählen");
+    const baseMapOptions = within(mapSwitcher).getByLabelText("Basiskarten auswählen");
+    expect(within(baseMapOptions).getAllByRole("button")).toHaveLength(4);
+    expect(within(baseMapOptions).getByRole("button", { name: /Offline/i })).toHaveAttribute("aria-pressed", "true");
+    expect(within(baseMapOptions).getByRole("button", { name: /Klar/i })).toHaveAttribute("aria-pressed", "false");
+    expect(within(baseMapOptions).getByRole("button", { name: /Natur/i })).toHaveAttribute("aria-pressed", "false");
+    expect(within(baseMapOptions).getByRole("button", { name: /Satellit/i })).toHaveAttribute("aria-pressed", "false");
+    expect(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen ausblenden" })).toHaveAttribute("aria-pressed", "true");
+
+    await user.click(within(baseMapOptions).getByRole("button", { name: /Satellit/i }));
+
+    expect(within(baseMapOptions).getByRole("button", { name: /Offline/i })).toHaveAttribute("aria-pressed", "false");
+    expect(within(baseMapOptions).getByRole("button", { name: /Satellit/i })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText(/Rot: heute oder ganzjährig verboten/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(window.localStorage.getItem("zuerifish:map-preferences")).toContain('"selectedBaseMapId":"satellit"');
+    });
+
+    await user.click(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen ausblenden" }));
+
+    expect(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen einblenden" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText("Fischereiverbotszonen sind ausgeblendet")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(window.localStorage.getItem("zuerifish:map-preferences")).toContain('"showRestrictionZones":false');
+    });
+  });
+
+  it("requests and displays the user location only after the location button is pressed", async () => {
+    const user = userEvent.setup();
+    const getCurrentPosition = vi.fn((success: PositionCallback) => {
+      success({
+        coords: {
+          accuracy: 18,
+          altitude: null,
+          altitudeAccuracy: null,
+          heading: null,
+          latitude: 47.3769,
+          longitude: 8.5417,
+          speed: null
+        },
+        timestamp: Date.now()
+      } as GeolocationPosition);
+    });
+    setMockGeolocation({ getCurrentPosition });
+    render(<App />);
+
+    expect(getCurrentPosition).not.toHaveBeenCalled();
+    expect(screen.queryByText(/Standort gefunden/i)).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Standort anzeigen" }));
+
+    expect(getCurrentPosition).toHaveBeenCalledTimes(1);
+    expect(getCurrentPosition).toHaveBeenCalledWith(expect.any(Function), expect.any(Function), expect.objectContaining({ enableHighAccuracy: true }));
+    expect(await screen.findByText("Standort gefunden (±18 m)")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Standort erneut suchen" })).toBeInTheDocument();
+  });
+
+  it("restores saved lake and map preferences", () => {
+    window.localStorage.setItem("zuerifish:selected-lake", "greifensee");
+    window.localStorage.setItem(
+      "zuerifish:map-preferences",
+      JSON.stringify({ selectedBaseMapId: "natur", showRestrictionZones: false })
+    );
+
+    render(<App />);
+
+    expect(screen.getByRole("dialog", { name: "Greifensee Detailregeln" })).toBeInTheDocument();
+
+    const mapSwitcher = screen.getByLabelText("Kartentyp auswählen");
+    const baseMapOptions = within(mapSwitcher).getByLabelText("Basiskarten auswählen");
+    expect(within(baseMapOptions).getByRole("button", { name: /Natur/i })).toHaveAttribute("aria-pressed", "true");
+    expect(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen einblenden" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText("Fischereiverbotszonen sind ausgeblendet")).toBeInTheDocument();
   });
 
   it("opens and closes the Zürichsee panel from the map", async () => {
@@ -35,6 +121,9 @@ describe("ZüriFish Map", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Zürichsee öffnen" }));
+    await waitFor(() => {
+      expect(window.localStorage.getItem("zuerifish:selected-lake")).toBe("zuerichsee");
+    });
 
     const panel = await screen.findByRole("dialog", { name: "Zürichsee Detailregeln" });
     expect(within(panel).getByRole("heading", { name: "Zürichsee" })).toBeInTheDocument();
@@ -53,6 +142,9 @@ describe("ZüriFish Map", () => {
 
     await user.click(within(panel).getByRole("button", { name: "Panel schliessen" }));
     expect(screen.queryByRole("dialog", { name: "Zürichsee Detailregeln" })).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(window.localStorage.getItem("zuerifish:selected-lake")).toBeNull();
+    });
   });
 
   it("opens Greifensee and Pfäffikersee panels with their data", async () => {
@@ -127,6 +219,7 @@ describe("ZüriFish Map", () => {
     expect(screen.getByText("36 Arten")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Kleinfische" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Raubfische" })).toBeInTheDocument();
+    expect(screen.queryByLabelText("Fischarten direkt in der App")).not.toBeInTheDocument();
     expect(screen.queryByText("Perca fluviatilis")).not.toBeInTheDocument();
     expect(screen.queryByText(/Kleine Gummifische/i)).not.toBeInTheDocument();
     expect(screen.queryByAltText("Fischbild Egli aus dem Steckbrief-Dokument")).not.toBeInTheDocument();
@@ -144,9 +237,9 @@ describe("ZüriFish Map", () => {
     expect(within(egliCard).getByText(/Dunkle Querbänder/i)).toBeInTheDocument();
     expect(within(egliCard).getByText(/Kleine Gummifische/i)).toBeInTheDocument();
     expect(within(egliCard).getByText(/Egli-Filets eignen sich klassisch gebraten/i)).toBeInTheDocument();
-    expect(within(egliCard).queryByText("Zürichsee")).not.toBeInTheDocument();
-    expect(within(egliCard).queryByText("Greifensee")).not.toBeInTheDocument();
-    expect(within(egliCard).queryByText("Pfäffikersee")).not.toBeInTheDocument();
+    expect(within(egliCard).getByText("Zürichsee")).toBeInTheDocument();
+    expect(within(egliCard).getByText("Greifensee")).toBeInTheDocument();
+    expect(within(egliCard).getByText("Pfäffikersee")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Karte" }));
 
@@ -154,100 +247,67 @@ describe("ZüriFish Map", () => {
     expect(screen.getByRole("button", { name: "Karte" })).toHaveAttribute("aria-current", "page");
   });
 
-  it("opens the Fischerkenner tab with camera, photo upload, and online recognition action", async () => {
+  it("embeds the online fish recognizer and opens a matched app profile popup", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Fischerkenner" }));
+
+    expect(screen.getByRole("button", { name: "Fischerkenner" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("heading", { name: "Fischerkenner" })).toBeInTheDocument();
-    expect(screen.getByLabelText("Online-Fischerkennung")).toBeInTheDocument();
-    expect(screen.getByText("Online-API, kein Modell-Download")).toBeInTheDocument();
-    expect(screen.getByText("Fishial API Wrapper")).toBeInTheDocument();
-    expect(screen.getByText(/Server-Proxy \/api\/fish-recognition/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Kamera" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Foto" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Online erkennen" })).toBeDisabled();
-    expect(screen.queryByRole("link", { name: /Fishial/i })).not.toBeInTheDocument();
+    const recognizerFrame = screen.getByTitle("FischFinder Online-Erkenner") as HTMLIFrameElement;
+    expect(recognizerFrame).toHaveAttribute("srcdoc", expect.stringContaining("FischFinder eingebettet"));
+    expect(recognizerFrame).not.toHaveAttribute("src");
+    expect(await screen.findByText("Auto-Zuweisung aktiv")).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /FischFinder|Öffnen/i })).not.toBeInTheDocument();
 
-    await user.upload(screen.getByLabelText("Fischfoto für Vorschau auswählen"), new File(["fish"], "egli.jpg", { type: "image/jpeg" }));
+    const appSpeciesList = screen.getByLabelText("Fischarten direkt in der App");
+    const resultMessage = new MessageEvent("message", {
+      data: {
+        type: "zuerifish:fischfinder-result",
+        resultText: "Fischart: Flussbarsch Wissenschaftlicher Name: Perca fluviatilis"
+      }
+    });
+    Object.defineProperty(resultMessage, "source", { value: recognizerFrame.contentWindow });
 
-    expect(screen.getByText(/egli\.jpg/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Ausgewähltes Bild entfernen" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Online erkennen" })).toBeEnabled();
+    window.dispatchEvent(resultMessage);
 
-    await user.click(screen.getByRole("button", { name: "Settings" }));
-    expect(screen.getByRole("heading", { name: "Settings" })).toBeInTheDocument();
-    expect(screen.getByText(/Einstellungen für Darstellung/i)).toBeInTheDocument();
-  });
-
-  it("recognizes an uploaded fish through the API wrapper", async () => {
-    const user = userEvent.setup();
-    const fetchMock = vi.fn<typeof fetch>(async () => {
-      return new Response(
-        JSON.stringify({
-          ok: true,
-          queryToken: "query-token",
-          objects: [
-            {
-              bbox: [10, 20, 90, 120],
-              species: [
-                { id: "perca", certainty: 0.92 },
-                { id: "sander", certainty: 0.31 }
-              ]
-            }
-          ],
-          definitions: {
-            perca: {
-              commonName: "European perch",
-              scientificName: "Perca fluviatilis",
-              imageUrl: "https://example.test/perch.jpg"
-            },
-            sander: {
-              commonName: "Zander",
-              scientificName: "Sander lucioperca"
-            }
-          }
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }
+    await waitFor(() => {
+      expect(screen.getByLabelText("FischFinder-Ergebnis oder Artname")).toHaveValue(
+        "Fischart: Flussbarsch Wissenschaftlicher Name: Perca fluviatilis"
       );
     });
-    vi.stubGlobal("fetch", fetchMock);
-    render(<App />);
+    expect(await screen.findByRole("button", { name: /Bester ZüriFish-Treffer Egli Steckbrief-Popup öffnen/i })).toBeInTheDocument();
+    expect(within(appSpeciesList).getByRole("button", { name: "Egli Perca fluviatilis Steckbrief-Popup öffnen" })).toBeInTheDocument();
+    expect(within(appSpeciesList).queryByRole("button", { name: /Hecht/i })).not.toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "Fischerkenner" }));
-    const file = new File(["fish-image"], "egli.jpg", { type: "image/jpeg" });
-    await user.upload(screen.getByLabelText("Fischfoto für Vorschau auswählen"), file);
-    await user.click(screen.getByRole("button", { name: "Online erkennen" }));
+    const profileDialog = await screen.findByRole("dialog", { name: "Egli Steckbrief" });
+    expect(within(profileDialog).getByText("Perca fluviatilis")).toBeInTheDocument();
+    expect(within(profileDialog).getByAltText("Fischbild Egli aus dem Steckbrief-Dokument")).toBeInTheDocument();
+    expect(within(profileDialog).getByText(/Dunkle Querbänder/i)).toBeInTheDocument();
 
-    expect(await screen.findByText("1 erkannter Fisch")).toBeInTheDocument();
-    expect(screen.getAllByText("European perch").length).toBeGreaterThan(0);
-    expect(screen.getByText("Perca fluviatilis")).toBeInTheDocument();
-    expect(screen.getByText("92%")).toBeInTheDocument();
-    expect(screen.getByText("31%")).toBeInTheDocument();
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
-    expect(url).toBe("/api/fish-recognition");
-    expect(init.method).toBe("POST");
-    expect(init.headers).toEqual({ "Content-Type": "image/jpeg" });
-    expect(init.body).toBe(file);
+    await user.click(within(profileDialog).getByRole("button", { name: "Steckbrief-Popup schliessen" }));
+
+    expect(screen.queryByRole("dialog", { name: "Egli Steckbrief" })).not.toBeInTheDocument();
   });
 
-  it("rejects non-image recognizer uploads before calling the API", async () => {
-    const user = userEvent.setup({ applyAccept: false });
-    const fetchMock = vi.fn();
-    vi.stubGlobal("fetch", fetchMock);
+  it("opens the rules tab with lake metrics, restriction state and official sources", async () => {
+    const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole("button", { name: "Fischerkenner" }));
-    await user.upload(screen.getByLabelText("Fischfoto für Vorschau auswählen"), new File(["plain"], "not-a-fish.txt", { type: "text/plain" }));
+    await user.click(screen.getByRole("button", { name: "Regeln" }));
 
-    expect(screen.getByText("Bitte ein Bild auswählen.")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Online erkennen" })).toBeDisabled();
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: "Regeln" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("heading", { name: "Regeln" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Regeln nach See")).toHaveTextContent("Zürichsee");
+    expect(screen.getByLabelText("Regeln nach See")).toHaveTextContent("Bestätigte Fische");
+    expect(screen.getByLabelText("Regeln nach See")).toHaveTextContent("Sperrzonen");
+    expect(screen.getByText("Vor dem Auswerfen prüfen")).toBeInTheDocument();
+    expect(screen.getByText("Freiangelrecht")).toBeInTheDocument();
+    expect(screen.getByText("Quellen und Datenstand")).toBeInTheDocument();
+    expect(screen.getAllByText(/Fischereivorschriften: Auszug für die Angelfischerei/i).length).toBeGreaterThan(0);
+    expect(screen.queryByRole("heading", { name: "Fischerkenner" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Settings")).not.toBeInTheDocument();
   });
 
   it("keeps keyboard focus inside the open panel", async () => {

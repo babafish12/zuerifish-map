@@ -43,6 +43,7 @@ export function FishCard({ rule }: FishCardProps) {
             <dd>{formatDailyLimit(rule.dailyLimit)}</dd>
           </div>
         </dl>
+        <p className="rule-hint">{rule.hint}</p>
         {rule.localRestrictionWarning ? <p className="status-note">{rule.localRestrictionWarning}</p> : null}
       </div>
     </article>

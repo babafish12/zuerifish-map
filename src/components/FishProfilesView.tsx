@@ -2,7 +2,13 @@ import { useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { FISH_PROFILE_GROUP_ORDER, getFishProfileDetails } from "../data/fish-profile-details";
 import { fishProfiles } from "../lib/data";
-import type { FishProfile, FishProfileCategoryGroup, FishProfileDetail } from "../types";
+import type { FishProfile, FishProfileCategoryGroup, FishProfileDetail, LakeId } from "../types";
+
+const LAKE_OCCURRENCE_LABELS: Array<{ id: LakeId; label: string }> = [
+  { id: "zuerichsee", label: "Zürichsee" },
+  { id: "greifensee", label: "Greifensee" },
+  { id: "pfaeffikersee", label: "Pfäffikersee" }
+];
 
 export function FishProfilesView() {
   const [expandedProfileId, setExpandedProfileId] = useState<string | null>(null);
@@ -121,6 +127,18 @@ function FishProfileCard({
           </div>
 
           <div className="profile-facts">
+            <section className="profile-occurrence" aria-label={`${profile.name} Vorkommen`}>
+              <h4>Vorkommen</h4>
+              <dl>
+                {LAKE_OCCURRENCE_LABELS.map((lake) => (
+                  <div key={lake.id}>
+                    <dt>{lake.label}</dt>
+                    <dd>{profile.occurrence[lake.id]}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p>{profile.note}</p>
+            </section>
             <ProfileFact title="Erkennen" values={details.identification} />
             <ProfileFact title="Wo suchen" values={details.habitats} />
             <ProfileFact title="Fangen" values={details.catchingTips} />

@@ -9,6 +9,12 @@ if (typeof SVGSVGElement !== "undefined" && !("createSVGRect" in SVGSVGElement.p
   });
 }
 
+Object.defineProperty(window, "scrollTo", {
+  configurable: true,
+  value: () => {}
+});
+
 afterEach(() => {
+  window.localStorage.clear();
   cleanup();
 });
