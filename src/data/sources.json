@@ -109,6 +109,565 @@
     "usedFor": "Schutzstatus und Entnahmeverbot der Äsche in Zürcher Gewässern"
   },
   {
+    "id": "swiss-lakes-wikipedia",
+    "type": "map",
+    "title": "List of lakes of Switzerland",
+    "publisher": "Wikipedia contributors",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://en.wikipedia.org/wiki/List_of_lakes_of_Switzerland",
+    "usedFor": "Schweizweite Liste der Seen ab 0.30 km² mit Fläche, Höhe, Tiefe und Kantonsbezug",
+    "license": "CC BY-SA 4.0",
+    "attributionRequired": true,
+    "attributionText": "Wikipedia contributors, CC BY-SA 4.0",
+    "status": "Statischer Import in src/data/lakes.json; vor Launch erneut fachlich prüfen."
+  },
+  {
+    "id": "wikidata-lake-coordinates",
+    "type": "map",
+    "title": "Wikidata-Koordinaten Schweizer Seen",
+    "publisher": "Wikidata contributors",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.wikidata.org/",
+    "usedFor": "Koordinaten für See-Marker aus den Wikidata-Objekten der Schweizer Seenliste",
+    "license": "CC0 1.0",
+    "attributionRequired": false,
+    "status": "Koordinaten sind Marker-Näherungen, keine amtlichen Gewässergeometrien."
+  },
+  {
+    "id": "ag-fischereikarten-shop",
+    "type": "rules",
+    "title": "Fischereikarten-Shop Kanton Aargau",
+    "publisher": "Kanton Aargau",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.ag.ch/de/themen/landwirtschaft-tiere/wild-wassertiere/fischerei/fischereikarten/fischereikarten-shop",
+    "usedFor": "Onlinebezug von Freianglerkarten und Fischereikarten, unter anderem für Hallwilersee"
+  },
+  {
+    "id": "be-fischereipatent",
+    "type": "rules",
+    "title": "Fischereipatent beziehen",
+    "publisher": "Kanton Bern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html",
+    "usedFor": "Patentbezug, Onlinebestellung, App Fischen Bern und Agenturen im Kanton Bern"
+  },
+  {
+    "id": "fr-fischerei",
+    "type": "rules",
+    "title": "Fischerei",
+    "publisher": "Staat Freiburg",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.fr.ch/de/energie-landwirtschaft-und-umwelt/fauna-und-biodiversitaet/sektion-fauna-jagd-und-fischerei/fischerei",
+    "usedFor": "Freiburger Patentarten, Kurzzeitpatente, Neuenburgersee-/Murtensee-Links und Gewässerkarten"
+  },
+  {
+    "id": "ge-permis-peche",
+    "type": "rules",
+    "title": "Permis de pêche",
+    "publisher": "République et canton de Genève",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.ge.ch/permis-peche",
+    "usedFor": "Digitale und papierbasierte Genfer Fischereibewilligungen sowie Kauf-/Tarifinformationen"
+  },
+  {
+    "id": "gl-fischereipatente",
+    "type": "rules",
+    "title": "Fischereipatente / Fischerapp",
+    "publisher": "Kanton Glarus",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.gl.ch/verwaltung/bau-und-umwelt/umwelt-wald-und-energie/jagd-und-fischerei/jagdapp-fischerapp.html/8073",
+    "usedFor": "Onlinekauf von Glarner Fischereipatenten und Hinweise zur Fischerapp"
+  },
+  {
+    "id": "gr-fischereipatente",
+    "type": "rules",
+    "title": "Fischereipatente Graubünden",
+    "publisher": "Kanton Graubünden, Amt für Jagd und Fischerei",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx",
+    "usedFor": "Bündner Patentbezug, Online-Shop und Verkaufsstellen"
+  },
+  {
+    "id": "ju-peche",
+    "type": "rules",
+    "title": "Exercice de la pêche",
+    "publisher": "République et Canton du Jura",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.jura.ch/fr/Autorites/Administration/DEC/ENV/Peche-et-faune-aquatique/Exercice-de-la-peche/Exercice-de-la-peche.html",
+    "usedFor": "Jurassische Fischereibewilligungen, Guichet virtuel, Verkaufsstellen und Reglemente"
+  },
+  {
+    "id": "lu-fischereipatente",
+    "type": "rules",
+    "title": "Fischereipatente",
+    "publisher": "Kanton Luzern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://lawa.lu.ch/fischerei/fischereipatente",
+    "usedFor": "Patentpreise und Bezug für Luzerner Gewässer wie Sempachersee und Vierwaldstättersee"
+  },
+  {
+    "id": "ne-peche",
+    "type": "rules",
+    "title": "Pêche",
+    "publisher": "République et Canton de Neuchâtel",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.ne.ch/themes/energie-et-environnement/faune/peche",
+    "usedFor": "Neuenburger Fischereibewilligungen, Onlinebestellung und Formulare"
+  },
+  {
+    "id": "nw-fischerei",
+    "type": "rules",
+    "title": "Fischerei",
+    "publisher": "Kanton Nidwalden",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.nw.ch/amtjustizdienste/1432",
+    "usedFor": "Patentbestellung per Fischerei-App, Mail, Telefon oder Schalter im Kanton Nidwalden"
+  },
+  {
+    "id": "ow-fischerpatente",
+    "type": "rules",
+    "title": "Fischerpatente",
+    "publisher": "Kanton Obwalden",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.ow.ch/dienstleistungen/2051",
+    "usedFor": "Obwaldner Patent-App, Ausgabestellen und Hinweise zu Lungerersee/Lungernsee"
+  },
+  {
+    "id": "sg-fischereipatente",
+    "type": "rules",
+    "title": "Fischen im Kanton St. Gallen",
+    "publisher": "Kanton St. Gallen",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente.html",
+    "usedFor": "Patentgewässer, Webshop eFJ, App Fischen SG und Kaufwege für St. Galler Gewässer"
+  },
+  {
+    "id": "sh-fischerei",
+    "type": "rules",
+    "title": "Fischerei Kanton Schaffhausen",
+    "publisher": "Kanton Schaffhausen",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Jagd-und-Fischerei/Fischerei-1237156-DE.html",
+    "usedFor": "Bestellung von Angelfischer-Patenten und kantonale Fischerei-Informationen"
+  },
+  {
+    "id": "sz-fischerpatente",
+    "type": "rules",
+    "title": "Fischerpatente",
+    "publisher": "Kanton Schwyz",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.sz.ch/verwaltung/umweltdepartement/amt-fuer-gewaesser/fischerei/fischerpatente.html/8756-8758-8802-9447-9450-10713-10826",
+    "usedFor": "Fischereipatente, Freiangelkarten, eFJ-App und Webshop im Kanton Schwyz"
+  },
+  {
+    "id": "tg-webshop-efj",
+    "type": "rules",
+    "title": "eFJ Webshop Thurgau",
+    "publisher": "Kanton Thurgau, Jagd- und Fischereiverwaltung",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://webshop-efj.tg.ch/",
+    "usedFor": "Onlinebezug von Thurgauer Fischereipatenten"
+  },
+  {
+    "id": "ti-patente-digitale",
+    "type": "rules",
+    "title": "Patente digitale",
+    "publisher": "Repubblica e Cantone Ticino",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www4.ti.ch/dt/da/ucp/temi/pesca/sportello/patente-digitale",
+    "usedFor": "Digitale Tessiner Fischereipatente über PESCA TI und Online-Shop"
+  },
+  {
+    "id": "ur-fischereipatent-online",
+    "type": "rules",
+    "title": "Fischerpatent online",
+    "publisher": "Kanton Uri",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.ur.ch/online-schalter/2086/detail",
+    "usedFor": "Onlinebestellung und Print-at-home für Urner Fischereipatente"
+  },
+  {
+    "id": "vd-permis-peche",
+    "type": "rules",
+    "title": "Commander un permis de pêche de loisir courte durée",
+    "publisher": "État de Vaud",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.vd.ch/prestation/commander-un-permis-de-peche-de-loisir-courte-duree",
+    "usedFor": "Onlinebestellung von Waadtländer Tages- und Wochenpatenten"
+  },
+  {
+    "id": "vs-epeche",
+    "type": "rules",
+    "title": "Commande en ligne - Permis de pêche ePêche",
+    "publisher": "Canton du Valais",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.vs.ch/web/scpf/permis-de-peche-epeche-",
+    "usedFor": "Walliser Onlinebestellung von Fischereipatenten über ePêche"
+  },
+  {
+    "id": "zg-fischerei",
+    "type": "rules",
+    "title": "Fischen im Kanton Zug",
+    "publisher": "Kanton Zug",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://zg.ch/de/natur-umwelt-tiere/wasser-und-gewaesser/fischen",
+    "usedFor": "Zuger Fischereipatent-Webshop und Fishven-Zug-App"
+  },
+  {
+    "id": "zh-fischereipatente-2026",
+    "type": "rules",
+    "title": "Fischereipatente beziehen 2026",
+    "publisher": "Kanton Zürich",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei/wie-und-wo-fischen-im-kanton-zuerich/fischereipatente-beziehen-2026.html",
+    "usedFor": "Patentbezug per eFJ Mobile App, Webshop oder Ausgabestellen im Kanton Zürich"
+  },
+  {
+    "id": "be-reglement-2026",
+    "type": "rules",
+    "title": "Reglement Fischerei 2026",
+    "publisher": "Kanton Bern, Fischereiinspektorat",
+    "date": "gültig ab 01.01.2026, abgerufen 05.07.2026",
+    "url": "https://www.weu.be.ch/content/dam/weu/dokumente/lanat/de/fischerei/wie-wo-fischen/Reglement-Fischerei-DE-2026.pdf",
+    "usedFor": "Bernische Patentgewässer, Fangmindestmasse, Schonzeiten, Tagesfangzahlen und Gewässerabschnitte"
+  },
+  {
+    "id": "be-freiangelei-2024",
+    "type": "rules",
+    "title": "Fischen ohne Patent im Brienzer-, Thuner- und Bielersee",
+    "publisher": "Kanton Bern, Fischereiinspektorat",
+    "date": "2024, abgerufen 05.07.2026",
+    "url": "https://www.weu.be.ch/content/dam/weu/dokumente/lanat/de/fischerei/wie-wo-fischen/Freiangelei-2024-DE.pdf",
+    "usedFor": "Kompakte Tagesfangzahlen, Mindestmasse und Schonzeiten für Brienzersee, Thunersee und Bielersee"
+  },
+  {
+    "id": "vd-leman-2026",
+    "type": "rules",
+    "title": "Lac Léman: Extrait de la législation 2026",
+    "publisher": "Canton de Vaud / Préfet de la Haute-Savoie",
+    "date": "Ausgabe 2026, abgerufen 05.07.2026",
+    "url": "https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_pdf/P%C3%AAche/D%C3%A9couvrez_la_p%C3%AAche_dans_le_canton_de_Vaud__/DGE_Reglement_2026_Leman_Def.pdf",
+    "usedFor": "Fangzeiten, Mindestmasse, Tages- und Jahreslimiten sowie Gerätehinweise für Lac Léman"
+  },
+  {
+    "id": "ge-leman-reglement-2026",
+    "type": "rules",
+    "title": "Règlement international pêche dans le Léman 2026-2030",
+    "publisher": "Canton de Genève",
+    "date": "2026-2030, abgerufen 05.07.2026",
+    "url": "https://www.ge.ch/document/1316/annexe/file/541890",
+    "usedFor": "Rechtsgrundlage des internationalen Léman-Regelrahmens"
+  },
+  {
+    "id": "fr-neuchatel-2026",
+    "type": "rules",
+    "title": "Lac de Neuchâtel: Extrait de la législation 2026",
+    "publisher": "Etat de Fribourg",
+    "date": "Ausgabe 2026, abgerufen 05.07.2026",
+    "url": "https://www.fr.ch/document/581056",
+    "usedFor": "Fangzeiten, Mindestmasse und Limiten im Neuenburgersee-Konkordat"
+  },
+  {
+    "id": "fr-morat-2026",
+    "type": "rules",
+    "title": "Lac de Morat: Extrait de la législation 2026",
+    "publisher": "Etat de Fribourg",
+    "date": "Regelperiode 2025-2027, abgerufen 05.07.2026",
+    "url": "https://www.fr.ch/document/581006",
+    "usedFor": "Fangzeiten, Mindestmasse und Limiten im Murtensee-Konkordat"
+  },
+  {
+    "id": "vd-joux-2026",
+    "type": "rules",
+    "title": "Lac de Joux: Extrait de la législation 2026",
+    "publisher": "Canton de Vaud",
+    "date": "Ausgabe 2026, abgerufen 05.07.2026",
+    "url": "https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_pdf/P%C3%AAche/D%C3%A9couvrez_la_p%C3%AAche_dans_le_canton_de_Vaud__/DGE_Reglement_2026_Joux_Def.pdf",
+    "usedFor": "Fangzeiten, Mindestmasse und Limiten für Lac de Joux"
+  },
+  {
+    "id": "fr-opeche",
+    "type": "rules",
+    "title": "Ordonnance concernant l'exercice de la pêche concédée par permis",
+    "publisher": "Etat de Fribourg",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://bdlf.fr.ch/api/fr/versions/8356/pdf_file_with_annexes",
+    "usedFor": "Freiburger See- und Stauseeregeln für Lac de la Gruyère und Schiffenensee"
+  },
+  {
+    "id": "vs-arrete-2024-2028",
+    "type": "rules",
+    "title": "Arrêté quinquennal sur l'exercice de la pêche en Valais 2024-2028",
+    "publisher": "Canton du Valais",
+    "date": "2024-2028, abgerufen 05.07.2026",
+    "url": "https://lex.vs.ch/api/fr/versions/3581/pdf_file",
+    "usedFor": "Walliser Berg- und Stauseen, Mindestmasse und Tagesfanglimiten"
+  },
+  {
+    "id": "vs-legislation-peche",
+    "type": "rules",
+    "title": "Législation pour la pêche",
+    "publisher": "Canton du Valais",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.vs.ch/web/scpf/legislation-pour-la-peche",
+    "usedFor": "Walliser Fischerei-Gesetzgebung und aktuelle Dokumente"
+  },
+  {
+    "id": "vs-carte-peche",
+    "type": "map",
+    "title": "Carte de pêche Valais",
+    "publisher": "Canton du Valais",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://sitonline.vs.ch/tourisme_loisir/peche/#/?lang=fr",
+    "usedFor": "Aktuelle Walliser Gewässerkarte, Saison- und Sonderzonenprüfung"
+  },
+  {
+    "id": "sg-bodensee-2026",
+    "type": "rules",
+    "title": "Fischereibestimmungen Bodensee 2026",
+    "publisher": "Kanton St. Gallen",
+    "date": "2026, abgerufen 05.07.2026",
+    "url": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente/ausfuehrungsbestimmungen-patentgewaesser/_jcr_content/Par/sgch_downloadlist_1528502077/DownloadListPar/sgch_download_1175186621.ocFile/Fischereibestimmungen%20Bodensee%202026.pdf",
+    "usedFor": "Bodensee-Obersee-Fangbestimmungen und Felchenfangverbot"
+  },
+  {
+    "id": "igkb-fischereikarten",
+    "type": "map",
+    "title": "Fischereirechte und Fischschongebiete am Bodensee",
+    "publisher": "Internationale Gewässerschutzkommission für den Bodensee",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.igkb.org/daten-karten/fischereirechte-und-fischschongebiete",
+    "usedFor": "Bodensee- und Untersee-Fischereikarten mit Schutzgebieten und Fischschongebieten"
+  },
+  {
+    "id": "lubw-naturschutzgebiet",
+    "type": "map",
+    "title": "Naturschutzgebiet Feature Layer",
+    "publisher": "Landesanstalt für Umwelt Baden-Württemberg",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://rips-gdi.lubw.baden-wuerttemberg.de/arcgis/rest/services/wfs/Naturschutzgebiet/MapServer/0",
+    "usedFor": "Amtliche Naturschutzgebiet-Geometrien am Bodensee und Untersee"
+  },
+  {
+    "id": "bayern-schutzgebiete",
+    "type": "map",
+    "title": "Schutzgebiete Bayern Feature Layer",
+    "publisher": "Bayerisches Landesamt für Umwelt",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/schutzgebiete_bayern/FeatureServer/0",
+    "usedFor": "Amtliche Naturschutzgebiet-Geometrien am bayerischen Bodenseeufer"
+  },
+  {
+    "id": "untersee-fischereiordnung",
+    "type": "rules",
+    "title": "Unterseefischereiordnung",
+    "publisher": "Internationale Untersee-Fischereibehörden",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.gaienhofen.de/_Resources/Persistent/bb0d584a4877d7290b6bc9248f41c3e40ddf7526/Unterseefischereiordnung.pdf",
+    "usedFor": "Untersee- und Seerhein-Regeln, Mindestmasse, Schonzeiten und Tageslimiten"
+  },
+  {
+    "id": "sg-walensee",
+    "type": "rules",
+    "title": "Fischereivorschriften Walensee",
+    "publisher": "Kanton St. Gallen",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente/ausfuehrungsbestimmungen-patentgewaesser/_jcr_content/Par/sgch_downloadlist_1528502077/DownloadListPar/sgch_download_1401546698.ocFile/Fischereivorschriften%20Walensee.pdf",
+    "usedFor": "Walensee-Fangbestimmungen der Fischereikommission Zürichsee-Linthkanal-Walensee"
+  },
+  {
+    "id": "gl-kloentalersee",
+    "type": "rules",
+    "title": "Freiangelrecht Klöntalersee",
+    "publisher": "Kanton Glarus",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.gl.ch/public/upload/assets/3670/Freiangelrecht_Kloentalersee.pdf",
+    "usedFor": "Klöntalersee-Saison, Mindestmasse, Schonzeiten und Edelfischlimit"
+  },
+  {
+    "id": "lu-vierwaldstaettersee",
+    "type": "rules",
+    "title": "Fischereiausübung Vierwaldstättersee",
+    "publisher": "Kanton Luzern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://lawa.lu.ch/fischerei/angelfischerei/vierwaldstaettersee",
+    "usedFor": "Vierwaldstättersee-Patent- und Vorschriftenhinweise"
+  },
+  {
+    "id": "lu-fischerei-geoportal",
+    "type": "map",
+    "title": "Geoportal Luzern Fischerei",
+    "publisher": "Kanton Luzern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://map.geo.lu.ch/fauna/fischerei/",
+    "usedFor": "Amtliche Luzerner Fischerei- und Patentgeometrien"
+  },
+  {
+    "id": "lu-vierwaldstaettersee-srl-724b",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen Vierwaldstättersee",
+    "publisher": "Kanton Luzern, Systematische Rechtssammlung",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://srl.lu.ch/api/de/versions/4122/pdf_file_with_annexes",
+    "usedFor": "Vierwaldstättersee-Mindestmasse und Schonzeiten"
+  },
+  {
+    "id": "zg-zugersee-bgs",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen Zugersee",
+    "publisher": "Kanton Zug, Gesetzessammlung",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://bgs.zg.ch/api/de/versions/2277/pdf_file_with_annexes",
+    "usedFor": "Zugersee-Mindestmasse, Schonzeiten und konkordatliche Bestimmungen"
+  },
+  {
+    "id": "zg-aegerisee-bgs",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen Ägerisee",
+    "publisher": "Kanton Zug, Gesetzessammlung",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://bgs.zg.ch/api/de/versions/2377/pdf_file_with_annexes",
+    "usedFor": "Ägerisee-Mindestmasse und Schonzeiten"
+  },
+  {
+    "id": "sihlsee-afb-2023",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen Sihlsee ab 2023",
+    "publisher": "Sihlseefischen / Pächter, vom Kanton Schwyz verlinkt",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.sihlseefischen.ch/libraries.files/AFB_ab_2023_Druckversion.pdf",
+    "usedFor": "Sihlsee-Mindestmasse, Entnahmefenster und Grundregeln"
+  },
+  {
+    "id": "sihlsee-merkblatt-2026",
+    "type": "rules",
+    "title": "Merkblatt Ausführungsbestimmungen Sihlsee 2026",
+    "publisher": "Sihlseefischen / Pächter, vom Kanton Schwyz verlinkt",
+    "date": "2026, abgerufen 05.07.2026",
+    "url": "https://www.sihlseefischen.ch/libraries.files/Merkblatt_Ausfuehrungsbestimmungen_2026.pdf",
+    "usedFor": "Aktuelle Sihlsee-Tageslimiten und Jahreshinweise"
+  },
+  {
+    "id": "sz-lauerzersee",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen stehende Gewässer Lauerzersee und Itlimoosweier",
+    "publisher": "Kanton Schwyz",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://www.sz.ch/public/upload/assets/63105/Ausfuehrungsbestimmungen_fuer_die_Angelfischerei_in_stehenden_Gewaessern_Lauerzersee_und_Itlimoosweier.pdf?fp=5",
+    "usedFor": "Lauerzersee-Mindestmasse, Schonzeiten und Tageslimiten"
+  },
+  {
+    "id": "waegitalersee-vorschriften-2025",
+    "type": "rules",
+    "title": "Vorschriften Wägitalersee 2025",
+    "publisher": "Wägitalersee / Pächter, vom Kanton Schwyz verlinkt",
+    "date": "2025, abgerufen 05.07.2026",
+    "url": "https://www.waegitalersee.ch/Vorschriften2025.pdf",
+    "usedFor": "Wägitalersee-Saison, Mindestmasse und Tageslimiten"
+  },
+  {
+    "id": "lu-sempachersee",
+    "type": "rules",
+    "title": "Fischereiausübung Sempachersee",
+    "publisher": "Kanton Luzern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://lawa.lu.ch/fischerei/angelfischerei/sempachersee",
+    "usedFor": "Sempachersee-Fangarten, Mindestmasse, Schonzeiten und Limiten"
+  },
+  {
+    "id": "ow-schonvorschriften",
+    "type": "rules",
+    "title": "Schonvorschriften Fischerei Obwalden",
+    "publisher": "Kanton Obwalden, Gesetzesdatenbank",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://gdb.ow.ch/api/de/versions/1485/pdf_file",
+    "usedFor": "Obwaldner Mindestmasse und Schonzeiten"
+  },
+  {
+    "id": "ow-ausfuehrungsbestimmungen",
+    "type": "rules",
+    "title": "Ausführungsbestimmungen Fischerei Obwalden",
+    "publisher": "Kanton Obwalden, Gesetzesdatenbank",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://gdb.ow.ch/api/de/versions/1994/pdf_file_with_annexes",
+    "usedFor": "Obwaldner Tageslimiten und Ausführungsregeln"
+  },
+  {
+    "id": "ow-lungerersee",
+    "type": "rules",
+    "title": "Sonderbestimmungen Lungerersee",
+    "publisher": "Kanton Obwalden, Gesetzesdatenbank",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://gdb.ow.ch/api/de/versions/1996/pdf_file_with_annexes",
+    "usedFor": "Lungerersee-Sonderregeln, Wintersperre und Gemeindekompetenzen"
+  },
+  {
+    "id": "hallwilersee-uebereinkunft",
+    "type": "rules",
+    "title": "Übereinkunft über den Fischfang im Hallwilersee",
+    "publisher": "Kantone Aargau und Luzern",
+    "date": "Stand 01.01.2022, abgerufen 05.07.2026",
+    "url": "https://srl.lu.ch/api/de/versions/3885/pdf_file",
+    "usedFor": "Hallwilersee-Schonzeiten, Mindestmasse und Tagesfangzahlen"
+  },
+  {
+    "id": "ti-ralcsp-2025",
+    "type": "rules",
+    "title": "Regolamento di applicazione della legge cantonale sulla pesca",
+    "publisher": "Repubblica e Cantone Ticino",
+    "date": "Stand mit Änderung 01.10.2025, abgerufen 05.07.2026",
+    "url": "https://m3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/pdfatto/atto/12026",
+    "usedFor": "Tessiner Mindestmasse, Schonzeiten und Limiten für Verbano und Ceresio"
+  },
+  {
+    "id": "cispp-rda-2025",
+    "type": "rules",
+    "title": "CISPP Regolamento d'applicazione 2025",
+    "publisher": "Commissione italo-svizzera per la pesca",
+    "date": "2025, abgerufen 05.07.2026",
+    "url": "https://www.cispp.org/pdf/RDA-2025.pdf",
+    "usedFor": "Italo-schweizerische Regeln für Lago Maggiore und Lago di Lugano"
+  },
+  {
+    "id": "gr-fbv-2026",
+    "type": "rules",
+    "title": "Fischereibetriebsvorschriften Graubünden 2026",
+    "publisher": "Kanton Graubünden, Amt für Jagd und Fischerei",
+    "date": "2026, abgerufen 05.07.2026",
+    "url": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Documents/Fischen%20in%20Graubuenden/Fischereipatente/FBV%202026%20DE.pdf",
+    "usedFor": "Graubündner Seen, Mindestmasse, Saison und Tageslimiten"
+  },
+  {
+    "id": "sondrio-2026",
+    "type": "rules",
+    "title": "Provincia di Sondrio Determinazione n. 83/2026",
+    "publisher": "Provincia di Sondrio",
+    "date": "22.01.2026, abgerufen 05.07.2026",
+    "url": "https://www.provinciasondrio.it/sites/default/files/contents/pesca/2581/su_det_det_83_2026.pdf",
+    "usedFor": "Italienische Sonderzonen Livigno und Val di Lei"
+  },
+  {
+    "id": "lu-angelfischerei-page",
+    "type": "rules",
+    "title": "Angelfischerei Kanton Luzern",
+    "publisher": "Kanton Luzern",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://lawa.lu.ch/fischerei/angelfischerei",
+    "usedFor": "Luzerner Gewässerübersicht und private Patentausgabestellen wie Baldeggersee"
+  },
+  {
+    "id": "wikimedia-lake-images",
+    "type": "image",
+    "title": "Wikipedia/Wikimedia See-Fotos",
+    "publisher": "Wikimedia Commons und Wikipedia",
+    "date": "abgerufen 05.07.2026",
+    "url": "https://commons.wikimedia.org/",
+    "usedFor": "Echte Headerbilder für Schweizer Seen",
+    "license": "Je Bild unterschiedlich; Wikimedia-Dateiseite vor öffentlichem Launch prüfen",
+    "attributionRequired": true,
+    "attributionText": "Bildquellen: Wikimedia Commons / Wikipedia"
+  },
+  {
     "id": "fish-illustrations",
     "type": "image",
     "title": "Lokale SVG-Fischillustrationen",
@@ -133,6 +692,45 @@
     "status": "Aus lokaler Projektunterlage extrahiert; Rechte vor Veröffentlichung klären."
   },
   {
+    "id": "image-zuerichsee-wikimedia-heni2000",
+    "type": "image",
+    "title": "Zürich Panorama vom Uetliberg",
+    "publisher": "Wikimedia Commons",
+    "date": "10.07.2008",
+    "url": "https://commons.wikimedia.org/wiki/File:Z%C3%BCrich_Panorama_vom_Uetliberg.jpg",
+    "usedFor": "Weitwinkel-Headerfoto Zürichsee",
+    "license": "CC BY-SA 3.0",
+    "author": "Heni2000",
+    "attributionRequired": true,
+    "attributionText": "Heni2000, CC BY-SA 3.0, via Wikimedia Commons"
+  },
+  {
+    "id": "image-greifensee-wikimedia-wade",
+    "type": "image",
+    "title": "Greifensee from the air",
+    "publisher": "Wikimedia Commons",
+    "date": "12.07.2013",
+    "url": "https://commons.wikimedia.org/wiki/File:Greifensee_from_the_air.jpg",
+    "usedFor": "Luftbild-Headerfoto Greifensee",
+    "license": "CC BY-SA 4.0",
+    "author": "Woody Wade",
+    "attributionRequired": true,
+    "attributionText": "Woody Wade, CC BY-SA 4.0, via Wikimedia Commons"
+  },
+  {
+    "id": "image-pfaeffikersee-wikimedia-roland-zh",
+    "type": "image",
+    "title": "Ansicht vom Wanderweg zwischen Rutschberg und Seegräben auf den Pfäffikersee",
+    "publisher": "Wikimedia Commons",
+    "date": "21.05.2016",
+    "url": "https://commons.wikimedia.org/wiki/File:Ansicht_vom_Wanderweg_zwischen_Rutschberg_und_Seegr%C3%A4ben_auf_den_Pf%C3%A4ffikersee_2016-05-21_17-23-24.JPG",
+    "usedFor": "Weitwinkel-Headerfoto Pfäffikersee",
+    "license": "CC BY-SA 3.0",
+    "author": "Roland zh",
+    "attributionRequired": true,
+    "attributionText": "Roland zh, CC BY-SA 3.0, via Wikimedia Commons"
+  },
+  {
     "id": "map-sketch",
     "type": "map",
     "title": "swisstopo Schweizer Basiskarte und OpenStreetMap See-Geometrien",
@@ -153,5 +751,40 @@
     "date": "30.06.2026",
     "usedFor": "Produktumfang, UX, Akzeptanzkriterien und Datenmodell",
     "status": "Interne Anforderung, keine rechtsverbindliche Regelquelle."
+  },
+  {
+    "id": "be-angfisch-schongebiete",
+    "title": "Kanton Bern ANGFISCH Schongebiete",
+    "url": "https://geofiles.be.ch/geoportal/pub/stac/de/ANGFISCH/collection.json",
+    "usedFor": "Amtliche Schongebiets-Geometrien der Berner Angelfischerei",
+    "status": "official"
+  },
+  {
+    "id": "ti-zone-protezione-ittica-wfs",
+    "title": "Geoportale Ticino Zone di protezione ittica WFS",
+    "url": "https://wfs.geo.ti.ch/service?SERVICE=WFS&REQUEST=GetCapabilities",
+    "usedFor": "Amtliche Geometrien der Tessiner Fischerei-Schutz- und Verbotszonen",
+    "status": "official-consultative"
+  },
+  {
+    "id": "ti-decreto-protezione-ittica-2025",
+    "title": "Decreto zone protezione ittica 2025",
+    "url": "https://www3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/legge/num/831",
+    "usedFor": "Rechtsgrundlage der permanenten und temporären Tessiner Fischerei-Schutzgebiete",
+    "status": "official"
+  },
+  {
+    "id": "swisstopo-gewaessernetz",
+    "title": "swissTLM3D Gewässernetz",
+    "url": "https://www.geo.admin.ch/",
+    "usedFor": "Amtliche Gewässernetz-Lagepunkte für Bacheinläufe",
+    "status": "official"
+  },
+  {
+    "id": "sz-waegitalersee-page",
+    "title": "Kanton Schwyz Wägitalersee",
+    "url": "https://www.sz.ch/umweltdepartement/amt-fuer-gewaesser/gewaesserschutz/seen/waegitalersee.html/8756-8758-8802-9447-9450-10712-10723-10741",
+    "usedFor": "Bestätigung der Wägitalersee-Zuflüsse Schlierenbach und Aberenbach",
+    "status": "official"
   }
 ]
