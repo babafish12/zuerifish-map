@@ -616,24 +616,6 @@ a {
   background: rgb(254 242 242 / 94%);
 }
 
-.map-legend {
-  position: absolute;
-  left: clamp(16px, 3vw, 36px);
-  bottom: calc(clamp(18px, 3vw, 34px) + var(--bottom-nav-height) + env(safe-area-inset-bottom));
-  z-index: 12;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: min(420px, calc(100% - 32px));
-  padding: 10px 12px;
-  border: 1px solid rgb(11 111 130 / 16%);
-  border-radius: 8px;
-  color: #31434a;
-  background: rgb(255 255 255 / 88%);
-  box-shadow: 0 12px 30px rgb(14 39 48 / 10%);
-  font-size: .9rem;
-}
-
 .leaflet-bottom {
   bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
 }
@@ -2705,13 +2687,6 @@ a {
   .fish-card-title {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .map-legend {
-    right: 16px;
-    bottom: calc(var(--bottom-nav-height) + 104px + env(safe-area-inset-bottom));
-    max-width: none;
-    font-size: .78rem;
   }
 }
 

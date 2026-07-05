@@ -1,4 +1,4 @@
-import { Eye, EyeOff, Layers, LoaderCircle, LocateFixed, MapPin } from "lucide-react";
+import { Eye, EyeOff, Layers, LoaderCircle, LocateFixed } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -967,11 +967,6 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
             {locationMessage}
           </p>
         ) : null}
-      </div>
-
-      <div className="map-legend" aria-label="Kartenhinweis">
-        <MapPin size={16} aria-hidden="true" />
-        <span>{showRestrictionZones ? "Rot: heute oder ganzjährig verboten · Orange: saisonal aktuell nicht aktiv" : "Fischereiverbotszonen sind ausgeblendet"}</span>
       </div>
     </div>
   );

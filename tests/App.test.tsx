@@ -54,7 +54,8 @@ describe("ZüriFish Map", () => {
 
     expect(within(baseMapOptions).getByRole("button", { name: /Offline/i })).toHaveAttribute("aria-pressed", "false");
     expect(within(baseMapOptions).getByRole("button", { name: /Satellit/i })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByText(/Rot: heute oder ganzjährig verboten/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText("Kartenhinweis")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Rot: heute oder ganzjährig verboten/i)).not.toBeInTheDocument();
     await waitFor(() => {
       expect(window.localStorage.getItem("zuerifish:map-preferences")).toContain('"selectedBaseMapId":"satellit"');
     });
@@ -62,7 +63,7 @@ describe("ZüriFish Map", () => {
     await user.click(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen ausblenden" }));
 
     expect(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen einblenden" })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByText("Fischereiverbotszonen sind ausgeblendet")).toBeInTheDocument();
+    expect(screen.queryByText("Fischereiverbotszonen sind ausgeblendet")).not.toBeInTheDocument();
     await waitFor(() => {
       expect(window.localStorage.getItem("zuerifish:map-preferences")).toContain('"showRestrictionZones":false');
     });
@@ -113,7 +114,7 @@ describe("ZüriFish Map", () => {
     const baseMapOptions = within(mapSwitcher).getByLabelText("Basiskarten auswählen");
     expect(within(baseMapOptions).getByRole("button", { name: /Natur/i })).toHaveAttribute("aria-pressed", "true");
     expect(within(mapSwitcher).getByRole("button", { name: "Fischereiverbotszonen einblenden" })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByText("Fischereiverbotszonen sind ausgeblendet")).toBeInTheDocument();
+    expect(screen.queryByText("Fischereiverbotszonen sind ausgeblendet")).not.toBeInTheDocument();
   });
 
   it("opens and closes the Zürichsee panel from the map", async () => {
