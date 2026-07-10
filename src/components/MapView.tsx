@@ -1,11 +1,13 @@
-import { Eye, EyeOff, Layers, LoaderCircle, LocateFixed } from "lucide-react";
+import { ChevronDown, Eye, EyeOff, Layers, LoaderCircle, LocateFixed, Search, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { fishingRestrictionZones, lakePolygons, offlineMap } from "../lib/data";
+import { fishingRestrictionZones, lakePolygons, lakes } from "../lib/data";
+import { loadOfflineMap } from "../lib/offlineMapData";
+import { getOfflineDisplayMinZoom } from "../lib/offlineMapDisplay";
 import { getRestrictionPeriodStatus } from "../lib/restrictionPeriodStatus";
 import type { FeatureCollection } from "geojson";
-import type { FishingRestrictionFeature, LakeFeature, LakeId, OfflineMapFeature } from "../types";
+import type { FishingRestrictionFeature, Lake, LakeFeature, LakeId, OfflineMapFeature } from "../types";
 import type { RestrictionPeriodStatus } from "../lib/restrictionPeriodStatus";
 
 interface MapViewProps {
@@ -16,8 +18,11 @@ interface MapViewProps {
 type LakeLayer = {
   id: LakeId;
   name: string;
-  polygon: L.Polygon;
+  lake: Lake;
+  polygon: L.Polygon | null;
+  marker: L.CircleMarker | null;
   labelMarker: L.Marker;
+  bounds: L.LatLngBounds;
 };
 
 type RestrictionLayer = {
@@ -57,6 +62,7 @@ type StoredMapPreferences = {
 };
 
 type LocationStatus = "idle" | "locating" | "found" | "unsupported" | "denied" | "unavailable" | "timeout" | "error";
+type LakeLabelDisplay = "compact" | "overview" | "standard" | "detail";
 
 type UserLocation = {
   lat: number;
@@ -160,21 +166,43 @@ const BASEMAP_OPTIONS: BaseMapOption[] = [
 ];
 
 const BASE_STYLE: L.PathOptions = {
-  color: "#04748d",
-  fillColor: "#28c7e8",
-  fillOpacity: 0.28,
-  opacity: 0.95,
+  color: "#0369a1",
+  fillColor: "#38bdf8",
+  fillOpacity: 0.42,
+  opacity: 1,
   pane: LAKE_PANE,
-  weight: 4
+  weight: 3.5
 };
 
 const SELECTED_STYLE: L.PathOptions = {
-  color: "#f59f00",
-  fillColor: "#1da5c6",
-  fillOpacity: 0.38,
+  color: "#075985",
+  fillColor: "#0ea5e9",
+  fillOpacity: 0.56,
   opacity: 1,
   pane: LAKE_PANE,
-  weight: 7
+  weight: 6
+};
+
+const LAKE_MARKER_STYLE: L.CircleMarkerOptions = {
+  className: "lake-point-marker",
+  color: "#0369a1",
+  fillColor: "#38bdf8",
+  fillOpacity: 0.56,
+  opacity: 1,
+  pane: LAKE_PANE,
+  radius: 7,
+  weight: 2.5
+};
+
+const SELECTED_LAKE_MARKER_STYLE: L.CircleMarkerOptions = {
+  className: "lake-point-marker selected",
+  color: "#075985",
+  fillColor: "#0ea5e9",
+  fillOpacity: 1,
+  opacity: 1,
+  pane: LAKE_PANE,
+  radius: 10,
+  weight: 4
 };
 
 const ACTIVE_RESTRICTION_STYLE: L.PathOptions = {
@@ -187,11 +215,11 @@ const ACTIVE_RESTRICTION_STYLE: L.PathOptions = {
 };
 
 const INACTIVE_RESTRICTION_STYLE: L.PathOptions = {
-  color: "#ea580c",
+  color: "#be123c",
   dashArray: "6 5",
-  fillColor: "#fb923c",
-  fillOpacity: 0.14,
-  opacity: 0.9,
+  fillColor: "#fb7185",
+  fillOpacity: 0.16,
+  opacity: 0.88,
   pane: RESTRICTION_PANE,
   weight: 2.2
 };
@@ -235,8 +263,18 @@ const ROAD_WEIGHT_BY_KIND: Record<string, number> = {
   living_street: 1.3
 };
 
-function toLeafletLatLngs(feature: LakeFeature): L.LatLngExpression[][] {
-  return feature.geometry.coordinates.map((ring) => ring.map(([lng, lat]) => [lat, lng]));
+const polygonFeatureByLakeId = new Map(lakePolygons.features.map((feature) => [feature.properties.id, feature]));
+
+function toLeafletPoint([lng, lat]: [number, number]): L.LatLngTuple {
+  return [lat, lng];
+}
+
+function toLeafletLatLngs(feature: LakeFeature): L.LatLngExpression[][] | L.LatLngExpression[][][] {
+  if (feature.geometry.type === "Polygon") {
+    return feature.geometry.coordinates.map((ring) => ring.map(toLeafletPoint));
+  }
+
+  return feature.geometry.coordinates.map((polygon) => polygon.map((ring) => ring.map(toLeafletPoint)));
 }
 
 function toRestrictionLatLngs(feature: FishingRestrictionFeature): L.LatLngExpression[][] | L.LatLngExpression[][][] {
@@ -251,12 +289,21 @@ function getRestrictionStyle(feature: FishingRestrictionFeature): L.PathOptions 
   return getRestrictionPeriodStatus(feature.properties.period).tone === "active" ? ACTIVE_RESTRICTION_STYLE : INACTIVE_RESTRICTION_STYLE;
 }
 
-function createLakeLabelIcon(id: LakeId, name: string, isSelected: boolean): L.DivIcon {
+function createLakeLabelIcon(id: LakeId, name: string, isSelected: boolean, display: LakeLabelDisplay): L.DivIcon {
+  const hasVisibleLabel = display !== "compact" || isSelected;
   const button = document.createElement("button");
   button.type = "button";
-  button.className = isSelected ? "lake-label-control selected" : "lake-label-control";
+  button.className = [
+    "lake-label-control",
+    `lake-label-${hasVisibleLabel ? display : "compact"}`,
+    hasVisibleLabel ? "labeled" : "compact",
+    isSelected ? "selected" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
   button.dataset.lakeId = id;
-  button.textContent = name;
+  button.textContent = hasVisibleLabel ? name : "";
+  button.title = name;
   button.setAttribute("aria-label", `${name} öffnen`);
   button.setAttribute("aria-pressed", String(isSelected));
 
@@ -292,20 +339,94 @@ function createRestrictionTooltipContent(feature: FishingRestrictionFeature, sta
   return wrapper;
 }
 
-function createLakeLayer(feature: LakeFeature): LakeLayer {
-  const polygon = L.polygon(toLeafletLatLngs(feature), BASE_STYLE);
-  const center = polygon.getBounds().getCenter();
+function getLakeLabelDisplay(lake: Lake, zoom: number, isSelected: boolean): LakeLabelDisplay {
+  if (isSelected) {
+    return "detail";
+  }
+
+  const area = lake.areaKm2 ?? 0;
+  const rank = lake.rank ?? Number.POSITIVE_INFINITY;
+
+  if (lake.detailLevel === "full") {
+    return zoom <= 8 ? "overview" : "standard";
+  }
+
+  if (zoom <= 8) {
+    return area >= 30 || rank <= 10 ? "overview" : "compact";
+  }
+
+  if (zoom === 9) {
+    return area >= 8 || rank <= 22 ? "standard" : "compact";
+  }
+
+  if (zoom === 10) {
+    return area >= 3 || rank <= 35 ? "standard" : "compact";
+  }
+
+  return "detail";
+}
+
+function getLakeMarkerRadius(lake: Lake, isSelected: boolean): number {
+  const baseRadius = Math.max(6, Math.min(17, 4.5 + Math.sqrt(lake.areaKm2 ?? 2) * 0.55));
+  return isSelected ? baseRadius + 3 : baseRadius;
+}
+
+function getLakeMarkerStyle(lake: Lake, isSelected: boolean): L.CircleMarkerOptions {
+  return {
+    ...(isSelected ? SELECTED_LAKE_MARKER_STYLE : LAKE_MARKER_STYLE),
+    radius: getLakeMarkerRadius(lake, isSelected)
+  };
+}
+
+function applyLakeMarkerStyle(marker: L.CircleMarker, lake: Lake, isSelected: boolean, radiusOffset = 0) {
+  const radius = getLakeMarkerRadius(lake, isSelected) + radiusOffset;
+  const style = {
+    ...getLakeMarkerStyle(lake, isSelected),
+    radius
+  };
+  const projectedMarker = marker as L.CircleMarker & { _point?: L.Point };
+
+  Object.assign(marker.options, style);
+
+  if (!projectedMarker._point) {
+    return;
+  }
+
+  marker.setStyle(style);
+  marker.setRadius(radius);
+}
+
+function bringPathToFront(path: L.Path) {
+  const renderedPath = path as L.Path & { _path?: SVGElement };
+
+  if (renderedPath._path?.parentNode) {
+    path.bringToFront();
+  }
+}
+
+function getMarkerBounds(lake: Lake, center: L.LatLng): L.LatLngBounds {
+  const radiusMeters = Math.max(1600, Math.min(22_000, Math.sqrt(lake.areaKm2 ?? 1) * 1700));
+  return center.toBounds(radiusMeters);
+}
+
+function createLakeLayer(lake: Lake, feature: LakeFeature | undefined): LakeLayer {
+  const polygon = feature ? L.polygon(toLeafletLatLngs(feature), { ...BASE_STYLE, className: `lake-polygon lake-polygon-${lake.id}` }) : null;
+  const center = polygon?.getBounds().getCenter() ?? (lake.center ? L.latLng(lake.center.lat, lake.center.lng) : SWITZERLAND_BOUNDS.getCenter());
+  const marker = polygon ? null : L.circleMarker(center, getLakeMarkerStyle(lake, false));
 
   return {
-    id: feature.properties.id,
-    name: feature.properties.name,
+    id: lake.id,
+    name: lake.name,
+    lake,
     polygon,
+    marker,
     labelMarker: L.marker(center, {
-      icon: createLakeLabelIcon(feature.properties.id, feature.properties.name, false),
+      icon: createLakeLabelIcon(lake.id, lake.name, false, getLakeLabelDisplay(lake, 8, false)),
       interactive: true,
       keyboard: false,
       zIndexOffset: 500
-    })
+    }),
+    bounds: polygon?.getBounds() ?? getMarkerBounds(lake, center)
   };
 }
 
@@ -343,9 +464,9 @@ function createOfflineLabelIcon(feature: OfflineMapFeature): L.DivIcon {
   });
 }
 
-function createOfflineBaseMapLayerGroups(): OfflineBaseMapLayerGroup[] {
-  const featuresByZoom = offlineMap.features.reduce<Map<number, OfflineMapFeature[]>>((groups, feature) => {
-    const minZoom = feature.properties.minZoom;
+function createOfflineBaseMapLayerGroups(offlineFeatures: OfflineMapFeature[]): OfflineBaseMapLayerGroup[] {
+  const featuresByZoom = offlineFeatures.reduce<Map<number, OfflineMapFeature[]>>((groups, feature) => {
+    const minZoom = getOfflineDisplayMinZoom(feature);
     const features = groups.get(minZoom) ?? [];
     features.push(feature);
     groups.set(minZoom, features);
@@ -600,6 +721,31 @@ function fitBoundsWhenSized(map: L.Map, bounds: L.LatLngBounds, options: L.FitBo
   map.setView(bounds.getCenter(), fallbackZoom, { animate: false });
 }
 
+function syncLakeLayerStyles(map: L.Map, layers: Record<LakeId, LakeLayer>, selectedLakeId: LakeId | null) {
+  const zoom = map.getZoom();
+
+  Object.values(layers).forEach((layer) => {
+    const isSelected = selectedLakeId === layer.id;
+
+    layer.polygon?.setStyle(isSelected ? SELECTED_STYLE : BASE_STYLE);
+    if (layer.marker) {
+      applyLakeMarkerStyle(layer.marker, layer.lake, isSelected);
+    }
+    layer.labelMarker.setIcon(createLakeLabelIcon(layer.id, layer.name, isSelected, getLakeLabelDisplay(layer.lake, zoom, isSelected)));
+    layer.labelMarker.setZIndexOffset(isSelected ? 900 : 500);
+
+    if (isSelected) {
+      if (layer.polygon) {
+        bringPathToFront(layer.polygon);
+      }
+
+      if (layer.marker) {
+        bringPathToFront(layer.marker);
+      }
+    }
+  });
+}
+
 function formatAccuracy(accuracyMeters: number): string {
   if (accuracyMeters >= 1000) {
     return `${(accuracyMeters / 1000).toFixed(1)} km`;
@@ -635,6 +781,10 @@ function getLocationError(error: GeolocationPositionError): { status: LocationSt
 
 export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
   const [mapPreferences, setMapPreferences] = useState<StoredMapPreferences>(readStoredMapPreferences);
+  const [isMapSwitcherOpen, setIsMapSwitcherOpen] = useState(false);
+  const [lakeQuery, setLakeQuery] = useState("");
+  const [offlineFeatures, setOfflineFeatures] = useState<OfflineMapFeature[] | null>(null);
+  const [offlineMapStatus, setOfflineMapStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [locationStatus, setLocationStatus] = useState<LocationStatus>("idle");
   const [locationMessage, setLocationMessage] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
@@ -647,18 +797,67 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
   const layerRefs = useRef<Record<LakeId, LakeLayer> | null>(null);
   const selectedLakeIdRef = useRef<LakeId | null>(selectedLakeId);
 
-  const offlineBaseMapLayerGroups = useMemo(createOfflineBaseMapLayerGroups, []);
-  const lakeLayers = useMemo(() => lakePolygons.features.map(createLakeLayer), []);
+  const offlineBaseMapLayerGroups = useMemo(() => createOfflineBaseMapLayerGroups(offlineFeatures ?? []), [offlineFeatures]);
+  const lakeLayers = useMemo(() => lakes.map((lake) => createLakeLayer(lake, polygonFeatureByLakeId.get(lake.id))), []);
   const restrictionLayers = useMemo(() => [...fishingRestrictionZones.features].sort(compareRestrictionFeatures).map(createRestrictionLayer), []);
+  const lakeSearchResults = useMemo(() => {
+    const normalizedQuery = lakeQuery
+      .toLocaleLowerCase("de-CH")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+
+    if (!normalizedQuery) {
+      return [];
+    }
+
+    return lakes
+      .filter((lake) =>
+        `${lake.name} ${lake.canton}`
+          .toLocaleLowerCase("de-CH")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(normalizedQuery)
+      )
+      .slice(0, 5);
+  }, [lakeQuery]);
   const { selectedBaseMapId, showRestrictionZones } = mapPreferences;
+  const selectedBaseMapOption = getBaseMapOption(selectedBaseMapId);
   const RestrictionToggleIcon = showRestrictionZones ? EyeOff : Eye;
   const isLocating = locationStatus === "locating";
   const locationButtonText = isLocating ? "Sucht..." : userLocation ? "Aktualisieren" : "Standort";
   const locationButtonLabel = isLocating ? "Standort wird gesucht" : userLocation ? "Standort erneut suchen" : "Standort anzeigen";
+  const mapSwitcherToggleLabel = isMapSwitcherOpen
+    ? "Kartenauswahl schliessen"
+    : `Kartenauswahl öffnen, aktuell ${selectedBaseMapOption.label}`;
 
   useEffect(() => {
     writeStoredMapPreferences(mapPreferences);
   }, [mapPreferences]);
+
+  useEffect(() => {
+    if (selectedBaseMapId !== "offline" || offlineFeatures) {
+      return;
+    }
+
+    const controller = new AbortController();
+    setOfflineMapStatus("loading");
+
+    loadOfflineMap(controller.signal)
+      .then((offlineMap) => {
+        setOfflineFeatures(offlineMap.features);
+        setOfflineMapStatus("ready");
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
+        setOfflineMapStatus("error");
+      });
+
+    return () => controller.abort();
+  }, [offlineFeatures, selectedBaseMapId]);
 
   useEffect(() => {
     selectedLakeIdRef.current = selectedLakeId;
@@ -672,7 +871,7 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
       const layer = layerRefs.current?.[lakeId];
 
       if (map && layer) {
-        fitBoundsWhenSized(map, layer.polygon.getBounds(), { maxZoom: 12, padding: [92, 92] }, 12);
+        fitBoundsWhenSized(map, layer.bounds, { maxZoom: layer.polygon ? 12 : 11, padding: [92, 92] }, layer.polygon ? 12 : 10);
       }
     },
     [onSelectLake]
@@ -748,19 +947,59 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
     }, {} as Record<LakeId, LakeLayer>);
 
     lakeLayers.forEach((layer) => {
-      layer.polygon
-        .addTo(nextMap)
-        .on("click", () => selectLakeWithoutZoom(layer.id))
-        .on("mouseover", () => layer.polygon.setStyle({ weight: selectedLakeIdRef.current === layer.id ? 7 : 5 }))
-        .on("mouseout", () => layer.polygon.setStyle(selectedLakeIdRef.current === layer.id ? SELECTED_STYLE : BASE_STYLE));
+      if (layer.polygon) {
+        layer.polygon
+          .addTo(nextMap)
+          .on("click", () => selectLakeWithoutZoom(layer.id))
+          .on("mouseover", () => layer.polygon?.setStyle({ weight: selectedLakeIdRef.current === layer.id ? 6 : 5 }))
+          .on("mouseout", () => layer.polygon?.setStyle(selectedLakeIdRef.current === layer.id ? SELECTED_STYLE : BASE_STYLE));
+      }
+
+      if (layer.marker) {
+        layer.marker
+          .addTo(nextMap)
+          .on("click", () => selectLakeWithoutZoom(layer.id))
+          .on("mouseover", () => {
+            const isSelected = selectedLakeIdRef.current === layer.id;
+            if (layer.marker) {
+              applyLakeMarkerStyle(layer.marker, layer.lake, isSelected, isSelected ? 0 : 2);
+            }
+          })
+          .on("mouseout", () => {
+            const isSelected = selectedLakeIdRef.current === layer.id;
+            if (layer.marker) {
+              applyLakeMarkerStyle(layer.marker, layer.lake, isSelected);
+            }
+          });
+      }
 
       layer.labelMarker.addTo(nextMap).on("click", () => handleSelectLake(layer.id));
     });
 
-    const bounds = L.featureGroup(lakeLayers.map((layer) => layer.polygon)).getBounds();
+    const syncLakeLabels = () => {
+      const layers = layerRefs.current;
+
+      if (layers) {
+        syncLakeLayerStyles(nextMap, layers, selectedLakeIdRef.current);
+      }
+    };
+
+    syncLakeLabels();
+    nextMap.on("zoomend", syncLakeLabels);
+
+    const lakeBoundsLayers: L.Layer[] = [];
+    lakeLayers.forEach((layer) => {
+      if (layer.polygon) {
+        lakeBoundsLayers.push(layer.polygon);
+      } else if (layer.marker) {
+        lakeBoundsLayers.push(layer.marker);
+      }
+    });
+    const bounds = L.featureGroup(lakeBoundsLayers).getBounds();
     fitBoundsWhenSized(nextMap, bounds, { padding: [46, 46] }, 9);
 
     return () => {
+      nextMap.off("zoomend", syncLakeLabels);
       nextMap.remove();
       mapRef.current = null;
       layerRefs.current = null;
@@ -889,22 +1128,15 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
   }, [offlineBaseMapLayerGroups, selectedBaseMapId]);
 
   useEffect(() => {
+    selectedLakeIdRef.current = selectedLakeId;
     const layers = layerRefs.current;
+    const map = mapRef.current;
 
-    if (!layers) {
+    if (!layers || !map) {
       return;
     }
 
-    Object.values(layers).forEach((layer) => {
-      const isSelected = selectedLakeId === layer.id;
-      layer.polygon.setStyle(isSelected ? SELECTED_STYLE : BASE_STYLE);
-      layer.labelMarker.setIcon(createLakeLabelIcon(layer.id, layer.name, isSelected));
-      layer.labelMarker.setZIndexOffset(isSelected ? 900 : 500);
-
-      if (isSelected) {
-        layer.polygon.bringToFront();
-      }
-    });
+    syncLakeLayerStyles(map, layers, selectedLakeId);
   }, [selectedLakeId]);
 
   return (
@@ -912,42 +1144,111 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
       <div
         ref={mapContainerRef}
         className={selectedBaseMapId === "offline" ? "leaflet-map offline-basemap" : "leaflet-map"}
-        aria-label="Interaktive Fischerei-Karte mit wechselbaren Basiskarten, lokalem Offline-Modus, markiertem Zürichsee, Greifensee, Pfäffikersee und rot oder orange markierten Fischereiverbotszonen an Bachmündungen und Seeschutzzonen"
+        aria-label={`Interaktive Fischerei-Karte mit wechselbaren Basiskarten, lokalem Offline-Modus, ${lakes.length} Schweizer Seen, blau hervorgehobenen Seen und rot markierten Fischereiverbotszonen an erfassten Zürcher Bachmündungen und Seeschutzzonen`}
       />
 
-      <div className="map-style-switcher" aria-label="Kartentyp auswählen">
-        <div className="map-style-heading" aria-hidden="true">
-          <Layers size={15} />
-          <span>Karte</span>
+      <div className="map-lake-search">
+        <label className="sr-only" htmlFor="map-lake-search-input">
+          See auf der Karte suchen
+        </label>
+        <div className="map-lake-search-field">
+          <Search size={18} aria-hidden="true" />
+          <input
+            id="map-lake-search-input"
+            type="search"
+            value={lakeQuery}
+            placeholder="See suchen"
+            autoComplete="off"
+            onChange={(event) => setLakeQuery(event.currentTarget.value)}
+          />
+          {lakeQuery ? (
+            <button type="button" aria-label="Kartensuche leeren" onClick={() => setLakeQuery("")}>
+              <X size={17} aria-hidden="true" />
+            </button>
+          ) : null}
         </div>
-        <div className="map-style-options" aria-label="Basiskarten auswählen">
-          {BASEMAP_OPTIONS.map((option) => {
-            const isSelected = selectedBaseMapId === option.id;
 
-            return (
-              <button
-                key={option.id}
-                type="button"
-                className={isSelected ? "map-style-option active" : "map-style-option"}
-                aria-pressed={isSelected}
-                onClick={() => setMapPreferences((preferences) => ({ ...preferences, selectedBaseMapId: option.id }))}
-              >
-                <span className="map-style-name">{option.label}</span>
-                <span className="map-style-description">{option.description}</span>
-              </button>
-            );
-          })}
-        </div>
+        {lakeQuery.trim() ? (
+          <div className="map-lake-search-results" aria-label="Gefundene Seen">
+            {lakeSearchResults.length > 0 ? (
+              lakeSearchResults.map((lake) => (
+                <button
+                  key={lake.id}
+                  type="button"
+                  onClick={() => {
+                    setLakeQuery("");
+                    handleSelectLake(lake.id);
+                  }}
+                >
+                  <strong>{lake.name}</strong>
+                  <span>{lake.canton}</span>
+                </button>
+              ))
+            ) : (
+              <p>Kein See gefunden. Suche nach Name oder Region.</p>
+            )}
+          </div>
+        ) : null}
+      </div>
+
+      {selectedBaseMapId === "offline" && offlineMapStatus !== "ready" ? (
+        <p className={`map-data-status ${offlineMapStatus}`} role="status" aria-live="polite">
+          {offlineMapStatus === "error" ? "Offline-Grundkarte nicht geladen. Seen bleiben wählbar." : "Offline-Karte wird vorbereitet …"}
+        </p>
+      ) : null}
+
+      <div className={isMapSwitcherOpen ? "map-style-switcher expanded" : "map-style-switcher collapsed"} role="group" aria-label="Kartenauswahl">
         <button
           type="button"
-          className={showRestrictionZones ? "map-restriction-toggle active" : "map-restriction-toggle"}
-          aria-pressed={showRestrictionZones}
-          aria-label={showRestrictionZones ? "Fischereiverbotszonen ausblenden" : "Fischereiverbotszonen einblenden"}
-          onClick={() => setMapPreferences((preferences) => ({ ...preferences, showRestrictionZones: !preferences.showRestrictionZones }))}
+          className="map-style-toggle"
+          aria-expanded={isMapSwitcherOpen}
+          aria-controls="map-style-menu"
+          aria-label={mapSwitcherToggleLabel}
+          onClick={() => setIsMapSwitcherOpen((isOpen) => !isOpen)}
         >
-          <RestrictionToggleIcon size={17} aria-hidden="true" />
-          <span>{showRestrictionZones ? "Zonen ausblenden" : "Zonen anzeigen"}</span>
+          <span className="map-style-toggle-main">
+            <Layers size={17} aria-hidden="true" />
+            <span>Karte wählen</span>
+          </span>
+          <span className="map-style-current">{selectedBaseMapOption.label}</span>
+          <ChevronDown className="map-style-chevron" size={17} aria-hidden="true" />
         </button>
+
+        {isMapSwitcherOpen ? (
+          <div className="map-style-menu" id="map-style-menu">
+            <div className="map-style-options" aria-label="Basiskarten auswählen">
+              {BASEMAP_OPTIONS.map((option) => {
+                const isSelected = selectedBaseMapId === option.id;
+
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={isSelected ? "map-style-option active" : "map-style-option"}
+                    aria-pressed={isSelected}
+                    onClick={() => {
+                      setMapPreferences((preferences) => ({ ...preferences, selectedBaseMapId: option.id }));
+                      setIsMapSwitcherOpen(false);
+                    }}
+                  >
+                    <span className="map-style-name">{option.label}</span>
+                    <span className="map-style-description">{option.description}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              className={showRestrictionZones ? "map-restriction-toggle active" : "map-restriction-toggle"}
+              aria-pressed={showRestrictionZones}
+              aria-label={showRestrictionZones ? "Fischereiverbotszonen ausblenden" : "Fischereiverbotszonen einblenden"}
+              onClick={() => setMapPreferences((preferences) => ({ ...preferences, showRestrictionZones: !preferences.showRestrictionZones }))}
+            >
+              <RestrictionToggleIcon size={17} aria-hidden="true" />
+              <span>{showRestrictionZones ? "Zonen ausblenden" : "Zonen anzeigen"}</span>
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <div className="map-location-control">
@@ -968,6 +1269,7 @@ export function MapView({ selectedLakeId, onSelectLake }: MapViewProps) {
           </p>
         ) : null}
       </div>
+
     </div>
   );
 }

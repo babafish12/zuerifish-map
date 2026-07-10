@@ -1,0 +1,990 @@
+[
+  {
+    "lakeId": "lac-leman",
+    "coverage": "verified",
+    "jurisdictionLabel": "Léman-Konkordat Schweiz/Frankreich",
+    "checkedAt": "2026-07-05",
+    "summary": "International geregelter Genfersee; die 2026-Tabelle nennt Fangzeit, Mindestmass und Tages-/Jahreslimiten direkt.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Seeforelle", "value": "35 cm · Fangzeit bis 04.10. · 4/Tag, 100/Jahr" },
+          { "label": "Seesaibling", "value": "30 cm · 18.01.-04.10. · 8/Tag, 200/Jahr" },
+          { "label": "Felchen", "value": "37 cm · Fangzeit bis 04.10. · 10/Tag, 200/Jahr" },
+          { "label": "Hecht", "value": "50 cm · 01.01.-19.03. und 21.04.-31.12. · 5/Tag" },
+          { "label": "Egli", "value": "15 cm · 01.01.-30.04. und 26.05.-31.12. · 100/Tag" }
+        ]
+      },
+      {
+        "id": "gear",
+        "title": "Patent und Geräte",
+        "items": [
+          { "label": "Ohne Patent", "value": "Schweizer Ufer: 1 schwimmende Angel mit festem Schwimmer und einfachem Haken." },
+          { "label": "Fangzeit", "value": "Sportfischerei höchstens 30 Minuten vor Sonnenaufgang bis 30 Minuten nach Sonnenuntergang." }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Sperren",
+        "tone": "warning",
+        "items": [
+          { "label": "Schutzbereiche", "value": "Schilfgürtel, Naturschutzgebiete und markierte Mündungsperimeter sind gesperrt; in Schweizer Gewässern keine Wurfangel in Häfen und von öffentlichen Landestegen." }
+        ]
+      }
+    ],
+    "sourceIds": ["vd-leman-2026", "ge-leman-reglement-2026"]
+  },
+  {
+    "lakeId": "bodensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Bodensee-Obersee SG/TG/international",
+    "checkedAt": "2026-07-05",
+    "summary": "Für den Bodensee-Obersee gelten internationale Bodensee-Bestimmungen; Felchen bleiben 2024-2026 gesperrt.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen", "value": "Fangverbot 2024-2026" },
+          { "label": "Seeforelle", "value": "60 cm · Schonzeit 01.11.-10.01." },
+          { "label": "Zander", "value": "40 cm · Schonzeit 01.04.-31.05." },
+          { "label": "Barsch/Egli", "value": "13 cm vom 10.05.-15.09. · Schonzeit 20.04.-10.05. · 30/Tag" },
+          { "label": "Rötel", "value": "kein Mindestmass · Schonzeit 01.11.-31.12. · 5/Tag" },
+          { "label": "Aal", "value": "50 cm · keine Schonzeit" },
+          { "label": "Karpfen / Schleie", "value": "Karpfen 25 cm; Schleie 20 cm" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Grenzsee",
+        "tone": "warning",
+        "items": [
+          { "label": "Geltung", "value": "Obersee-Regeln nicht automatisch auf Untersee/Seerhein übertragen; dort gilt eine eigene Ordnung." }
+        ]
+      }
+    ],
+    "sourceIds": ["sg-bodensee-2026"]
+  },
+  {
+    "lakeId": "lac-de-neuchatel",
+    "coverage": "verified",
+    "jurisdictionLabel": "Konkordat NE/VD/FR",
+    "checkedAt": "2026-07-05",
+    "summary": "Der 2026-Auszug für den Neuenburgersee führt die wichtigsten Fangarten mit erlaubten Fangzeiträumen, Mindestmassen und Limiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Seeforelle", "value": "40 cm · 18.01.-25.10. · 3/Tag, 30/Jahr" },
+          { "label": "Hecht", "value": "45 cm · 01.01.-31.03. und 21.04.-31.12. · 7/Tag, 100/Jahr" },
+          { "label": "Felchen", "value": "25 cm · 01.03.-14.10. · 8/Tag" },
+          { "label": "Egli", "value": "kein Mindestmass · 01.01.-14.04. und 01.06.-31.12. · 80/Tag, 1800/Jahr" },
+          { "label": "Wels", "value": "50 cm · 01.01.-14.05. und 16.06.-31.12. · keine Tageslimite im Auszug genannt" }
+        ]
+      },
+      {
+        "id": "protected",
+        "title": "Geschützt",
+        "tone": "ban",
+        "items": [
+          { "label": "Nicht entnehmen", "value": "Aal, Bitterling, Nase, Äsche und Seesaibling sind ganzjährig geschützt; Krebse dürfen nicht gefangen werden." }
+        ]
+      }
+    ],
+    "sourceIds": ["fr-neuchatel-2026", "ne-peche", "fr-fischerei"]
+  },
+  {
+    "lakeId": "verbano",
+    "coverage": "verified",
+    "jurisdictionLabel": "Tessin/Italien, CISPP",
+    "checkedAt": "2026-07-05",
+    "summary": "Lago Maggiore/Verbano ist ein Grenzsee; Tessin und CISPP nennen artspezifische Schonzeiten, Mindestmasse und Hauptlimiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Trota / Forelle", "value": "40 cm · Schonzeit 26.09.-20.12." },
+          { "label": "Salmerino / Saibling", "value": "25 cm · Schonzeit 15.11.-24.01." },
+          { "label": "Coregone", "value": "Lavarello 30 cm, Bondella 25 cm · Schonzeit 01.11.-31.01." },
+          { "label": "Luccio / Hecht", "value": "45 cm · Schonzeit 15.03.-30.04. · 2/Tag" },
+          { "label": "Pesce persico / Egli", "value": "18 cm · Schonzeit 01.04.-31.05. · 50/Tag" },
+          { "label": "Lucioperca / Zander", "value": "40 cm · Schonzeit 01.04.-31.05. · 5/Tag" },
+          { "label": "Carpa / Tinca / Agone", "value": "Karpfen 30 cm, Schleie 25-30 cm, Agone 20 cm; artspezifische Schonzeiten laut CISPP/Tessin prüfen." }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Grenzsee",
+        "tone": "warning",
+        "items": [
+          { "label": "Abweichung", "value": "Bei Schleie/Tinca unterscheiden sich Tessin und CISPP beim Mindestmass; vor Ort die zuständige Seite des Sees prüfen." }
+        ]
+      }
+    ],
+    "sourceIds": ["ti-ralcsp-2025", "cispp-rda-2025"]
+  },
+  {
+    "lakeId": "vierwaldstaettersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Interkantonal LU/UR/SZ/OW/NW",
+    "checkedAt": "2026-07-05",
+    "summary": "Die Fischerei richtet sich nach der interkantonalen Vereinbarung und den Ausführungsbestimmungen zum Vierwaldstättersee.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "35 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Rötel / Seesaibling", "value": "22 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Albeli", "value": "22 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Balchen / Felchen", "value": "30 cm · Schonzeit 15.10.-25.12." },
+          { "label": "Hecht", "value": "50 cm · Schonzeit 15.03.-30.04." },
+          { "label": "Zander", "value": "40 cm · Schonzeit 15.04.-31.05." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Hinweis",
+        "tone": "warning",
+        "items": [
+          { "label": "Tageslimiten", "value": "Im geprüften Auszug nicht als einfache Tageslimiten-Tabelle sichtbar; Patentgebiet und lokale Bestimmungen zusätzlich prüfen." }
+        ]
+      }
+    ],
+    "sourceIds": ["lu-vierwaldstaettersee", "lu-vierwaldstaettersee-srl-724b"]
+  },
+  {
+    "lakeId": "zuerichsee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Zürichsee/Obersee ZH/SG/SZ",
+    "checkedAt": "2026-07-05",
+    "summary": "Zürichsee mit eigener kantonaler 2026-Tabelle für Forellen, Felchen, Seesaibling, Hecht, Zander und Egli.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "40 cm · Schonzeit 01.10.-25.12. · 4/Tag" },
+          { "label": "Felchenartige", "value": "25 cm · Schonzeit 20.11.-31.12. · 10/Tag" },
+          { "label": "Seesaibling / Rötel", "value": "25 cm · Schonzeit 01.10.-25.12. · 5/Tag" },
+          { "label": "Hecht", "value": "kein Mindestmass · keine Schonzeit · 5/Tag" },
+          { "label": "Zander", "value": "kein Mindestmass · keine Schonzeit · keine Tageslimite" },
+          { "label": "Egli", "value": "kein Mindestmass · keine Schonzeit · 50/Tag" }
+        ]
+      },
+      {
+        "id": "protected",
+        "title": "Geschützt",
+        "tone": "ban",
+        "items": [
+          { "label": "Äsche", "value": "Ganzjährig geschützt; befristetes Äschenfangverbot 01.10.2026-30.09.2029 für Zürcher Gewässer." }
+        ]
+      }
+    ],
+    "sourceIds": ["zh-fanglimiten-2026", "zh-angelfischerei-auszug-2026", "zh-aeschenfangverbot-2026"]
+  },
+  {
+    "lakeId": "untersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Untersee/Seerhein Schweiz/Baden-Württemberg",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Untersee folgt nicht den Obersee-Regeln, sondern der Unterseefischereiordnung.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen / Gangfisch", "value": "30 cm · Schonzeit 15.10.-20.12. · 10/Tag" },
+          { "label": "Forellen", "value": "35 cm · Schonzeit 01.10.-31.12." },
+          { "label": "Hecht", "value": "40 cm · Schonzeit 15.03.-15.05." },
+          { "label": "Zander", "value": "35 cm · keine Schonzeit" },
+          { "label": "Aal", "value": "50 cm · keine Schonzeit" },
+          { "label": "Wels", "value": "100 cm · keine Schonzeit" },
+          { "label": "Barsch/Egli", "value": "kein Mindestmass · Barschlaichzeit nach Festsetzung · 50/Tag" }
+        ]
+      }
+    ],
+    "sourceIds": ["untersee-fischereiordnung", "tg-webshop-efj", "sh-fischerei"]
+  },
+  {
+    "lakeId": "ceresio",
+    "coverage": "verified",
+    "jurisdictionLabel": "Tessin/Italien, CISPP",
+    "checkedAt": "2026-07-05",
+    "summary": "Lago di Lugano/Ceresio ist ein Grenzsee; Tessin und CISPP regeln Mindestmasse, Schonzeiten und Hauptlimiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Trota / Forelle", "value": "40 cm · Schonzeit 26.09.-20.12." },
+          { "label": "Salmerino / Saibling", "value": "25 cm · Schonzeit 15.11.-24.01." },
+          { "label": "Coregone", "value": "30 cm · Schonzeit je nach Tessin/CISPP 15.11.-24.01. oder 01.12.-31.01." },
+          { "label": "Luccio / Hecht", "value": "45 cm · Schonzeit 15.03.-30.04. · 2/Tag" },
+          { "label": "Pesce persico / Egli", "value": "18 cm · Schonzeit 01.04.-31.05. · 50/Tag" },
+          { "label": "Lucioperca / Zander", "value": "40 cm · Schonzeit 01.04.-31.05. · 5/Tag" },
+          { "label": "Carpa / Tinca / Agone", "value": "Karpfen 30 cm, Schleie 25-30 cm, Agone 20 cm; artspezifische Schonzeiten laut CISPP/Tessin prüfen." }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Grenzsee",
+        "tone": "warning",
+        "items": [
+          { "label": "Abweichung", "value": "Coregone-Schonzeit und Tinca-Mindestmass unterscheiden sich zwischen Tessin- und CISPP-Dokumenten." }
+        ]
+      }
+    ],
+    "sourceIds": ["ti-ralcsp-2025", "cispp-rda-2025"]
+  },
+  {
+    "lakeId": "thunersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Bern",
+    "checkedAt": "2026-07-05",
+    "summary": "Für den Thunersee nennt Bern die wichtigsten Tagesfangzahlen, Fangmindestmasse und Schonzeiten direkt.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen", "value": "25 cm · Schonzeit 01.10.-31.12. · 15/Tag" },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit · 100/Tag" },
+          { "label": "Forellen", "value": "45 cm · Schonzeit 01.09.-31.01. · 3/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Seesaibling", "value": "22 cm · Schonzeit 01.10.-31.12. · Forellen/Saiblinge zusammen 6/Tag" }
+        ]
+      },
+      {
+        "id": "protected",
+        "title": "Geschützt",
+        "tone": "ban",
+        "items": [
+          { "label": "Äsche", "value": "Im Thunersee ganzjährig geschont." }
+        ]
+      }
+    ],
+    "sourceIds": ["be-freiangelei-2024", "be-reglement-2026"]
+  },
+  {
+    "lakeId": "lac-de-bienne",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Bern",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Bielersee ist einer der drei Berner Grossseen mit Freiangelei und klarer Tagesfangtabelle.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen", "value": "23 cm · Schonzeit 01.11.-31.12. · 20/Tag" },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit · 100/Tag" },
+          { "label": "Forellen", "value": "45 cm · Schonzeit 01.09.-31.01. · 3/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Zander", "value": "kein Mindestmass · Schonzeit 01.04.-31.05. · 5/Tag" },
+          { "label": "Seesaibling", "value": "22 cm · Schonzeit 01.11.-31.12. · Forellen/Saiblinge zusammen 6/Tag" }
+        ]
+      }
+    ],
+    "sourceIds": ["be-freiangelei-2024", "be-reglement-2026"]
+  },
+  {
+    "lakeId": "zugersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Konkordat ZG/SZ/LU",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Zugersee hat konkordatliche Mindestmasse und Schonzeiten; Kanton Zug weist zusätzlich auf PFAS-Verzehrhinweise hin.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forelle", "value": "40 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Rötel", "value": "22 cm · Schonzeit 15.10.-15.01." },
+          { "label": "Felchen", "value": "28 cm · Schonzeit 15.11.-31.01." },
+          { "label": "Hecht", "value": "50 cm · Schonzeit 01.03.-30.04." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" }
+        ]
+      },
+      {
+        "id": "food",
+        "title": "Verzehr",
+        "tone": "warning",
+        "items": [
+          { "label": "PFAS-Hinweis", "value": "Hecht und Egli aus dem Zugersee gemäss Kanton Zug nur zum Eigenverzehr und nicht weitergeben." }
+        ]
+      }
+    ],
+    "sourceIds": ["zg-zugersee-bgs", "zg-fischerei"]
+  },
+  {
+    "lakeId": "brienzersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Bern",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Brienzersee ist ein Berner Grosssee mit Freiangelei und expliziter Fangtabelle.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen", "value": "18 cm · Schonzeit 01.11.-31.12. · 25/Tag" },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit · 100/Tag" },
+          { "label": "Forellen", "value": "45 cm · Schonzeit 01.09.-31.01. · 3/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Seesaibling", "value": "22 cm · Schonzeit 01.11.-31.12. · Forellen/Saiblinge zusammen 6/Tag" }
+        ]
+      }
+    ],
+    "sourceIds": ["be-freiangelei-2024", "be-reglement-2026"]
+  },
+  {
+    "lakeId": "walensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "SG/GL, Fischereikommission Zürichsee-Linthkanal-Walensee",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Walensee hat eigene Ausführungsbestimmungen der Fischereikommission Zürichsee-Linthkanal-Walensee.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "40 cm · Schonzeit 01.10.-25.12. · 4/Tag" },
+          { "label": "Blalig", "value": "28 cm · Schonzeit 20.11.-31.12. · 5/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.04.-31.05. · 5/Tag" },
+          { "label": "Äsche", "value": "32 cm · Schonzeit 01.02.-31.05." },
+          { "label": "Seesaibling", "value": "Schonmass aufgehoben · Schonzeit 01.10.-25.12." },
+          { "label": "Albeli", "value": "Schonmass aufgehoben · Schonzeit 20.11.-31.12." }
+        ]
+      }
+    ],
+    "sourceIds": ["sg-walensee", "gl-fischereipatente"]
+  },
+  {
+    "lakeId": "lac-de-morat-murtensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Konkordat FR/VD",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Murtensee wird in einem eigenen Konkordatsauszug geführt; die 2025-2027-Regeln gelten weiter.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Seeforelle", "value": "45 cm · 12.01.-19.10. · 2/Tag, 20/Jahr" },
+          { "label": "Felchen", "value": "30 cm · 01.01.-14.10. · 8/Tag, 100/Jahr" },
+          { "label": "Hecht", "value": "45 cm · 01.01.-14.03. und 16.04.-31.12. · 5/Tag, 100/Jahr" },
+          { "label": "Zander", "value": "kein Mindestmass · 01.01.-14.04. und 01.06.-31.12. · 5/Tag, 50/Jahr" },
+          { "label": "Egli", "value": "kein Mindestmass · 01.01.-14.04. und 01.06.-31.12. · 70/Tag, 1500/Jahr" },
+          { "label": "Wels", "value": "50 cm · 01.01.-14.05. und 16.06.-31.12. · keine Tageslimite im Auszug genannt" }
+        ]
+      }
+    ],
+    "sourceIds": ["fr-morat-2026", "fr-fischerei", "vd-permis-peche"]
+  },
+  {
+    "lakeId": "sempachersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Luzern",
+    "checkedAt": "2026-07-05",
+    "summary": "Die Luzerner Sempachersee-Seite nennt die Fangarten und Limits für die Angelfischerei direkt.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "35 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Seesaibling", "value": "22 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Balchen", "value": "25 cm · Schonzeit 15.11.-25.12. · 15/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 15.03.-30.04." },
+          { "label": "Zander", "value": "40 cm · Schonzeit 01.04.-31.05." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" }
+        ]
+      },
+      {
+        "id": "protected",
+        "title": "Geschützt",
+        "tone": "ban",
+        "items": [
+          { "label": "Aal", "value": "Fangverbot." }
+        ]
+      }
+    ],
+    "sourceIds": ["lu-sempachersee", "lu-fischereipatente"]
+  },
+  {
+    "lakeId": "sihlsee",
+    "coverage": "delegatedPacht",
+    "jurisdictionLabel": "Kanton Schwyz, Pachtsee",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Kanton Schwyz verweist für den Pachtsee auf die Pächterunterlagen; dort stehen aktuelle Entnahmefenster und Tageslimiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "ab 40 cm · Schonzeit 01.10.-31.12." },
+          { "label": "Felchen", "value": "ab 28 cm" },
+          { "label": "Hecht", "value": "Entnahmefenster 55-80 cm und ab 120 cm" },
+          { "label": "Karpfen", "value": "Entnahmefenster 40-60 cm" },
+          { "label": "Zander", "value": "ab 45 cm" },
+          { "label": "Wels", "value": "Entnahmepflicht" }
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "Tageslimiten",
+        "items": [
+          { "label": "Forelle + Hecht + Zander", "value": "16.03.-31.05. zusammen 1/Tag; ab 01.06. zusammen 3/Tag; maximal 1 Forelle." }
+        ]
+      }
+    ],
+    "sourceIds": ["sz-fischerpatente", "sihlsee-afb-2023", "sihlsee-merkblatt-2026"]
+  },
+  {
+    "lakeId": "hallwilersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Übereinkunft AG/LU",
+    "checkedAt": "2026-07-05",
+    "summary": "Die AG/LU-Übereinkunft regelt Schonzeiten, Mindestmasse und Tagesfangzahlen direkt für den Hallwilersee.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Felchen", "value": "25 cm · Schonzeit 01.12.-10.02. · 25/Tag" },
+          { "label": "Forelle", "value": "50 cm · Schonzeit 16.09.-25.12. · 1/Tag" },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit · 30/Tag" },
+          { "label": "Hecht", "value": "50 cm · Schonzeit 01.02.-30.04. · 3/Tag" },
+          { "label": "Zander", "value": "50 cm · Schonzeit 01.04.-31.05." },
+          { "label": "Karpfen", "value": "35 cm" }
+        ]
+      }
+    ],
+    "sourceIds": ["hallwilersee-uebereinkunft", "ag-fischereikarten-shop", "lu-fischereipatente"]
+  },
+  {
+    "lakeId": "lac-de-la-gruyere",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Freiburg",
+    "checkedAt": "2026-07-05",
+    "summary": "Freiburg regelt den Lac de la Gruyère über OPêche und Anhänge mit Fangzeiten, Mindestmassen und Sammellimiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forelle", "value": "45 cm · Fangzeit 16.01.-14.03. und 01.06.-erster Sonntag Oktober" },
+          { "label": "Andere erlaubte Arten", "value": "Fangzeit 01.06.-14.03." },
+          { "label": "Hecht", "value": "60 cm" },
+          { "label": "Zander", "value": "40 cm" },
+          { "label": "Karpfen", "value": "40 cm" },
+          { "label": "Tageslimiten", "value": "Hecht/Äsche/Zander/Forelle zusammen 6/Tag; Egli 70/Tag; wichtige Friedfische zusammen 50/Tag." }
+        ]
+      }
+    ],
+    "sourceIds": ["fr-opeche", "fr-fischerei"]
+  },
+  {
+    "lakeId": "lac-de-joux",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Waadt",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Waadtländer Lac-de-Joux-Auszug nennt die Zielfischarten mit Fangzeit, Mindestmass und Limiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forelle", "value": "45 cm · 16.01.-14.10. · 2/Tag, 5/Jahr" },
+          { "label": "Hecht", "value": "50 cm · 01.01.-09.04. und 11.05.-31.12. · 3/Tag, 50/Jahr" },
+          { "label": "Felchen", "value": "30 cm · 01.01.-31.10. und 16.12.-31.12. · 8/Tag, 50/Jahr" },
+          { "label": "Egli", "value": "15 cm · 01.01.-14.04. und 01.06.-31.12. · 50/Tag, 600/Jahr" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Lokale Sperren",
+        "tone": "warning",
+        "items": [
+          { "label": "Joux/Brenet/Ter", "value": "Der Auszug enthält auch Brenet und Lac Ter; Sperren am Orbe-/Lionne-Bereich für Lac de Joux separat beachten." }
+        ]
+      }
+    ],
+    "sourceIds": ["vd-joux-2026", "vd-permis-peche"]
+  },
+  {
+    "lakeId": "greifensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Zürich",
+    "checkedAt": "2026-07-05",
+    "summary": "Greifensee-Regeln aus der Zürcher 2026-Tabelle; zusätzlich gelten Schutzgebietsvorschriften am See.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "40 cm · Schonzeit 01.10.-25.12. · 2/Tag" },
+          { "label": "Felchenartige", "value": "25 cm · Schonzeit 20.11.-31.12. · 10/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Zander", "value": "40 cm · Schonzeit 01.04.-31.05. · keine Tageslimite" },
+          { "label": "Egli", "value": "kein Mindestmass · keine Schonzeit · 50/Tag" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Schutzgebiet",
+        "tone": "warning",
+        "items": [
+          { "label": "Ufer/Stege", "value": "Greifensee-Schutzgebiet, lokale Tafeln, erlaubte Wege/Stege und Seeschutzzonen beachten." }
+        ]
+      }
+    ],
+    "sourceIds": ["zh-fanglimiten-2026", "zh-angelfischerei-auszug-2026", "zh-greifensee-flyer"]
+  },
+  {
+    "lakeId": "sarnersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Obwalden",
+    "checkedAt": "2026-07-05",
+    "summary": "Obwaldner Schonvorschriften und Ausführungsbestimmungen nennen Arten, Masse, Schonzeiten und wichtige Tageslimiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "45 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Rötel", "value": "22 cm · Schonzeit 01.10.-31.12." },
+          { "label": "Felchen", "value": "25 cm · Schonzeit 01.11.-15.01. · 15/Tag" },
+          { "label": "Zander", "value": "45 cm · Schonzeit 15.03.-15.06." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" },
+          { "label": "Forellenartige", "value": "total 5/Tag" }
+        ]
+      }
+    ],
+    "sourceIds": ["ow-schonvorschriften", "ow-ausfuehrungsbestimmungen"]
+  },
+  {
+    "lakeId": "aegerisee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Zug",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Ägerisee hat eigene Zuger Ausführungsbestimmungen mit artspezifischen Mindestmassen und Schonzeiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forelle", "value": "40 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Rötel", "value": "22 cm · Schonzeit 15.10.-15.01." },
+          { "label": "Felchen", "value": "26 cm · Schonzeit 15.11.-31.01." },
+          { "label": "Äsche", "value": "30 cm · Schonzeit 01.02.-30.04." },
+          { "label": "Hecht", "value": "50 cm · Schonzeit 01.03.-30.04." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" }
+        ]
+      }
+    ],
+    "sourceIds": ["zg-aegerisee-bgs", "zg-fischerei"]
+  },
+  {
+    "lakeId": "baldeggersee",
+    "coverage": "partial",
+    "jurisdictionLabel": "Kanton Luzern, privates Fischereirecht",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Kanton Luzern listet den Baldeggersee als privates Fischereirecht mit Patentausgabe über Pro Natura; eine öffentliche amtliche Fangtabelle wurde nicht gefunden.",
+    "sections": [
+      {
+        "id": "permit",
+        "title": "Patent",
+        "tone": "warning",
+        "items": [
+          { "label": "Ausgabe", "value": "Patente/Regeln laufen laut Kanton Luzern über Pro Natura Luzern; Bedingungen vor dem Fischen direkt dort prüfen." },
+          { "label": "App-Status", "value": "Keine belastbare öffentliche Tabelle zu Mindestmass, Schonzeit und Tageslimit gefunden; keine Werte erfunden." }
+        ]
+      }
+    ],
+    "sourceIds": ["lu-angelfischerei-page", "lu-fischereipatente"]
+  },
+  {
+    "lakeId": "lago-di-livigno",
+    "coverage": "verified",
+    "jurisdictionLabel": "Graubünden und Provincia di Sondrio",
+    "checkedAt": "2026-07-05",
+    "summary": "Grenz-/Alpensee mit Graubündner FBV und italienischer Sonderzone Livigno; Jurisdiktion am Standort beachten.",
+    "sections": [
+      {
+        "id": "gr",
+        "title": "Graubünden",
+        "items": [
+          { "label": "Bach-/Seeforelle", "value": "24 cm" },
+          { "label": "Äsche", "value": "35 cm" },
+          { "label": "Limit", "value": "Spezial-Tageslimit 10 Edelfische, maximal 2 Äschen." }
+        ]
+      },
+      {
+        "id": "it",
+        "title": "Sondrio/Livigno",
+        "items": [
+          { "label": "Salmoniden", "value": "Fario 25 cm, Regenbogenforelle 25 cm, Saibling 22 cm, Äsche/Temolo 35 cm" },
+          { "label": "Saison / Limit", "value": "01.05.-04.10.; 10 Fische gesamt, davon maximal 5 Forelle/Regenbogen/Äsche, maximal 3 Fario und 1 Äsche." }
+        ]
+      }
+    ],
+    "sourceIds": ["gr-fbv-2026", "sondrio-2026"]
+  },
+  {
+    "lakeId": "schiffenensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Freiburg",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Schiffenensee folgt dem Freiburger OPêche-Regime für Stau-/Mittellandseen.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forelle", "value": "45 cm · Fangzeit 16.01.-14.03. und 01.06.-erster Sonntag Oktober" },
+          { "label": "Andere erlaubte Arten", "value": "Fangzeit 01.06.-14.03." },
+          { "label": "Hecht", "value": "60 cm" },
+          { "label": "Zander", "value": "40 cm" },
+          { "label": "Karpfen", "value": "40 cm" },
+          { "label": "Tageslimiten", "value": "Hecht/Äsche/Zander/Forelle zusammen 6/Tag; Egli 70/Tag; wichtige Friedfische zusammen 50/Tag." }
+        ]
+      }
+    ],
+    "sourceIds": ["fr-opeche", "fr-fischerei"]
+  },
+  {
+    "lakeId": "waegitalersee",
+    "coverage": "delegatedPacht",
+    "jurisdictionLabel": "Kanton Schwyz, Pachtsee",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Kanton Schwyz verweist für Pachtseen auf Pächter; die Wägitalersee-Vorschriften nennen Saison, Mindestmasse und Limiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Saison", "value": "Je nach Bereich 16.04./01.05.-15.10." },
+          { "label": "Forellen", "value": "28 cm · Salmoniden 5/Tag" },
+          { "label": "Felchen", "value": "28 cm · 5/Tag" },
+          { "label": "Saiblinge", "value": "28 cm · Salmonidenlimit beachten" },
+          { "label": "Zander", "value": "40 cm · 3/Tag" },
+          { "label": "Egli", "value": "18 cm · 25/Tag" },
+          { "label": "Namaycush", "value": "45 cm" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Schongebiet",
+        "tone": "warning",
+        "items": [
+          { "label": "Bacheinläufe", "value": "Schongebiet bei Bacheinläufen 16.09.-15.10.; Art-Schonzeiten im Pächterauszug nicht als vollständige Tabelle genannt." }
+        ]
+      }
+    ],
+    "sourceIds": ["sz-fischerpatente", "waegitalersee-vorschriften-2025"]
+  },
+  {
+    "lakeId": "lago-di-lei",
+    "coverage": "verified",
+    "jurisdictionLabel": "Graubünden und Provincia di Sondrio",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Lago di Lei liegt in einer Sonderlage mit Schweizer und italienischer Regelquelle; die Seite des Fischens ist entscheidend.",
+    "sections": [
+      {
+        "id": "gr",
+        "title": "Graubünden",
+        "items": [
+          { "label": "Bach-/Seeforelle", "value": "24 cm" },
+          { "label": "Seesaibling", "value": "24 cm" },
+          { "label": "Regenbogenforelle", "value": "24 cm" },
+          { "label": "Saison / Limit", "value": "Stehendes Gewässer 01.05.-31.10.; grundsätzlich 6 Edelfische/Tag." }
+        ]
+      },
+      {
+        "id": "it",
+        "title": "Sondrio/Val di Lei",
+        "items": [
+          { "label": "Salmoniden", "value": "Fario 25 cm, Regenbogenforelle 25 cm, Saibling 22 cm, Äsche/Temolo 35 cm" },
+          { "label": "Saison / Limit", "value": "01.05.-04.10.; 10 Fische gesamt, mit Unterlimiten für Fario und Äsche." }
+        ]
+      }
+    ],
+    "sourceIds": ["gr-fbv-2026", "sondrio-2026"]
+  },
+  {
+    "lakeId": "silsersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Graubünden",
+    "checkedAt": "2026-07-05",
+    "summary": "Engadiner See nach Graubündner FBV 2026; konkrete Vorkommen nicht automatisch aus der Regelquelle ableiten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Bach-/Seeforelle", "value": "26 cm" },
+          { "label": "Seesaibling", "value": "24 cm" },
+          { "label": "Regenbogenforelle", "value": "24 cm" },
+          { "label": "Namaycush", "value": "im Silsersee ohne Fangmass" },
+          { "label": "Bachsaibling", "value": "in Seen ohne Fangzahlbeschränkung" },
+          { "label": "Saison / Limit", "value": "01.05.-30.09.; 6 Edelfische/Tag, mit Ausnahmen für Namaycush/Bachsaibling." }
+        ]
+      }
+    ],
+    "sourceIds": ["gr-fbv-2026"]
+  },
+  {
+    "lakeId": "lac-des-dix",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Wallis",
+    "checkedAt": "2026-07-05",
+    "summary": "Im Walliser Fünfjahresbeschluss als lac de la Grande-Dixence gelistet; allgemeine Mindestmasse und Limiten gelten, sofern kein Gewässer-Spezialfall greift.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Namaycush", "value": "30 cm" },
+          { "label": "Felchen", "value": "30 cm" },
+          { "label": "Seesaibling", "value": "26 cm" },
+          { "label": "Bachforelle", "value": "24 cm" },
+          { "label": "Regenbogenforelle / Bachsaibling", "value": "24 cm" },
+          { "label": "Hecht / Schleie / Karpfen / Egli", "value": "Hecht 60 cm, Schleie 25 cm, Karpfen 60 cm, Egli 15 cm" },
+          { "label": "Tageslimiten", "value": "Salmoniden 5/Tag, mit Jahrespatent 8/Tag; Hecht+Schleie 4/Tag; Egli 50/Tag; Karpfen 2/Tag." }
+        ]
+      },
+      {
+        "id": "season",
+        "title": "Saison",
+        "tone": "warning",
+        "items": [
+          { "label": "Bergsee", "value": "Saison und Tages-/Zweitagespatent-Angaben über aktuelle VS-Karte prüfen." }
+        ]
+      }
+    ],
+    "sourceIds": ["vs-arrete-2024-2028", "vs-legislation-peche", "vs-carte-peche"]
+  },
+  {
+    "lakeId": "wohlensee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Bern",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Wohlensee ist bernisches Patentgewässer; klare Regeln für die Hauptarten, Forellenregel hängt am exakten Aare-Abschnitt.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit · 100/Tag" },
+          { "label": "Zander", "value": "kein Mindestmass · Schonzeit 01.04.-31.05. · 5/Tag" },
+          { "label": "Felchen", "value": "25 cm · Schonzeit 01.11.-31.12. · 25/Tag, falls vorkommend" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Forelle",
+        "tone": "warning",
+        "items": [
+          { "label": "Gewässerabschnitt", "value": "Forellenregel im Aare-/Wohlenseeabschnitt mit Bern-Gewässercode prüfen; nicht automatisch Grosssee-Regel anwenden." }
+        ]
+      }
+    ],
+    "sourceIds": ["be-reglement-2026", "be-fischereipatent"]
+  },
+  {
+    "lakeId": "lac-d-emosson",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Wallis",
+    "checkedAt": "2026-07-05",
+    "summary": "Emosson ist im Walliser Fünfjahresbeschluss als offener Berg-/Stausee gelistet.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Namaycush", "value": "30 cm" },
+          { "label": "Felchen", "value": "30 cm" },
+          { "label": "Seesaibling", "value": "26 cm" },
+          { "label": "Bachforelle", "value": "24 cm" },
+          { "label": "Regenbogenforelle / Bachsaibling", "value": "24 cm" },
+          { "label": "Tageslimiten", "value": "Salmoniden 5/Tag, mit Jahrespatent 8/Tag; Egli 50/Tag; Karpfen 2/Tag; Hecht+Schleie 4/Tag." }
+        ]
+      }
+    ],
+    "sourceIds": ["vs-arrete-2024-2028", "vs-legislation-peche", "vs-carte-peche"]
+  },
+  {
+    "lakeId": "kloentalersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Glarus",
+    "checkedAt": "2026-07-05",
+    "summary": "Glarner Freiangel-/Ausführungsbestimmungen nennen Saison, Edelfischlimit und Hauptarten für den Klöntalersee.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Saison", "value": "01.04.-31.12." },
+          { "label": "Forellen/Saiblinge", "value": "30 cm · Schonzeit 01.10.-31.03. · Edelfische total 6/Tag" },
+          { "label": "Äsche", "value": "35 cm · Schonzeit 01.01.-30.04. · max. 1/Tag" },
+          { "label": "Felchen", "value": "25 cm · Schonzeit 20.11.-31.12. · 15/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04." }
+        ]
+      }
+    ],
+    "sourceIds": ["gl-kloentalersee", "gl-fischereipatente"]
+  },
+  {
+    "lakeId": "silvaplanersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Graubünden",
+    "checkedAt": "2026-07-05",
+    "summary": "Engadiner See nach Graubündner FBV 2026; lokale Mündungs-/Schutzbereiche zusätzlich beachten.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Bach-/Seeforelle", "value": "26 cm" },
+          { "label": "Seesaibling", "value": "24 cm" },
+          { "label": "Regenbogenforelle", "value": "24 cm" },
+          { "label": "Namaycush", "value": "ohne Fangmass" },
+          { "label": "Bachsaibling", "value": "in Seen ohne Fangzahlbeschränkung" },
+          { "label": "Saison / Limit", "value": "01.05.-30.09.; 6 Edelfische/Tag, mit Ausnahmen für Namaycush/Bachsaibling." }
+        ]
+      }
+    ],
+    "sourceIds": ["gr-fbv-2026"]
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Zürich",
+    "checkedAt": "2026-07-05",
+    "summary": "Pfäffikersee-Regeln aus der Zürcher 2026-Tabelle; Ufer-Schutzzonen sind praktisch besonders wichtig.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "40 cm · Schonzeit 01.10.-25.12. · 2/Tag" },
+          { "label": "Felchenartige", "value": "25 cm · Schonzeit 20.11.-31.12. · 10/Tag" },
+          { "label": "Hecht", "value": "45 cm · Schonzeit 01.03.-30.04. · 5/Tag" },
+          { "label": "Zander", "value": "40 cm · Schonzeit 01.04.-31.05. · keine Tageslimite" },
+          { "label": "Egli", "value": "kein Mindestmass · keine Schonzeit · 50/Tag" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Schutzgebiet",
+        "tone": "warning",
+        "items": [
+          { "label": "Ufer", "value": "Pfäffikersee-Seeschutzzonen und lokale Tafeln beachten; in gesperrten Uferbereichen nicht fischen." }
+        ]
+      }
+    ],
+    "sourceIds": ["zh-fanglimiten-2026", "zh-angelfischerei-auszug-2026", "zh-pfaeffikersee-flyer"]
+  },
+  {
+    "lakeId": "lauerzersee",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Schwyz",
+    "checkedAt": "2026-07-05",
+    "summary": "Schwyz publiziert eigene Ausführungsbestimmungen für Lauerzersee und Itlimoosweier.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "40 cm · Schonzeit 16.09.-25.12." },
+          { "label": "Felchen", "value": "28 cm · Schonzeit 01.10.-31.12." },
+          { "label": "Zander", "value": "45 cm · Schonzeit 01.04.-31.05." },
+          { "label": "Hecht", "value": "50 cm · Schonzeit 01.02.-31.03." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" },
+          { "label": "Tageslimit", "value": "Hecht und Zander zusammen 5/Tag." }
+        ]
+      }
+    ],
+    "sourceIds": ["sz-lauerzersee", "sz-fischerpatente"]
+  },
+  {
+    "lakeId": "grimselsee",
+    "coverage": "partial",
+    "jurisdictionLabel": "Kanton Bern, Sonder-/nicht offen geklärtes Gewässer",
+    "checkedAt": "2026-07-05",
+    "summary": "In den geprüften amtlichen Bern-Patentgewässerlisten ist der Grimselsee nicht als normales offenes Patentgewässer mit Fangtabelle ausgewiesen.",
+    "sections": [
+      {
+        "id": "status",
+        "title": "Status",
+        "tone": "warning",
+        "items": [
+          { "label": "Regelstatus", "value": "Keine belastbare öffentliche Tabelle zu Mindestmass, Schonzeit und Tageslimit gefunden; nicht als Bern-Standardsee behandeln." },
+          { "label": "Vor dem Fischen", "value": "Fischereiinspektorat Bern oder allfällige Pächter-/KWO-Sonderbewilligung prüfen." }
+        ]
+      }
+    ],
+    "sourceIds": ["be-reglement-2026", "be-fischereipatent"]
+  },
+  {
+    "lakeId": "lungerersee",
+    "coverage": "delegatedPacht",
+    "jurisdictionLabel": "Kanton Obwalden, Sondererlass/Gemeinde Lungern",
+    "checkedAt": "2026-07-05",
+    "summary": "Der Lungerersee hat Obwaldner Schonvorschriften plus Sonderbestimmungen; konkrete Tageslimiten kann die Gemeinde Lungern festlegen.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Forellen", "value": "35 cm · Schonzeit 01.10.-25.12." },
+          { "label": "Rötel", "value": "22 cm · Schonzeit 01.10.-31.12." },
+          { "label": "Felchen", "value": "25 cm · Schonzeit 01.11.-15.01." },
+          { "label": "Zander", "value": "45 cm · Schonzeit 15.03.-15.06." },
+          { "label": "Egli", "value": "15 cm · keine Schonzeit" },
+          { "label": "Regenbogenforelle", "value": "Entnahmepflicht" }
+        ]
+      },
+      {
+        "id": "local",
+        "title": "Sperre und Limite",
+        "tone": "warning",
+        "items": [
+          { "label": "Dezember", "value": "01.12.-25.12. jegliche Fischerei verboten." },
+          { "label": "Tageslimiten", "value": "Gemeinde Lungern kann Fangzahlen festlegen; im amtlichen Sondererlass keine einfache Zahlentabelle gefunden." }
+        ]
+      }
+    ],
+    "sourceIds": ["ow-schonvorschriften", "ow-lungerersee", "ow-ausfuehrungsbestimmungen"]
+  },
+  {
+    "lakeId": "lac-de-mauvoisin",
+    "coverage": "verified",
+    "jurisdictionLabel": "Kanton Wallis",
+    "checkedAt": "2026-07-05",
+    "summary": "Mauvoisin ist im Walliser Fünfjahresbeschluss als offener Berg-/Stausee gelistet.",
+    "sections": [
+      {
+        "id": "catch",
+        "title": "Entnahme",
+        "items": [
+          { "label": "Namaycush", "value": "30 cm" },
+          { "label": "Felchen", "value": "30 cm" },
+          { "label": "Seesaibling", "value": "26 cm" },
+          { "label": "Bachforelle", "value": "24 cm" },
+          { "label": "Regenbogenforelle / Bachsaibling", "value": "24 cm" },
+          { "label": "Tageslimiten", "value": "Salmoniden 5/Tag, mit Jahrespatent 8/Tag; Egli 50/Tag; Karpfen 2/Tag; Hecht+Schleie 4/Tag." }
+        ]
+      }
+    ],
+    "sourceIds": ["vs-arrete-2024-2028", "vs-legislation-peche", "vs-carte-peche"]
+  }
+]

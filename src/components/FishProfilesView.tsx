@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ExternalLink, Search, X } from "lucide-react";
+import { FishCatchGuidanceBox } from "./FishCatchGuidanceBox";
+import { PageIntro } from "./PageIntro";
 import { FISH_PROFILE_GROUP_ORDER, getFishProfileDetails } from "../data/fish-profile-details";
 import { fishProfiles } from "../lib/data";
-import type { FishProfile, FishProfileCategoryGroup, FishProfileDetail, LakeId } from "../types";
+import type { FishProfile, FishProfileCategoryGroup, FishProfileDetail, FishProfileLongSection, LakeId } from "../types";
 
 const LAKE_OCCURRENCE_LABELS: Array<{ id: LakeId; label: string }> = [
   { id: "zuerichsee", label: "Zürichsee" },
@@ -10,10 +12,35 @@ const LAKE_OCCURRENCE_LABELS: Array<{ id: LakeId; label: string }> = [
   { id: "pfaeffikersee", label: "Pfäffikersee" }
 ];
 
+type FishGroupFilter = FishProfileCategoryGroup | "Alle";
+
+function normalizeSearchValue(value: string) {
+  return value
+    .toLocaleLowerCase("de-CH")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
 export function FishProfilesView() {
   const [expandedProfileId, setExpandedProfileId] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [groupFilter, setGroupFilter] = useState<FishGroupFilter>("Alle");
+  const filteredProfiles = useMemo(() => {
+    const normalizedQuery = normalizeSearchValue(query);
+
+    return fishProfiles.filter((profile) => {
+      const details = getFishProfileDetails(profile);
+      const matchesGroup = groupFilter === "Alle" || details.categoryGroup === groupFilter;
+      const matchesQuery =
+        normalizedQuery.length === 0 ||
+        normalizeSearchValue(`${profile.name} ${profile.scientificName} ${profile.category} ${details.categoryGroup}`).includes(normalizedQuery);
+
+      return matchesGroup && matchesQuery;
+    });
+  }, [groupFilter, query]);
   const profilesByGroup = useMemo(() => {
-    return fishProfiles.reduce<Record<FishProfileCategoryGroup, Array<{ profile: FishProfile; details: FishProfileDetail }>>>(
+    return filteredProfiles.reduce<Record<FishProfileCategoryGroup, Array<{ profile: FishProfile; details: FishProfileDetail }>>>(
       (groups, profile) => {
         const details = getFishProfileDetails(profile);
         groups[details.categoryGroup].push({ profile, details });
@@ -28,49 +55,108 @@ export function FishProfilesView() {
         "Landesfremde Arten": []
       }
     );
-  }, []);
+  }, [filteredProfiles]);
 
   return (
-    <main className="app-page fish-directory" aria-labelledby="fish-directory-title">
-      <header className="page-heading">
-        <div>
-          <h2 id="fish-directory-title">Fische</h2>
-          <p>Kompakte Artenliste mit Steckbrief, Vorkommen, Fanghinweis und Küche.</p>
+    <main id="app-main" className="app-page fish-directory" aria-labelledby="fish-directory-title">
+      <PageIntro
+        id="fish-directory-title"
+        eyebrow="Artenbuch"
+        title="Fische"
+        description="Erkennen, Fangstatus prüfen und den passenden Steckbrief direkt am Wasser öffnen."
+        stat={`${fishProfiles.length} Arten`}
+      />
+
+      <section className="page-tools" aria-label="Fischliste filtern">
+        <div className="search-control">
+          <Search size={19} aria-hidden="true" />
+          <label className="sr-only" htmlFor="fish-directory-search">
+            Fischart suchen
+          </label>
+          <input
+            id="fish-directory-search"
+            type="search"
+            value={query}
+            placeholder="Name oder wissenschaftliche Art"
+            aria-label="Fischart suchen"
+            onChange={(event) => setQuery(event.currentTarget.value)}
+          />
+          {query ? (
+            <button type="button" aria-label="Fischsuche leeren" onClick={() => setQuery("")}>
+              <X size={17} aria-hidden="true" />
+            </button>
+          ) : null}
         </div>
-        <strong>{fishProfiles.length} Arten</strong>
-      </header>
 
-      <div className="profile-groups">
-        {FISH_PROFILE_GROUP_ORDER.map((group, groupIndex) => {
-          const entries = profilesByGroup[group];
-          const groupId = `fish-group-${groupIndex}`;
+        <div className="filter-chip-row" role="group" aria-label="Artengruppe filtern">
+          {(["Alle", ...FISH_PROFILE_GROUP_ORDER] as FishGroupFilter[]).map((group) => (
+            <button
+              key={group}
+              type="button"
+              className={groupFilter === group ? "filter-chip active" : "filter-chip"}
+              aria-pressed={groupFilter === group}
+              onClick={() => setGroupFilter(group)}
+            >
+              {group}
+            </button>
+          ))}
+        </div>
 
-          if (entries.length === 0) {
-            return null;
-          }
+        <p className="filter-result" aria-live="polite">
+          {filteredProfiles.length === fishProfiles.length
+            ? "Alle Arten sichtbar"
+            : `${filteredProfiles.length} von ${fishProfiles.length} Arten`}
+        </p>
+      </section>
 
-          return (
-            <section key={group} className="profile-group" aria-labelledby={groupId}>
-              <div className="profile-group-heading">
-                <h3 id={groupId}>{group}</h3>
-                <span>{entries.length} Arten</span>
-              </div>
+      {filteredProfiles.length > 0 ? (
+        <div className="profile-groups">
+          {FISH_PROFILE_GROUP_ORDER.map((group, groupIndex) => {
+            const entries = profilesByGroup[group];
+            const groupId = `fish-group-${groupIndex}`;
 
-              <div className="profile-list">
-                {entries.map(({ profile, details }) => (
-                  <FishProfileCard
-                    key={profile.id}
-                    profile={profile}
-                    details={details}
-                    isExpanded={expandedProfileId === profile.id}
-                    onToggle={() => setExpandedProfileId((currentId) => (currentId === profile.id ? null : profile.id))}
-                  />
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </div>
+            if (entries.length === 0) {
+              return null;
+            }
+
+            return (
+              <section key={group} className="profile-group" aria-labelledby={groupId}>
+                <div className="profile-group-heading">
+                  <h3 id={groupId}>{group}</h3>
+                  <span>{entries.length === 1 ? "1 Art" : `${entries.length} Arten`}</span>
+                </div>
+
+                <div className="profile-list">
+                  {entries.map(({ profile, details }) => (
+                    <FishProfileCard
+                      key={profile.id}
+                      profile={profile}
+                      details={details}
+                      isExpanded={expandedProfileId === profile.id}
+                      onToggle={() => setExpandedProfileId((currentId) => (currentId === profile.id ? null : profile.id))}
+                    />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      ) : (
+        <section className="search-empty-state" aria-live="polite">
+          <Search size={24} aria-hidden="true" />
+          <h3>Kein Fisch gefunden</h3>
+          <p>Versuche einen anderen Namen oder wähle wieder „Alle“.</p>
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              setGroupFilter("Alle");
+            }}
+          >
+            Filter zurücksetzen
+          </button>
+        </section>
+      )}
     </main>
   );
 }
@@ -112,7 +198,8 @@ function FishProfileCard({
         <div className="profile-detail" id={detailId}>
           <div className="profile-hero">
             <div className="profile-hero-image">
-              <img src={profile.image.src} alt={profile.image.alt} loading="lazy" />
+              <img src={details.photo.src} alt={details.photo.alt} loading="lazy" />
+              <PhotoCredit details={details} />
             </div>
             <div className="profile-hero-copy">
               <div className="profile-title">
@@ -123,26 +210,28 @@ function FishProfileCard({
                 <span>{details.categoryGroup}</span>
               </div>
               <p>{details.portrait}</p>
+              <FishCatchGuidanceBox guidance={details.catchGuidance} />
             </div>
           </div>
 
-          <div className="profile-facts">
+          <div className="profile-long-layout">
             <section className="profile-occurrence" aria-label={`${profile.name} Vorkommen`}>
               <h4>Vorkommen</h4>
               <dl>
                 {LAKE_OCCURRENCE_LABELS.map((lake) => (
                   <div key={lake.id}>
                     <dt>{lake.label}</dt>
-                    <dd>{profile.occurrence[lake.id]}</dd>
+                    <dd>{profile.occurrence[lake.id] ?? "nicht erfasst"}</dd>
                   </div>
                 ))}
               </dl>
               <p>{profile.note}</p>
             </section>
-            <ProfileFact title="Erkennen" values={details.identification} />
-            <ProfileFact title="Wo suchen" values={details.habitats} />
-            <ProfileFact title="Fangen" values={details.catchingTips} />
-            <ProfileFact title="Küche" values={[details.eatingNote]} />
+            <div className="profile-longform" aria-label={`${profile.name} detaillierter Steckbrief`}>
+              {details.longSections.map((section) => (
+                <LongProfileSection key={section.title} section={section} />
+              ))}
+            </div>
           </div>
         </div>
       ) : null}
@@ -150,12 +239,24 @@ function FishProfileCard({
   );
 }
 
-function ProfileFact({ title, values }: { title: string; values: string[] }) {
+function PhotoCredit({ details }: { details: FishProfileDetail }) {
   return (
-    <section className="profile-fact" aria-label={title}>
-      <h4>{title}</h4>
+    <a className="profile-photo-credit" href={details.photo.sourceUrl} target="_blank" rel="noreferrer">
+      <ExternalLink size={13} aria-hidden="true" />
+      <span>
+        Foto: {details.photo.attribution} · {details.photo.license}
+      </span>
+    </a>
+  );
+}
+
+function LongProfileSection({ section }: { section: FishProfileLongSection }) {
+  return (
+    <section className="profile-long-section" aria-label={section.title}>
+      <h4>{section.title}</h4>
+      <p>{section.body}</p>
       <ul>
-        {values.map((value) => (
+        {section.points.map((value) => (
           <li key={value}>{value}</li>
         ))}
       </ul>

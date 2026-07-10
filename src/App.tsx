@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { BookOpenCheck, Fish, Map, ScanSearch, ShieldAlert } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fish, Map, ScanSearch, Waves } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import zueriFishLogo from "./assets/brand/zuerifish-logo.png";
 import { FishProfilesView } from "./components/FishProfilesView";
 import { FishRecognizerView } from "./components/FishRecognizerView";
 import { LakePanel } from "./components/LakePanel";
 import { MapView } from "./components/MapView";
 import { RulesOverviewView } from "./components/RulesOverviewView";
-import { getLake, lakes } from "./lib/data";
-import { getLakeInsight } from "./lib/lakeInsights";
+import { getLake, isKnownLakeId, lakes } from "./lib/data";
 import type { LakeId } from "./types";
 
 type AppTab = "map" | "fish" | "recognizer" | "rules";
@@ -16,14 +16,45 @@ const NAV_ITEMS: { id: AppTab; label: string; icon: LucideIcon }[] = [
   { id: "map", label: "Karte", icon: Map },
   { id: "fish", label: "Fische", icon: Fish },
   { id: "recognizer", label: "Fischerkenner", icon: ScanSearch },
-  { id: "rules", label: "Regeln", icon: BookOpenCheck }
+  { id: "rules", label: "Seen", icon: Waves }
 ];
 
 const LAKE_SELECTION_STORAGE_KEY = "zuerifish:selected-lake";
-const LAKE_IDS: readonly LakeId[] = ["zuerichsee", "greifensee", "pfaeffikersee"];
 
-function isLakeId(value: unknown): value is LakeId {
-  return typeof value === "string" && LAKE_IDS.includes(value as LakeId);
+type AppHistoryState = {
+  lakeId?: LakeId;
+  tab?: AppTab;
+};
+
+function isAppTab(value: unknown): value is AppTab {
+  return typeof value === "string" && NAV_ITEMS.some((item) => item.id === value);
+}
+
+function readHistoryState(): AppHistoryState {
+  if (typeof window === "undefined" || typeof window.history.state !== "object" || window.history.state === null) {
+    return {};
+  }
+
+  const state = window.history.state as Record<string, unknown>;
+  return {
+    lakeId: isKnownLakeId(state.lakeId) ? state.lakeId : undefined,
+    tab: isAppTab(state.tab) ? state.tab : undefined
+  };
+}
+
+function readActiveTab(): AppTab {
+  if (typeof window === "undefined") {
+    return "map";
+  }
+
+  const historyTab = readHistoryState().tab;
+
+  if (historyTab) {
+    return historyTab;
+  }
+
+  const hash = window.location.hash.replace(/^#/, "");
+  return isAppTab(hash) ? hash : "map";
 }
 
 function readStoredLakeSelection(): LakeId | null {
@@ -33,7 +64,7 @@ function readStoredLakeSelection(): LakeId | null {
 
   try {
     const storedLakeId = window.localStorage.getItem(LAKE_SELECTION_STORAGE_KEY);
-    return isLakeId(storedLakeId) ? storedLakeId : null;
+    return isKnownLakeId(storedLakeId) ? storedLakeId : null;
   } catch {
     return null;
   }
@@ -57,8 +88,9 @@ function writeStoredLakeSelection(lakeId: LakeId | null) {
 }
 
 function App() {
-  const [selectedLakeId, setSelectedLakeId] = useState<LakeId | null>(readStoredLakeSelection);
-  const [activeTab, setActiveTab] = useState<AppTab>("map");
+  const [selectedLakeId, setSelectedLakeId] = useState<LakeId | null>(() => readHistoryState().lakeId ?? readStoredLakeSelection());
+  const [activeTab, setActiveTab] = useState<AppTab>(readActiveTab);
+  const panelHistoryWasPushedRef = useRef(false);
 
   const selectedLake = useMemo(() => {
     return selectedLakeId ? getLake(selectedLakeId) : null;
@@ -70,19 +102,60 @@ function App() {
 
   const closePanel = useCallback(() => {
     setSelectedLakeId(null);
+
+    if (panelHistoryWasPushedRef.current) {
+      panelHistoryWasPushedRef.current = false;
+      window.history.back();
+    }
   }, []);
 
   const selectTab = useCallback(
     (tab: AppTab) => {
+      if (tab === activeTab) {
+        return;
+      }
+
       setActiveTab(tab);
       window.scrollTo({ top: 0 });
 
       if (tab !== "map") {
-        closePanel();
+        setSelectedLakeId(null);
       }
+
+      panelHistoryWasPushedRef.current = false;
+
+      const nextHash = tab === "map" ? "" : `#${tab}`;
+      window.history.pushState({ tab }, "", `${window.location.pathname}${window.location.search}${nextHash}`);
     },
-    [closePanel]
+    [activeTab]
   );
+
+  const showLakeOnMap = useCallback((lakeId: LakeId) => {
+    setSelectedLakeId(lakeId);
+    setActiveTab("map");
+    panelHistoryWasPushedRef.current = true;
+    window.scrollTo({ top: 0 });
+    window.history.pushState({ lakeId, tab: "map" }, "", `${window.location.pathname}${window.location.search}`);
+  }, []);
+
+  const openLakeOnMap = useCallback((lakeId: LakeId) => {
+    setSelectedLakeId(lakeId);
+    panelHistoryWasPushedRef.current = true;
+    window.history.pushState({ lakeId, tab: "map" }, "", `${window.location.pathname}${window.location.search}`);
+  }, []);
+
+  useEffect(() => {
+    function handlePopState() {
+      const historyState = readHistoryState();
+      panelHistoryWasPushedRef.current = false;
+      setActiveTab(historyState.tab ?? readActiveTab());
+      setSelectedLakeId(historyState.lakeId ?? null);
+      window.scrollTo({ top: 0 });
+    }
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -97,33 +170,43 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            <Fish size={22} />
-          </span>
-          <div>
-            <h1>ZüriFish Map</h1>
-            <p>Fischerei-Regeln für Zürichsee, Greifensee und Pfäffikersee</p>
+      <a className="skip-link" href="#app-main">
+        Zum Inhalt
+      </a>
+
+      {activeTab !== "map" ? (
+        <header className="app-header">
+          <div className="brand">
+            <span className="brand-mark">
+              <img className="brand-logo" src={zueriFishLogo} alt="ZüriFish Logo" />
+            </span>
+            <div>
+              <span className="brand-kicker">Fischer-App Schweiz</span>
+              <h1>ZüriFish</h1>
+            </div>
           </div>
-        </div>
-        <div className="trust-note">
-          <ShieldAlert size={18} aria-hidden="true" />
-          <span className="trust-full">Orientierungshilfe, nicht rechtsverbindlich</span>
-          <span className="trust-short">Hinweis</span>
-        </div>
-      </header>
+          <span className="app-section-label">{NAV_ITEMS.find((item) => item.id === activeTab)?.label}</span>
+        </header>
+      ) : null}
 
       {activeTab === "map" ? (
-        <main className="map-stage" aria-label="Interaktive Fischerei-Karte">
-          <MapView selectedLakeId={selectedLakeId} onSelectLake={setSelectedLakeId} />
-          <LakeQuickCards selectedLakeId={selectedLakeId} onSelectLake={setSelectedLakeId} />
+        <main id="app-main" className="map-stage" aria-label="Interaktive Fischerei-Karte">
+          <div className="map-brand-card" aria-label={`ZüriFish · ${lakes.length} Schweizer Seen · offline bereit`}>
+            <span className="map-brand-logo" aria-hidden="true">
+              <img src={zueriFishLogo} alt="" />
+            </span>
+            <span>
+              <strong>ZüriFish</strong>
+              <small>{lakes.length} Seen · Offline</small>
+            </span>
+          </div>
+          <MapView selectedLakeId={selectedLakeId} onSelectLake={openLakeOnMap} />
         </main>
       ) : null}
 
       {activeTab === "fish" ? <FishProfilesView /> : null}
       {activeTab === "recognizer" ? <FishRecognizerView /> : null}
-      {activeTab === "rules" ? <RulesOverviewView /> : null}
+      {activeTab === "rules" ? <RulesOverviewView onShowLake={showLakeOnMap} /> : null}
 
       {selectedLake ? (
         <div className="panel-layer" onMouseDown={closePanel} aria-label="Detailpanel Ebene">
@@ -142,59 +225,16 @@ function App() {
               type="button"
               className={isActive ? "bottom-tab active" : "bottom-tab"}
               aria-current={isActive ? "page" : undefined}
+              aria-label={item.label}
               onClick={() => selectTab(item.id)}
             >
-              <Icon size={20} aria-hidden="true" />
+              <Icon size={20} strokeWidth={1.9} aria-hidden="true" />
               <span>{item.label}</span>
             </button>
           );
         })}
       </nav>
     </div>
-  );
-}
-
-function LakeQuickCards({
-  selectedLakeId,
-  onSelectLake
-}: {
-  selectedLakeId: LakeId | null;
-  onSelectLake: (lakeId: LakeId) => void;
-}) {
-  return (
-    <section className="lake-quick-cards" aria-label="Seen und Kernzahlen">
-      <div className="lake-quick-heading">
-        <strong>See wählen</strong>
-        <span>Regeln, Fische und Sperrzonen</span>
-      </div>
-      <div className="lake-quick-list">
-        {lakes.map((lake) => {
-          const insight = getLakeInsight(lake.id);
-          const isSelected = selectedLakeId === lake.id;
-
-          return (
-            <button
-              key={lake.id}
-              type="button"
-              className={isSelected ? "lake-quick-card active" : "lake-quick-card"}
-              aria-pressed={isSelected}
-              aria-label={`${lake.name} Regeln öffnen`}
-              onClick={() => onSelectLake(lake.id)}
-            >
-              <span className="lake-quick-name">{lake.name}</span>
-              <span className="lake-quick-summary">{lake.summary}</span>
-              <span className="lake-quick-stats" aria-hidden="true">
-                <span>{insight.ruleCount} Regeln</span>
-                <span>{insight.confirmedFishCount} Arten</span>
-                <span>
-                  {insight.activeRestrictionCount}/{insight.restrictionCount} Zonen aktiv
-                </span>
-              </span>
-            </button>
-          );
-        })}
-      </div>
-    </section>
   );
 }
 

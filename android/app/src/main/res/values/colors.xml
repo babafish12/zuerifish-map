@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#006D84</color>
+    <color name="colorPrimaryDark">#082A36</color>
+    <color name="colorAccent">#58BFC8</color>
+    <color name="zuerifish_surface">#F4F8F5</color>
+</resources>

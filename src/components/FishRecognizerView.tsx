@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgeCheck, Globe2, Search, ShieldCheck, X } from "lucide-react";
+import { FishCatchGuidanceBox } from "./FishCatchGuidanceBox";
+import { PageIntro } from "./PageIntro";
 import { getFishProfileDetails } from "../data/fish-profile-details";
 import { fishProfiles } from "../lib/data";
 import type { FishProfile, FishProfileDetail, LakeId } from "../types";
@@ -54,7 +56,10 @@ export function FishRecognizerView() {
   const [referenceQuery, setReferenceQuery] = useState("");
   const [openReferenceProfileId, setOpenReferenceProfileId] = useState<string | null>(null);
   const referenceProfiles = useMemo(() => orderReferenceProfiles(fishProfiles), []);
-  const visibleReferenceProfiles = useMemo(() => matchReferenceProfiles(referenceProfiles, referenceQuery), [referenceProfiles, referenceQuery]);
+  const visibleReferenceProfiles = useMemo(
+    () => (referenceQuery.trim() ? matchReferenceProfiles(referenceProfiles, referenceQuery) : referenceProfiles.slice(0, 6)),
+    [referenceProfiles, referenceQuery]
+  );
   const selectedReferenceProfile = referenceProfiles.find((profile) => profile.id === selectedReferenceId) ?? null;
   const selectedReferenceDetails = selectedReferenceProfile ? getFishProfileDetails(selectedReferenceProfile) : null;
   const openReferenceProfile = referenceProfiles.find((profile) => profile.id === openReferenceProfileId) ?? null;
@@ -78,14 +83,32 @@ export function FishRecognizerView() {
   );
 
   return (
-    <main className="app-page fish-recognizer-view" aria-labelledby="fish-recognizer-page-title">
-      <header className="page-heading">
-        <div>
-          <h2 id="fish-recognizer-page-title">Fischerkenner</h2>
-          <p>FischFinder mit direktem Abgleich gegen die ZüriFish-Steckbriefe.</p>
-        </div>
-        <strong>Online-Erkenner</strong>
-      </header>
+    <main id="app-main" className="app-page fish-recognizer-view" aria-labelledby="fish-recognizer-page-title">
+      <PageIntro
+        id="fish-recognizer-page-title"
+        eyebrow="Foto-Erkennung"
+        title="Fischerkenner"
+        description="Foto aufnehmen, Art abgleichen und den Fanghinweis direkt im ZüriFish-Steckbrief lesen."
+        stat="Online-Erkenner"
+      />
+
+      <ol className="recognizer-steps" aria-label="Ablauf der Fischerkennung">
+        <li>
+          <span>1</span>
+          <strong>Foto wählen</strong>
+          <small>Fisch vollständig zeigen</small>
+        </li>
+        <li>
+          <span>2</span>
+          <strong>Treffer prüfen</strong>
+          <small>Artmerkmale vergleichen</small>
+        </li>
+        <li>
+          <span>3</span>
+          <strong>Fanghinweis lesen</strong>
+          <small>Regeln vor Entnahme prüfen</small>
+        </li>
+      </ol>
 
       <FishOnlineRecognizer
         visibleProfiles={visibleReferenceProfiles}
@@ -187,7 +210,7 @@ function FishOnlineRecognizer({
         <div>
           <p className="recognizer-kicker">Online-Erkenner</p>
           <h3 id="fish-recognizer-tool-title">Fisch per Foto bestimmen</h3>
-          <p>Deutschsprachiger FischFinder direkt in ZüriFish, ohne API-Key und ohne lokale KI.</p>
+          <p>Die Aufnahme wird zur Bestimmung an FischFinder übertragen; der passende Steckbrief bleibt in ZüriFish.</p>
         </div>
         <div className="recognizer-model-pill" aria-label="Erkenner-Eigenschaften">
           <span>
@@ -200,7 +223,7 @@ function FishOnlineRecognizer({
           </span>
           <span>
             <ShieldCheck size={15} aria-hidden="true" />
-            Keine API-Konfig
+            Direkt startklar
           </span>
         </div>
       </div>
@@ -279,10 +302,12 @@ function FishOnlineRecognizer({
             ))}
           </div>
 
+          {!referenceQuery.trim() ? <p className="recognizer-quick-note">Häufige Arten. Für alle 36 Fische oben suchen.</p> : null}
+
           {selectedProfile && selectedDetails ? (
             <article className="recognizer-reference-card">
               <div className="recognizer-reference-image">
-                <img src={selectedProfile.image.src} alt={selectedProfile.image.alt} loading="lazy" />
+                <img src={selectedDetails.photo.src} alt={selectedDetails.photo.alt} loading="lazy" />
               </div>
               <div className="recognizer-reference-copy">
                 <div className="recognizer-reference-title">
@@ -295,13 +320,14 @@ function FishOnlineRecognizer({
                 <p>{selectedDetails.portrait}</p>
                 <dl className="recognizer-reference-lakes" aria-label={`${selectedProfile.name} Vorkommen`}>
                   {LAKE_OCCURRENCE_LABELS.map((lake) => (
-                    <div key={lake.id}>
-                      <dt>{lake.label}</dt>
-                      <dd>{selectedProfile.occurrence[lake.id]}</dd>
-                    </div>
-                  ))}
+                      <div key={lake.id}>
+                        <dt>{lake.label}</dt>
+                      <dd>{selectedProfile.occurrence[lake.id] ?? "nicht erfasst"}</dd>
+                      </div>
+                    ))}
                 </dl>
                 <p className="recognizer-reference-note">{selectedProfile.note}</p>
+                <FishCatchGuidanceBox guidance={selectedDetails.catchGuidance} compact />
                 <div className="recognizer-reference-facts">
                   <ProfileFact title="Erkennen" values={selectedDetails.identification.slice(0, 3)} />
                   <ProfileFact title="Wo suchen" values={selectedDetails.habitats.slice(0, 3)} />
@@ -478,7 +504,7 @@ function FishProfileDialog({ profile, details, onClose }: { profile: FishProfile
 
         <div className="recognizer-dialog-hero">
           <div className="recognizer-dialog-image">
-            <img src={profile.image.src} alt={profile.image.alt} loading="lazy" />
+            <img src={details.photo.src} alt={details.photo.alt} loading="lazy" />
           </div>
           <div className="recognizer-dialog-copy">
             <p className="recognizer-kicker">ZüriFish-Steckbrief</p>
@@ -493,11 +519,12 @@ function FishProfileDialog({ profile, details, onClose }: { profile: FishProfile
           {LAKE_OCCURRENCE_LABELS.map((lake) => (
             <div key={lake.id}>
               <dt>{lake.label}</dt>
-              <dd>{profile.occurrence[lake.id]}</dd>
+              <dd>{profile.occurrence[lake.id] ?? "nicht erfasst"}</dd>
             </div>
           ))}
         </dl>
         <p className="recognizer-reference-note">{profile.note}</p>
+        <FishCatchGuidanceBox guidance={details.catchGuidance} />
         <div className="recognizer-reference-facts">
           <ProfileFact title="Erkennen" values={details.identification} />
           <ProfileFact title="Wo suchen" values={details.habitats} />

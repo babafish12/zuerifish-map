@@ -1,0 +1,230 @@
+[
+  {
+    "lakeId": "lac-leman",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Lake_Geneva_by_Sentinel-2.jpg/1280px-Lake_Geneva_by_Sentinel-2.jpg",
+    "alt": "Echtes Bild des Lac Léman aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "bodensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Lake_Constance_Edited.png/1280px-Lake_Constance_Edited.png",
+    "alt": "Echtes Bild des Bodensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-neuchatel",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Lac_de_neuchatel.jpg",
+    "alt": "Echtes Bild des Lac de Neuchâtel aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "verbano",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/3/39/LagoMaggiore.jpg",
+    "alt": "Echtes Bild des Lago Maggiore aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "vierwaldstaettersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/9/94/Vierwaldstaettersee.jpg",
+    "alt": "Echtes Bild des Vierwaldstättersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "zuerichsee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pfannenstiel_-_Z%C3%BCrichsee_-_Sihltal_-_Albis_Baldern_IMG_5316.jpg/1280px-Pfannenstiel_-_Z%C3%BCrichsee_-_Sihltal_-_Albis_Baldern_IMG_5316.jpg",
+    "alt": "Echtes Bild des Zürichsees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "untersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/2011-05-09_10-02-04_Switzerland_Kanton_Thurgau_Rickenbach.jpg/1280px-2011-05-09_10-02-04_Switzerland_Kanton_Thurgau_Rickenbach.jpg",
+    "alt": "Echtes Bild des Untersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "ceresio",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/4/4d/LagoDiLugano.jpg",
+    "alt": "Echtes Bild des Lago di Lugano aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "thunersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Aerial_image_of_Lake_Thun_%28view_from_the_east%29.jpg/1280px-Aerial_image_of_Lake_Thun_%28view_from_the_east%29.jpg",
+    "alt": "Echtes Bild des Thunersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-bienne",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Lake_Biel_sentinel-2.jpg/1280px-Lake_Biel_sentinel-2.jpg",
+    "alt": "Echtes Bild des Bielersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "zugersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Aussicht_Winter_Rigi_Zugersee.jpg",
+    "alt": "Echtes Bild des Zugersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "brienzersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aerial_image_of_Lake_Brienz_%28view_from_the_southwest%29.jpg/1280px-Aerial_image_of_Lake_Brienz_%28view_from_the_southwest%29.jpg",
+    "alt": "Echtes Bild des Brienzersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "walensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Aerial_image_of_the_Walensee.jpg/1280px-Aerial_image_of_the_Walensee.jpg",
+    "alt": "Echtes Bild des Walensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-morat-murtensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Aerial_image_of_Lake_Murten_%28view_from_the_northeast%29.jpg/1280px-Aerial_image_of_Lake_Murten_%28view_from_the_northeast%29.jpg",
+    "alt": "Echtes Bild des Murtensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "sempachersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Aerial_image_of_Lake_Sempach_%28view_from_the_south%29.jpg/1280px-Aerial_image_of_Lake_Sempach_%28view_from_the_south%29.jpg",
+    "alt": "Echtes Bild des Sempachersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "sihlsee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sihlsee_-_Willerzell_IMG_2839.JPG/1280px-Sihlsee_-_Willerzell_IMG_2839.JPG",
+    "alt": "Echtes Bild des Sihlsees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "hallwilersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Aerial_image_of_Lake_Hallwil_%28view_from_the_south%29.jpg/1280px-Aerial_image_of_Lake_Hallwil_%28view_from_the_south%29.jpg",
+    "alt": "Echtes Bild des Hallwilersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-la-gruyere",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lac_de_la_Gruy%C3%A8re.jpg/960px-Lac_de_la_Gruy%C3%A8re.jpg",
+    "alt": "Echtes Bild des Lac de la Gruyère aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-joux",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Lac_de_joux_with_clouds.jpg/1280px-Lac_de_joux_with_clouds.jpg",
+    "alt": "Echtes Bild des Lac de Joux aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "greifensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/GreifenseeInKantonZurichFromNorth.jpg/960px-GreifenseeInKantonZurichFromNorth.jpg",
+    "alt": "Echtes Bild des Greifensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "sarnersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Aerial_image_of_Lake_Sarnen_%28view_from_the_southwest%29.jpg/1280px-Aerial_image_of_Lake_Sarnen_%28view_from_the_southwest%29.jpg",
+    "alt": "Echtes Bild des Sarnersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "aegerisee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Aerial_image_of_%C3%84gerisee_%28view_from_the_east%29.jpg/1280px-Aerial_image_of_%C3%84gerisee_%28view_from_the_east%29.jpg",
+    "alt": "Echtes Bild des Ägerisees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "baldeggersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Aerial_image_of_Lake_Baldegg_%28view_from_the_south%29.jpg/1280px-Aerial_image_of_Lake_Baldegg_%28view_from_the_south%29.jpg",
+    "alt": "Echtes Bild des Baldeggersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lago-di-livigno",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/LagoDelGallo.JPG/1280px-LagoDelGallo.JPG",
+    "alt": "Echtes Bild des Lago di Livigno aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "schiffenensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Schiffenensee.jpg/960px-Schiffenensee.jpg",
+    "alt": "Echtes Bild des Schiffenensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "waegitalersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Waegitalersee_SZ.jpg/1280px-Waegitalersee_SZ.jpg",
+    "alt": "Echtes Bild des Wägitalersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lago-di-lei",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Lago_di_Lei_as_seen_from_Piz_Grisch.jpg/960px-Lago_di_Lei_as_seen_from_Piz_Grisch.jpg",
+    "alt": "Echtes Bild des Lago di Lei aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "silsersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lej_da_Segl.jpg/1280px-Lej_da_Segl.jpg",
+    "alt": "Echtes Bild des Silsersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-des-dix",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Barrage_de_la_Grande-Dixence.jpg/1280px-Barrage_de_la_Grande-Dixence.jpg",
+    "alt": "Echtes Bild des Lac des Dix aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "wohlensee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Wohlensee_mit_Kappelenbruecke.JPG/1280px-Wohlensee_mit_Kappelenbruecke.JPG",
+    "alt": "Echtes Bild des Wohlensees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-d-emosson",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/EmossonBarrage082007.jpg/1280px-EmossonBarrage082007.jpg",
+    "alt": "Echtes Bild des Lac d'Emosson aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "kloentalersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Glarus_Kloentalersee.jpg/1280px-Glarus_Kloentalersee.jpg",
+    "alt": "Echtes Bild des Klöntalersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "silvaplanersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Chast%C3%A8_Crap_da_Sass_at_Lake_Silvaplana_in_May_2015.jpg",
+    "alt": "Echtes Bild des Silvaplanersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "pfaeffikersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Pf%C3%A4ffikersee.jpg",
+    "alt": "Echtes Bild des Pfäffikersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lauerzersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Lauerzersee.jpg",
+    "alt": "Echtes Bild des Lauerzersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "grimselsee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/9/90/Grimselsee.jpg",
+    "alt": "Echtes Bild des Grimselsees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lungerersee",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Aerial_image_of_Lake_Lungern_%28view_from_the_southwest%29.jpg/1280px-Aerial_image_of_Lake_Lungern_%28view_from_the_southwest%29.jpg",
+    "alt": "Echtes Bild des Lungerersees aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  },
+  {
+    "lakeId": "lac-de-mauvoisin",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Mauvoisin.JPG/1280px-Mauvoisin.JPG",
+    "alt": "Echtes Bild des Lac de Mauvoisin aus Wikimedia",
+    "sourceId": "wikimedia-lake-images"
+  }
+]

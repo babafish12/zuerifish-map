@@ -1,40 +1,42 @@
 import lakesData from "../data/lakes.json";
+import lakeImagesData from "../data/lake-images.json";
 import speciesData from "../data/species.json";
 import fishProfilesData from "../data/fish-profiles.json";
 import lakeRulesData from "../data/lake-rules.json";
+import lakeDetailRulesData from "../data/lake-detail-rules.json";
 import gearRulesData from "../data/gear-rules.json";
 import fishingRestrictionZonesRaw from "../data/fishing-restriction-zones.geojson?raw";
-import offlineMapRaw from "../data/offline-map.geojson?raw";
 import sourcesData from "../data/sources.json";
 import polygonsRaw from "../data/lake-polygons.geojson?raw";
-import greifenseeImage from "../assets/lakes/greifensee.svg?url";
-import pfaeffikerseeImage from "../assets/lakes/pfaeffikersee.svg?url";
-import zuerichseeImage from "../assets/lakes/zuerichsee.svg?url";
+import { completeGearRules } from "./lakeGearRules";
 import type {
   FishingRestrictionFeatureCollection,
   FishProfile,
   FishRule,
   GearRules,
+  GearRulesByLake,
   Lake,
+  LakeDetailRules,
   LakeFeatureCollection,
   LakeId,
-  OfflineMapFeatureCollection,
   Source,
   Species
 } from "../types";
 
-const lakeImageUrls: Record<LakeId, string> = {
-  greifensee: greifenseeImage,
-  pfaeffikersee: pfaeffikerseeImage,
-  zuerichsee: zuerichseeImage
-};
+const lakeImagesByLakeId = new Map(
+  (lakeImagesData as Array<{ lakeId: LakeId; src: string; alt: string; sourceId: string }>).map((image) => [
+    image.lakeId,
+    {
+      src: image.src,
+      alt: image.alt,
+      sourceId: image.sourceId
+    }
+  ])
+);
 
-export const lakes = (lakesData as Lake[]).map((entry) => ({
-  ...entry,
-  image: {
-    ...entry.image,
-    src: lakeImageUrls[entry.id] ?? entry.image.src
-  }
+export const lakes = (lakesData as Lake[]).map((lake) => ({
+  ...lake,
+  image: lake.image ?? lakeImagesByLakeId.get(lake.id)
 }));
 const speciesImageOverrides: Record<string, Partial<Species["image"]>> = {
   aesche: {
@@ -83,11 +85,16 @@ export const species = (speciesData as Species[]).map((entry) => ({
 }));
 export const fishProfiles = fishProfilesData as FishProfile[];
 export const lakeRules = lakeRulesData as FishRule[];
-export const gearRules = gearRulesData as GearRules;
+export const lakeDetailRules = lakeDetailRulesData as LakeDetailRules[];
+export const gearRules = completeGearRules(gearRulesData as GearRules, lakes, lakeDetailRules);
 export const sources = sourcesData as Source[];
 export const lakePolygons = JSON.parse(polygonsRaw) as LakeFeatureCollection;
 export const fishingRestrictionZones = JSON.parse(fishingRestrictionZonesRaw) as FishingRestrictionFeatureCollection;
-export const offlineMap = JSON.parse(offlineMapRaw) as OfflineMapFeatureCollection;
+const lakeIds = new Set(lakes.map((lake) => lake.id));
+
+export function isKnownLakeId(value: unknown): value is LakeId {
+  return typeof value === "string" && lakeIds.has(value);
+}
 
 export function getLake(id: LakeId): Lake {
   const lake = lakes.find((entry) => entry.id === id);
@@ -101,6 +108,10 @@ export function getLake(id: LakeId): Lake {
 
 export function getRulesForLake(lakeId: LakeId): FishRule[] {
   return lakeRules.filter((rule) => rule.lakeId === lakeId);
+}
+
+export function getLakeDetailRulesForLake(lakeId: LakeId): LakeDetailRules | null {
+  return lakeDetailRules.find((entry) => entry.lakeId === lakeId) ?? null;
 }
 
 export function getSpecies(speciesId: string): Species {
@@ -121,6 +132,10 @@ export function getGearRulesForLake(lakeId: LakeId) {
   }
 
   return match;
+}
+
+export function findGearRulesForLake(lakeId: LakeId): GearRulesByLake | null {
+  return gearRules.byLake.find((entry) => entry.lakeId === lakeId) ?? null;
 }
 
 export function getSources(ids: string[]): Source[] {

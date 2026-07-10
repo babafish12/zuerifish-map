@@ -1,4 +1,4 @@
-export type LakeId = "zuerichsee" | "greifensee" | "pfaeffikersee";
+export type LakeId = string;
 
 export type FishStatus = "allowed" | "closed" | "protected" | "unclear";
 
@@ -16,13 +16,55 @@ export interface Lake {
   id: LakeId;
   name: string;
   canton: string;
+  cantons?: string[];
+  neighboringCountries?: string[];
   summary: string;
   badges: string[];
-  image: {
+  image?: {
     src: string;
     alt: string;
     sourceId: string;
   };
+  sourceIds: string[];
+  licenseSourceIds?: string[];
+  detailLevel?: "full" | "overview";
+  center?: {
+    lat: number;
+    lng: number;
+  };
+  areaKm2?: number;
+  elevationM?: number;
+  maxDepthM?: number;
+  riverBasin?: string;
+  localNames?: string[];
+  rank?: number;
+  wikiUrl?: string;
+}
+
+export type LakeDetailRuleCoverage = "verified" | "partial" | "delegatedPacht";
+
+export type LakeDetailRuleTone = "info" | "warning" | "ban";
+
+export interface LakeDetailRuleItem {
+  label: string;
+  value: string;
+  sourceIds?: string[];
+}
+
+export interface LakeDetailRuleSection {
+  id: string;
+  title: string;
+  tone?: LakeDetailRuleTone;
+  items: LakeDetailRuleItem[];
+}
+
+export interface LakeDetailRules {
+  lakeId: LakeId;
+  coverage: LakeDetailRuleCoverage;
+  jurisdictionLabel: string;
+  checkedAt: string;
+  summary: string;
+  sections: LakeDetailRuleSection[];
   sourceIds: string[];
 }
 
@@ -54,7 +96,7 @@ export interface FishProfile {
     alt: string;
     sourceId: string;
   };
-  occurrence: Record<LakeId, string>;
+  occurrence: Record<string, string | undefined>;
   note: string;
 }
 
@@ -66,13 +108,42 @@ export type FishProfileCategoryGroup =
   | "Geschützte Arten"
   | "Landesfremde Arten";
 
+export type FishCatchStatus = "allowed" | "protected" | "nonNative" | "checkRules";
+
+export interface FishProfilePhoto {
+  src: string;
+  alt: string;
+  sourceUrl: string;
+  provider: string;
+  attribution: string;
+  license: string;
+}
+
+export interface FishCatchGuidance {
+  status: FishCatchStatus;
+  label: string;
+  headline: string;
+  summary: string;
+  steps: string[];
+  legalNote: string;
+}
+
+export interface FishProfileLongSection {
+  title: string;
+  body: string;
+  points: string[];
+}
+
 export interface FishProfileDetail {
   categoryGroup: FishProfileCategoryGroup;
+  photo: FishProfilePhoto;
+  catchGuidance: FishCatchGuidance;
   portrait: string;
   identification: string[];
   habitats: string[];
   catchingTips: string[];
   eatingNote: string;
+  longSections: FishProfileLongSection[];
 }
 
 export interface FishRule {
@@ -163,10 +234,15 @@ export interface LakeFeature {
     id: LakeId;
     name: string;
   };
-  geometry: {
-    type: "Polygon";
-    coordinates: GeoPosition[][];
-  };
+  geometry:
+    | {
+        type: "Polygon";
+        coordinates: GeoPosition[][];
+      }
+    | {
+        type: "MultiPolygon";
+        coordinates: GeoPosition[][][];
+      };
 }
 
 export interface LakeFeatureCollection {

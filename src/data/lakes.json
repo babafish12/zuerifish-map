@@ -1,41 +1,1513 @@
 [
   {
+    "id": "lac-leman",
+    "name": "Lac Léman",
+    "canton": "Genf, Waadt, Wallis, Frankreich",
+    "cantons": [
+      "Genf",
+      "Waadt",
+      "Wallis"
+    ],
+    "neighboringCountries": [
+      "Frankreich"
+    ],
+    "summary": "Schweizer See in Genf, Waadt, Wallis mit Bezug zu Frankreich; Fläche 580.03 km², Höhe 372 m ü. M.",
+    "badges": [
+      "580.03 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ge-permis-peche",
+      "vd-permis-peche",
+      "vs-epeche"
+    ],
+    "licenseSourceIds": [
+      "ge-permis-peche",
+      "vd-permis-peche",
+      "vs-epeche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.45,
+      "lng": 6.55
+    },
+    "areaKm2": 580.03,
+    "elevationM": 372,
+    "maxDepthM": 310,
+    "riverBasin": "Rhone",
+    "localNames": [
+      "Lac Léman",
+      "Lac de Genève"
+    ],
+    "rank": 1,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Geneva"
+  },
+  {
+    "id": "bodensee",
+    "name": "Bodensee",
+    "canton": "St. Gallen, Thurgau, Österreich, Deutschland",
+    "cantons": [
+      "St. Gallen",
+      "Thurgau"
+    ],
+    "neighboringCountries": [
+      "Österreich",
+      "Deutschland"
+    ],
+    "summary": "Schweizer See in St. Gallen, Thurgau mit Bezug zu Österreich, Deutschland; Fläche 473 km², Höhe 396 m ü. M.",
+    "badges": [
+      "473 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sg-fischereipatente",
+      "tg-webshop-efj"
+    ],
+    "licenseSourceIds": [
+      "sg-fischereipatente",
+      "tg-webshop-efj"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.58333,
+      "lng": 9.46667
+    },
+    "areaKm2": 473,
+    "elevationM": 396,
+    "maxDepthM": 252,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Bodensee"
+    ],
+    "rank": 2,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Constance"
+  },
+  {
+    "id": "lac-de-neuchatel",
+    "name": "Lac de Neuchâtel",
+    "canton": "Bern, Freiburg, Neuenburg, Waadt",
+    "cantons": [
+      "Bern",
+      "Freiburg",
+      "Neuenburg",
+      "Waadt"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern, Freiburg, Neuenburg, Waadt; Fläche 215.2 km², Höhe 429.4 m ü. M.",
+    "badges": [
+      "215.2 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent",
+      "fr-fischerei",
+      "ne-peche",
+      "vd-permis-peche"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent",
+      "fr-fischerei",
+      "ne-peche",
+      "vd-permis-peche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.9,
+      "lng": 6.85
+    },
+    "areaKm2": 215.2,
+    "elevationM": 429.4,
+    "maxDepthM": 153,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lac de Neuchâtel",
+      "Neuenburgersee"
+    ],
+    "rank": 3,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Neuch%C3%A2tel"
+  },
+  {
+    "id": "verbano",
+    "name": "Verbano",
+    "canton": "Tessin, Italien",
+    "cantons": [
+      "Tessin"
+    ],
+    "neighboringCountries": [
+      "Italien"
+    ],
+    "summary": "Schweizer See in Tessin mit Bezug zu Italien; Fläche 210.12 km², Höhe 193.5 m ü. M.",
+    "badges": [
+      "210.12 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ti-patente-digitale"
+    ],
+    "licenseSourceIds": [
+      "ti-patente-digitale"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.09806,
+      "lng": 8.71472
+    },
+    "areaKm2": 210.12,
+    "elevationM": 193.5,
+    "maxDepthM": 372,
+    "riverBasin": "Po",
+    "localNames": [
+      "Verbano",
+      "Lago Maggiore"
+    ],
+    "rank": 4,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Maggiore"
+  },
+  {
+    "id": "vierwaldstaettersee",
+    "name": "Vierwaldstättersee",
+    "canton": "Luzern, Nidwalden, Obwalden, Schwyz, Uri",
+    "cantons": [
+      "Luzern",
+      "Nidwalden",
+      "Obwalden",
+      "Schwyz",
+      "Uri"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Luzern, Nidwalden, Obwalden, Schwyz, Uri; Fläche 113.72 km², Höhe 433.6 m ü. M.",
+    "badges": [
+      "113.72 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "lu-fischereipatente",
+      "nw-fischerei",
+      "ow-fischerpatente",
+      "sz-fischerpatente",
+      "ur-fischereipatent-online"
+    ],
+    "licenseSourceIds": [
+      "lu-fischereipatente",
+      "nw-fischerei",
+      "ow-fischerpatente",
+      "sz-fischerpatente",
+      "ur-fischereipatent-online"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.0194,
+      "lng": 8.4011
+    },
+    "areaKm2": 113.72,
+    "elevationM": 433.6,
+    "maxDepthM": 214,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Vierwaldstättersee"
+    ],
+    "rank": 5,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Lucerne"
+  },
+  {
     "id": "zuerichsee",
     "name": "Zürichsee",
     "canton": "Zürich",
+    "cantons": [
+      "St. Gallen",
+      "Schwyz",
+      "Zürich"
+    ],
+    "neighboringCountries": [],
     "summary": "Langer Stadt- und Voralpensee mit eigenen Zürichsee-Regeln für Hecht, Zander und Seesaibling/Rötel.",
-    "badges": ["Freiangelrecht", "Zürichsee-Regeln", "Zeitlimite"],
-    "image": {
-      "src": "/src/assets/lakes/zuerichsee.svg",
-      "alt": "Schematische Header-Illustration des Zürichsees",
-      "sourceId": "map-sketch"
+    "badges": [
+      "Freiangelrecht",
+      "Zürichsee-Regeln",
+      "Zeitlimite"
+    ],
+    "sourceIds": [
+      "zh-fanglimiten-2026",
+      "zh-freiangel",
+      "prd",
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sg-fischereipatente",
+      "sz-fischerpatente",
+      "zh-fischereipatente-2026"
+    ],
+    "licenseSourceIds": [
+      "sg-fischereipatente",
+      "sz-fischerpatente",
+      "zh-fischereipatente-2026"
+    ],
+    "detailLevel": "full",
+    "center": {
+      "lat": 47.2475,
+      "lng": 8.6775
     },
-    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+    "areaKm2": 88.17,
+    "elevationM": 405.9,
+    "maxDepthM": 136,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Zürichsee"
+    ],
+    "rank": 6,
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Z%C3%BCrich_Panorama_vom_Uetliberg.jpg/1920px-Z%C3%BCrich_Panorama_vom_Uetliberg.jpg",
+      "alt": "Panorama vom Uetliberg über Zürich und den Zürichsee",
+      "sourceId": "image-zuerichsee-wikimedia-heni2000"
+    },
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Zurich"
+  },
+  {
+    "id": "untersee",
+    "name": "Untersee",
+    "canton": "Schaffhausen, Thurgau, Deutschland",
+    "cantons": [
+      "Schaffhausen",
+      "Thurgau"
+    ],
+    "neighboringCountries": [
+      "Deutschland"
+    ],
+    "summary": "Schweizer See in Schaffhausen, Thurgau mit Bezug zu Deutschland; Fläche 63 km², Höhe 396 m ü. M.",
+    "badges": [
+      "63 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sh-fischerei",
+      "tg-webshop-efj"
+    ],
+    "licenseSourceIds": [
+      "sh-fischerei",
+      "tg-webshop-efj"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.68333,
+      "lng": 9
+    },
+    "areaKm2": 63,
+    "elevationM": 396,
+    "maxDepthM": 37,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Untersee"
+    ],
+    "rank": 7,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Untersee_(Lake_Constance)"
+  },
+  {
+    "id": "ceresio",
+    "name": "Ceresio",
+    "canton": "Tessin, Italien",
+    "cantons": [
+      "Tessin"
+    ],
+    "neighboringCountries": [
+      "Italien"
+    ],
+    "summary": "Schweizer See in Tessin mit Bezug zu Italien; Fläche 48.67 km², Höhe 270.5 m ü. M.",
+    "badges": [
+      "48.67 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ti-patente-digitale"
+    ],
+    "licenseSourceIds": [
+      "ti-patente-digitale"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 45.98333,
+      "lng": 8.96667
+    },
+    "areaKm2": 48.67,
+    "elevationM": 270.5,
+    "maxDepthM": 288,
+    "riverBasin": "Po",
+    "localNames": [
+      "Ceresio",
+      "Lago di Lugano"
+    ],
+    "rank": 8,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Lugano"
+  },
+  {
+    "id": "thunersee",
+    "name": "Thunersee",
+    "canton": "Bern",
+    "cantons": [
+      "Bern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern; Fläche 47.74 km², Höhe 557.8 m ü. M.",
+    "badges": [
+      "47.74 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.68333,
+      "lng": 7.71667
+    },
+    "areaKm2": 47.74,
+    "elevationM": 557.8,
+    "maxDepthM": 215,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Thunersee"
+    ],
+    "rank": 9,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Thun"
+  },
+  {
+    "id": "lac-de-bienne",
+    "name": "Lac de Bienne",
+    "canton": "Bern, Neuenburg",
+    "cantons": [
+      "Bern",
+      "Neuenburg"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern, Neuenburg; Fläche 39.51 km², Höhe 429.1 m ü. M.",
+    "badges": [
+      "39.51 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent",
+      "ne-peche"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent",
+      "ne-peche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.08333,
+      "lng": 7.16667
+    },
+    "areaKm2": 39.51,
+    "elevationM": 429.1,
+    "maxDepthM": 74,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lac de Bienne",
+      "Bielersee"
+    ],
+    "rank": 10,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Biel"
+  },
+  {
+    "id": "zugersee",
+    "name": "Zugersee",
+    "canton": "Luzern, Schwyz, Zug",
+    "cantons": [
+      "Luzern",
+      "Schwyz",
+      "Zug"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Luzern, Schwyz, Zug; Fläche 38.41 km², Höhe 413.6 m ü. M.",
+    "badges": [
+      "38.41 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "lu-fischereipatente",
+      "sz-fischerpatente",
+      "zg-fischerei"
+    ],
+    "licenseSourceIds": [
+      "lu-fischereipatente",
+      "sz-fischerpatente",
+      "zg-fischerei"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.11667,
+      "lng": 8.48333
+    },
+    "areaKm2": 38.41,
+    "elevationM": 413.6,
+    "maxDepthM": 198,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Zugersee"
+    ],
+    "rank": 11,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Zug"
+  },
+  {
+    "id": "brienzersee",
+    "name": "Brienzersee",
+    "canton": "Bern",
+    "cantons": [
+      "Bern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern; Fläche 29.81 km², Höhe 563.7 m ü. M.",
+    "badges": [
+      "29.81 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.71667,
+      "lng": 7.96667
+    },
+    "areaKm2": 29.81,
+    "elevationM": 563.7,
+    "maxDepthM": 260,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Brienzersee"
+    ],
+    "rank": 12,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Brienz"
+  },
+  {
+    "id": "walensee",
+    "name": "Walensee",
+    "canton": "Glarus, St. Gallen",
+    "cantons": [
+      "Glarus",
+      "St. Gallen"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Glarus, St. Gallen; Fläche 24.16 km², Höhe 419 m ü. M.",
+    "badges": [
+      "24.16 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gl-fischereipatente",
+      "sg-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gl-fischereipatente",
+      "sg-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.11667,
+      "lng": 9.2
+    },
+    "areaKm2": 24.16,
+    "elevationM": 419,
+    "maxDepthM": 150,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Walensee"
+    ],
+    "rank": 13,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Walensee"
+  },
+  {
+    "id": "lac-de-morat-murtensee",
+    "name": "Lac de Morat (Murtensee)",
+    "canton": "Freiburg, Waadt",
+    "cantons": [
+      "Freiburg",
+      "Waadt"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Freiburg, Waadt; Fläche 22.8 km², Höhe 429.2 m ü. M.",
+    "badges": [
+      "22.8 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "fr-fischerei",
+      "vd-permis-peche"
+    ],
+    "licenseSourceIds": [
+      "fr-fischerei",
+      "vd-permis-peche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.93333,
+      "lng": 7.075
+    },
+    "areaKm2": 22.8,
+    "elevationM": 429.2,
+    "maxDepthM": 46,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lac de Morat (Murtensee)"
+    ],
+    "rank": 14,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Morat"
+  },
+  {
+    "id": "sempachersee",
+    "name": "Sempachersee",
+    "canton": "Luzern",
+    "cantons": [
+      "Luzern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Luzern; Fläche 14.36 km², Höhe 503.8 m ü. M.",
+    "badges": [
+      "14.36 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "lu-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "lu-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.15,
+      "lng": 8.15
+    },
+    "areaKm2": 14.36,
+    "elevationM": 503.8,
+    "maxDepthM": 87,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Sempachersee"
+    ],
+    "rank": 15,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Sempach"
+  },
+  {
+    "id": "sihlsee",
+    "name": "Sihlsee",
+    "canton": "Schwyz",
+    "cantons": [
+      "Schwyz"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Schwyz; Fläche 10.72 km², Höhe 889 m ü. M.",
+    "badges": [
+      "10.72 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sz-fischerpatente"
+    ],
+    "licenseSourceIds": [
+      "sz-fischerpatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.11667,
+      "lng": 8.78333
+    },
+    "areaKm2": 10.72,
+    "elevationM": 889,
+    "maxDepthM": 23,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Sihlsee"
+    ],
+    "rank": 16,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sihlsee"
+  },
+  {
+    "id": "hallwilersee",
+    "name": "Hallwilersee",
+    "canton": "Aargau, Luzern",
+    "cantons": [
+      "Aargau",
+      "Luzern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Aargau, Luzern; Fläche 10.21 km², Höhe 448.7 m ü. M.",
+    "badges": [
+      "10.21 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ag-fischereikarten-shop",
+      "lu-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "ag-fischereikarten-shop",
+      "lu-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.28417,
+      "lng": 8.21611
+    },
+    "areaKm2": 10.21,
+    "elevationM": 448.7,
+    "maxDepthM": 47,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Hallwilersee"
+    ],
+    "rank": 17,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Hallwil"
+  },
+  {
+    "id": "lac-de-la-gruyere",
+    "name": "Lac de la Gruyère",
+    "canton": "Freiburg",
+    "cantons": [
+      "Freiburg"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Freiburg; Fläche 9.6 km², Höhe 677 m ü. M.",
+    "badges": [
+      "9.6 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "fr-fischerei"
+    ],
+    "licenseSourceIds": [
+      "fr-fischerei"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.65,
+      "lng": 7.1
+    },
+    "areaKm2": 9.6,
+    "elevationM": 677,
+    "maxDepthM": 75,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lac de la Gruyère"
+    ],
+    "rank": 18,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_of_Gruy%C3%A8re"
+  },
+  {
+    "id": "lac-de-joux",
+    "name": "Lac de Joux",
+    "canton": "Waadt",
+    "cantons": [
+      "Waadt"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Waadt; Fläche 8.77 km², Höhe 1004 m ü. M.",
+    "badges": [
+      "8.77 km²",
+      "Natursee/Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "vd-permis-peche"
+    ],
+    "licenseSourceIds": [
+      "vd-permis-peche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.63944,
+      "lng": 6.28583
+    },
+    "areaKm2": 8.77,
+    "elevationM": 1004,
+    "maxDepthM": 34,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lac de Joux"
+    ],
+    "rank": 19,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lac_de_Joux"
   },
   {
     "id": "greifensee",
     "name": "Greifensee",
     "canton": "Zürich",
+    "cantons": [
+      "Zürich"
+    ],
+    "neighboringCountries": [],
     "summary": "Kompakter See östlich von Zürich; Hecht und Zander haben Mindestmass und Schonzeit.",
-    "badges": ["Freiangelrecht", "Patentgewässer", "keine Zeitlimite laut Merkblatt"],
-    "image": {
-      "src": "/src/assets/lakes/greifensee.svg",
-      "alt": "Schematische Header-Illustration des Greifensees",
-      "sourceId": "map-sketch"
+    "badges": [
+      "Freiangelrecht",
+      "Patentgewässer",
+      "keine Zeitlimite laut Merkblatt"
+    ],
+    "sourceIds": [
+      "zh-fanglimiten-2026",
+      "zh-freiangel",
+      "prd",
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "zh-fischereipatente-2026"
+    ],
+    "licenseSourceIds": [
+      "zh-fischereipatente-2026"
+    ],
+    "detailLevel": "full",
+    "center": {
+      "lat": 47.35,
+      "lng": 8.68333
     },
-    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+    "areaKm2": 8.17,
+    "elevationM": 435.1,
+    "maxDepthM": 34,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Greifensee"
+    ],
+    "rank": 20,
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Greifensee_from_the_air.jpg/1920px-Greifensee_from_the_air.jpg",
+      "alt": "Luftbild des Greifensees mit umliegenden Ortschaften",
+      "sourceId": "image-greifensee-wikimedia-wade"
+    },
+    "wikiUrl": "https://en.wikipedia.org/wiki/Greifensee_(lake)"
+  },
+  {
+    "id": "sarnersee",
+    "name": "Sarnersee",
+    "canton": "Obwalden",
+    "cantons": [
+      "Obwalden"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Obwalden; Fläche 7.38 km², Höhe 468.4 m ü. M.",
+    "badges": [
+      "7.38 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ow-fischerpatente"
+    ],
+    "licenseSourceIds": [
+      "ow-fischerpatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.8625,
+      "lng": 8.20861
+    },
+    "areaKm2": 7.38,
+    "elevationM": 468.4,
+    "maxDepthM": 52,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Sarnersee"
+    ],
+    "rank": 21,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Sarnen"
+  },
+  {
+    "id": "aegerisee",
+    "name": "Ägerisee",
+    "canton": "Zug",
+    "cantons": [
+      "Zug"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Zug; Fläche 7.25 km², Höhe 723.9 m ü. M.",
+    "badges": [
+      "7.25 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "zg-fischerei"
+    ],
+    "licenseSourceIds": [
+      "zg-fischerei"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.12,
+      "lng": 8.61611
+    },
+    "areaKm2": 7.25,
+    "elevationM": 723.9,
+    "maxDepthM": 82,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Ägerisee"
+    ],
+    "rank": 22,
+    "wikiUrl": "https://en.wikipedia.org/wiki/%C3%84gerisee"
+  },
+  {
+    "id": "baldeggersee",
+    "name": "Baldeggersee",
+    "canton": "Luzern",
+    "cantons": [
+      "Luzern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Luzern; Fläche 5.24 km², Höhe 463 m ü. M.",
+    "badges": [
+      "5.24 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "lu-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "lu-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.19861,
+      "lng": 8.26056
+    },
+    "areaKm2": 5.24,
+    "elevationM": 463,
+    "maxDepthM": 66,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Baldeggersee"
+    ],
+    "rank": 23,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Baldegg"
+  },
+  {
+    "id": "lago-di-livigno",
+    "name": "Lago di Livigno",
+    "canton": "Graubünden, Italien",
+    "cantons": [
+      "Graubünden"
+    ],
+    "neighboringCountries": [
+      "Italien"
+    ],
+    "summary": "Schweizer See in Graubünden mit Bezug zu Italien; Fläche 4.71 km², Höhe 1805 m ü. M.",
+    "badges": [
+      "4.71 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gr-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gr-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.62222,
+      "lng": 10.19333
+    },
+    "areaKm2": 4.71,
+    "elevationM": 1805,
+    "maxDepthM": 119,
+    "riverBasin": "Danube",
+    "localNames": [
+      "Lago di Livigno"
+    ],
+    "rank": 24,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lago_di_Livigno"
+  },
+  {
+    "id": "schiffenensee",
+    "name": "Schiffenensee",
+    "canton": "Freiburg",
+    "cantons": [
+      "Freiburg"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Freiburg; Fläche 4.25 km², Höhe 532 m ü. M.",
+    "badges": [
+      "4.25 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "fr-fischerei"
+    ],
+    "licenseSourceIds": [
+      "fr-fischerei"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.85444,
+      "lng": 7.16639
+    },
+    "areaKm2": 4.25,
+    "elevationM": 532,
+    "maxDepthM": 38,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Schiffenensee",
+      "Lac de Schiffenen"
+    ],
+    "rank": 25,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Schiffenensee"
+  },
+  {
+    "id": "waegitalersee",
+    "name": "Wägitalersee",
+    "canton": "Schwyz",
+    "cantons": [
+      "Schwyz"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Schwyz; Fläche 4.18 km², Höhe 900 m ü. M.",
+    "badges": [
+      "4.18 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sz-fischerpatente"
+    ],
+    "licenseSourceIds": [
+      "sz-fischerpatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.08944,
+      "lng": 8.92111
+    },
+    "areaKm2": 4.18,
+    "elevationM": 900,
+    "maxDepthM": 65,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Wägitalersee"
+    ],
+    "rank": 26,
+    "wikiUrl": "https://en.wikipedia.org/wiki/W%C3%A4gitalersee"
+  },
+  {
+    "id": "lago-di-lei",
+    "name": "Lago di Lei",
+    "canton": "Graubünden, Italien",
+    "cantons": [
+      "Graubünden"
+    ],
+    "neighboringCountries": [
+      "Italien"
+    ],
+    "summary": "Schweizer See in Graubünden mit Bezug zu Italien; Fläche 4.12 km², Höhe 1931 m ü. M.",
+    "badges": [
+      "4.12 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gr-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gr-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.45205,
+      "lng": 9.44324
+    },
+    "areaKm2": 4.12,
+    "elevationM": 1931,
+    "maxDepthM": 133,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lago di Lei"
+    ],
+    "rank": 27,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lago_di_Lei"
+  },
+  {
+    "id": "silsersee",
+    "name": "Silsersee",
+    "canton": "Graubünden",
+    "cantons": [
+      "Graubünden"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Graubünden; Fläche 4.1 km², Höhe 1797 m ü. M.",
+    "badges": [
+      "4.1 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gr-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gr-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.41667,
+      "lng": 9.73333
+    },
+    "areaKm2": 4.1,
+    "elevationM": 1797,
+    "maxDepthM": 71,
+    "riverBasin": "Danube",
+    "localNames": [
+      "Silsersee",
+      "Lej da Segl"
+    ],
+    "rank": 28,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Sils"
+  },
+  {
+    "id": "lac-des-dix",
+    "name": "Lac des Dix",
+    "canton": "Wallis",
+    "cantons": [
+      "Wallis"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Wallis; Fläche 3.65 km², Höhe 2365 m ü. M.",
+    "badges": [
+      "3.65 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "vs-epeche"
+    ],
+    "licenseSourceIds": [
+      "vs-epeche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.08056,
+      "lng": 7.40389
+    },
+    "areaKm2": 3.65,
+    "elevationM": 2365,
+    "maxDepthM": 227,
+    "riverBasin": "Rhone",
+    "localNames": [
+      "Lac des Dix"
+    ],
+    "rank": 29,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Grande_Dixence_Dam"
+  },
+  {
+    "id": "wohlensee",
+    "name": "Wohlensee",
+    "canton": "Bern",
+    "cantons": [
+      "Bern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern; Fläche 3.65 km², Höhe 480 m ü. M.",
+    "badges": [
+      "3.65 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.96833,
+      "lng": 7.28444
+    },
+    "areaKm2": 3.65,
+    "elevationM": 480,
+    "maxDepthM": 20,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Wohlensee"
+    ],
+    "rank": 30,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Wohlen"
+  },
+  {
+    "id": "lac-d-emosson",
+    "name": "Lac d'Emosson",
+    "canton": "Wallis",
+    "cantons": [
+      "Wallis"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Wallis; Fläche 3.27 km², Höhe 1930 m ü. M.",
+    "badges": [
+      "3.27 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "vs-epeche"
+    ],
+    "licenseSourceIds": [
+      "vs-epeche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.0799,
+      "lng": 6.91647
+    },
+    "areaKm2": 3.27,
+    "elevationM": 1930,
+    "maxDepthM": 161,
+    "riverBasin": "Rhone",
+    "localNames": [
+      "Lac d'Emosson"
+    ],
+    "rank": 31,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lac_d'%C3%89mosson"
+  },
+  {
+    "id": "kloentalersee",
+    "name": "Klöntalersee",
+    "canton": "Glarus",
+    "cantons": [
+      "Glarus"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Glarus; Fläche 3.18 km², Höhe 847 m ü. M.",
+    "badges": [
+      "3.18 km²",
+      "Natursee/Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gl-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gl-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.02583,
+      "lng": 8.98056
+    },
+    "areaKm2": 3.18,
+    "elevationM": 847,
+    "maxDepthM": 47,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Klöntalersee"
+    ],
+    "rank": 32,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kl%C3%B6ntalersee"
+  },
+  {
+    "id": "silvaplanersee",
+    "name": "Silvaplanersee",
+    "canton": "Graubünden",
+    "cantons": [
+      "Graubünden"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Graubünden; Fläche 3.18 km², Höhe 1790 m ü. M.",
+    "badges": [
+      "3.18 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "gr-fischereipatente"
+    ],
+    "licenseSourceIds": [
+      "gr-fischereipatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.45,
+      "lng": 9.79444
+    },
+    "areaKm2": 3.18,
+    "elevationM": 1790,
+    "maxDepthM": 77,
+    "riverBasin": "Danube",
+    "localNames": [
+      "Silvaplanersee",
+      "Lej da Silvaplauna"
+    ],
+    "rank": 33,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Silvaplana"
   },
   {
     "id": "pfaeffikersee",
     "name": "Pfäffikersee",
     "canton": "Zürich",
+    "cantons": [
+      "Zürich"
+    ],
+    "neighboringCountries": [],
     "summary": "Ufernahe Schutzgebiete beachten; Kernregeln wie Greifensee.",
-    "badges": ["Freiangelrecht", "Patentgewässer", "Schutzgebiete"],
-    "image": {
-      "src": "/src/assets/lakes/pfaeffikersee.svg",
-      "alt": "Schematische Header-Illustration des Pfäffikersees",
-      "sourceId": "map-sketch"
+    "badges": [
+      "Freiangelrecht",
+      "Patentgewässer",
+      "Schutzgebiete"
+    ],
+    "sourceIds": [
+      "zh-fanglimiten-2026",
+      "zh-freiangel",
+      "prd",
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "zh-fischereipatente-2026"
+    ],
+    "licenseSourceIds": [
+      "zh-fischereipatente-2026"
+    ],
+    "detailLevel": "full",
+    "center": {
+      "lat": 47.35222,
+      "lng": 8.78
     },
-    "sourceIds": ["zh-fanglimiten-2026", "zh-freiangel", "prd"]
+    "areaKm2": 3.06,
+    "elevationM": 536,
+    "maxDepthM": 35,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Pfäffikersee"
+    ],
+    "rank": 34,
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Ansicht_vom_Wanderweg_zwischen_Rutschberg_und_Seegr%C3%A4ben_auf_den_Pf%C3%A4ffikersee_2016-05-21_17-23-24.JPG/1920px-Ansicht_vom_Wanderweg_zwischen_Rutschberg_und_Seegr%C3%A4ben_auf_den_Pf%C3%A4ffikersee_2016-05-21_17-23-24.JPG",
+      "alt": "Weiter Blick vom Rutschberg über den Pfäffikersee",
+      "sourceId": "image-pfaeffikersee-wikimedia-roland-zh"
+    },
+    "wikiUrl": "https://en.wikipedia.org/wiki/Pf%C3%A4ffikersee"
+  },
+  {
+    "id": "lauerzersee",
+    "name": "Lauerzersee",
+    "canton": "Schwyz",
+    "cantons": [
+      "Schwyz"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Schwyz; Fläche 3 km², Höhe 447 m ü. M.",
+    "badges": [
+      "3 km²",
+      "Natursee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "sz-fischerpatente"
+    ],
+    "licenseSourceIds": [
+      "sz-fischerpatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 47.03361,
+      "lng": 8.60333
+    },
+    "areaKm2": 3,
+    "elevationM": 447,
+    "maxDepthM": 14,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lauerzersee"
+    ],
+    "rank": 35,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Lauerz"
+  },
+  {
+    "id": "grimselsee",
+    "name": "Grimselsee",
+    "canton": "Bern",
+    "cantons": [
+      "Bern"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Bern; Fläche 2.63 km², Höhe 1908 m ü. M.",
+    "badges": [
+      "2.63 km²",
+      "Natursee/Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "be-fischereipatent"
+    ],
+    "licenseSourceIds": [
+      "be-fischereipatent"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.5675,
+      "lng": 8.3075
+    },
+    "areaKm2": 2.63,
+    "elevationM": 1908,
+    "maxDepthM": 100,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Grimselsee"
+    ],
+    "rank": 36,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Grimselsee"
+  },
+  {
+    "id": "lungerersee",
+    "name": "Lungerersee",
+    "canton": "Obwalden",
+    "cantons": [
+      "Obwalden"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Obwalden; Fläche 2.01 km², Höhe 688 m ü. M.",
+    "badges": [
+      "2.01 km²",
+      "Natursee/Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "ow-fischerpatente"
+    ],
+    "licenseSourceIds": [
+      "ow-fischerpatente"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 46.8025,
+      "lng": 8.16333
+    },
+    "areaKm2": 2.01,
+    "elevationM": 688,
+    "maxDepthM": 68,
+    "riverBasin": "Rhine",
+    "localNames": [
+      "Lungerersee",
+      "Lungernsee"
+    ],
+    "rank": 37,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Lungern"
+  },
+  {
+    "id": "lac-de-mauvoisin",
+    "name": "Lac de Mauvoisin",
+    "canton": "Wallis",
+    "cantons": [
+      "Wallis"
+    ],
+    "neighboringCountries": [],
+    "summary": "Schweizer See in Wallis; Fläche 2.08 km², Höhe 1961 m ü. M.",
+    "badges": [
+      "2.08 km²",
+      "Stausee",
+      "Patent prüfen"
+    ],
+    "sourceIds": [
+      "swiss-lakes-wikipedia",
+      "wikidata-lake-coordinates",
+      "vs-epeche"
+    ],
+    "licenseSourceIds": [
+      "vs-epeche"
+    ],
+    "detailLevel": "overview",
+    "center": {
+      "lat": 45.97829,
+      "lng": 7.35426
+    },
+    "areaKm2": 2.08,
+    "elevationM": 1961,
+    "maxDepthM": 180,
+    "riverBasin": "Rhone",
+    "localNames": [
+      "Lac de Mauvoisin"
+    ],
+    "rank": 38,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lac_de_Mauvoisin"
   }
 ]

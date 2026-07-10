@@ -1,12 +1,6 @@
-import { fishProfiles, fishingRestrictionZones, getRulesForLake } from "./data";
+import { fishProfiles, fishingRestrictionZones, getLake, getRulesForLake } from "./data";
 import { getRestrictionPeriodStatus } from "./restrictionPeriodStatus";
 import type { LakeId } from "../types";
-
-const LAKE_LABELS: Record<LakeId, string> = {
-  greifensee: "Greifensee",
-  pfaeffikersee: "Pfäffikersee",
-  zuerichsee: "Zürichsee"
-};
 
 export interface LakeInsight {
   lakeId: LakeId;
@@ -21,10 +15,11 @@ export interface LakeInsight {
 export function getLakeInsight(lakeId: LakeId): LakeInsight {
   const rules = getRulesForLake(lakeId);
   const restrictionZones = fishingRestrictionZones.features.filter((feature) => feature.properties.lakeId === lakeId);
+  const lake = getLake(lakeId);
 
   return {
     lakeId,
-    label: LAKE_LABELS[lakeId],
+    label: lake.name,
     ruleCount: rules.length,
     confirmedFishCount: fishProfiles.filter((profile) => isConfirmedLakeOccurrence(profile.occurrence[lakeId])).length,
     restrictionCount: restrictionZones.length,
@@ -33,7 +28,11 @@ export function getLakeInsight(lakeId: LakeId): LakeInsight {
   };
 }
 
-export function isConfirmedLakeOccurrence(value: string): boolean {
+export function isConfirmedLakeOccurrence(value: string | undefined): boolean {
+  if (!value) {
+    return false;
+  }
+
   const normalized = value.toLowerCase();
 
   if (normalized.includes("nicht bestätigt") || normalized.includes("historisch") || normalized.includes("nicht separat")) {

@@ -3,14 +3,16 @@ import type { Source } from "../types";
 
 interface SourceListProps {
   sources: Source[];
+  title?: string;
+  meta?: string;
 }
 
-export function SourceList({ sources }: SourceListProps) {
+export function SourceList({ sources, title = "Links und Quellen", meta = "offizielle Seiten" }: SourceListProps) {
   return (
     <section className="panel-section sources" aria-labelledby="source-title">
       <div className="section-heading">
-        <h3 id="source-title">Offizielle Links</h3>
-        <span>Kanton Zürich</span>
+        <h3 id="source-title">{title}</h3>
+        <span>{meta}</span>
       </div>
       <div className="source-list">
         {sources.map((source) => (

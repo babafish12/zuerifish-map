@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { offlineMap } from "../src/lib/data";
+import offlineMapRaw from "../src/data/offline-map.geojson?raw";
+import type { OfflineMapFeatureCollection } from "../src/types";
+
+const offlineMap = JSON.parse(offlineMapRaw) as OfflineMapFeatureCollection;
 
 describe("offline map data", () => {
   it("bundles real local map features for offline use", () => {

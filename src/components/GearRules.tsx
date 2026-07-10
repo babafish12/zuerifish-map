@@ -10,7 +10,7 @@ interface GearRulesProps {
 const modeLabels: Record<GearMode, string> = {
   withoutPatent: "Ohne Patent",
   shorePatent: "Patent Ufer",
-  stationaryBoat: "Stehendes Boot",
+  stationaryBoat: "Boot / stehend",
   trolling: "Schleppangeln"
 };
 
